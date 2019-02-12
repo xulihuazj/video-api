@@ -1,13 +1,13 @@
 package com.yinfeixing.utils.log;
 
-import java.text.MessageFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.yinfeixing.utils.string.StringUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
+
+import java.text.MessageFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LogHelper {
     private static final transient Logger logger = LogManager.getLogger(LogHelper.class);

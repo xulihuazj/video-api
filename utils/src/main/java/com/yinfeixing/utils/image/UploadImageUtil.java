@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  *     将文件上传至阿里云服务器

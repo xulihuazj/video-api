@@ -1,9 +1,9 @@
 package com.yinfeixing.entity.dataconfig.dbconfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageHelper;
 import com.yinfeixing.entity.dataconfig.Config;
 import com.yinfeixing.entity.dataconfig.annotation.VIDEODB;
-import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

@@ -3,7 +3,6 @@ package com.yinfeixing.video.boot.apihandler;
 import com.yinfeiixng.video.error.SystemErrorCode;
 import com.yinfeiixng.video.exception.BusinessException;
 import com.yinfeixing.entity.BaseEnum;
-import com.yinfeixing.entity.EnumHelperUtil;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.utils.net.IP;
 import com.yinfeixing.utils.string.StringUtil;

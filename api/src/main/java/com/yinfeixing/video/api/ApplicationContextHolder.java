@@ -1,14 +1,11 @@
 package com.yinfeixing.video.api;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * ApplicationContextHolder

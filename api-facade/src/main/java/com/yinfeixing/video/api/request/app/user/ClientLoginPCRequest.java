@@ -2,7 +2,6 @@ package com.yinfeixing.video.api.request.app.user;
 
 import com.yinfeixing.utils.validate.Query;
 import com.yinfeixing.utils.validate.Remark;
-import com.yinfeixing.video.api.request.app.user.ClientLoginRequest;
 
 import javax.validation.constraints.NotNull;
 

@@ -1,6 +1,5 @@
 package com.yinfeixing.video.service.ip;
 
-import java.util.Map;
 
 public interface IpWhiteService {
 

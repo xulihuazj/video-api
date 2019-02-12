@@ -9,12 +9,12 @@ import com.yinfeiixng.video.common.Constant;
 import com.yinfeiixng.video.error.BizErrorCode;
 import com.yinfeiixng.video.error.SystemErrorCode;
 import com.yinfeiixng.video.exception.BusinessException;
-import com.yinfeixing.entity.EnumHelperUtil;
 import com.yinfeixing.utils.emojiUtils.EmojiUtils;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.utils.net.IP;
 import com.yinfeixing.video.api.request.APIRequest;
 import org.apache.commons.lang3.ArrayUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
