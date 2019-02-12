@@ -33,35 +33,31 @@ public class PrivilegeInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        String token = request.getHeader("Authorization");
-        if (token == null) {
-            token = request.getParameter("Authorization");
-        }
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-        Method method = handlerMethod.getMethod();
-        String url = request.getRequestURI();
-        String ip = IP.getIpAddress(request);
-        //如果前端请求的地址出错则抛出 404
-        if (StringUtils.isNotBlank(url) && url.contains("/error")) {
-            LogHelper.error(logger, "请求地址不正确,ip={1},url={1}", ip, url);
-            throw new BusinessException(HttpStatus.FORBIDDEN.value(), SystemErrorCode.URL_NOT_EFFECTIVE);
-        }
-
-        // 具有@SystemType注解标注的api
-        SystemType annotationSystem = method.getAnnotation(SystemType.class);
-        LogHelper.debug(logger, "拦截器校验权限【PrivilegeInterceptor】,ip={0}, token={1}", ip, token);
-        //先判断是不是退出登录或者有没有含有 注解
-        //注解为空或者值为 INTERNAL 表示内部系统并且需要权限校验
-        // 默认为内部管理系统
-        SystemApiTypeEnum system = SystemApiTypeEnum.INTERNAL;
-        if (annotationSystem != null) {
-            system = SystemApiTypeEnum.valueOf(annotationSystem.value().toUpperCase());
-        }
-        // 注解为common（不需要校验） 和notify（支付异步通知特殊处理） 标志不需要权限校验
-        if (system.getCode().equalsIgnoreCase(SystemApiTypeEnum.INTERNAL.getCode()) || system.getCode().equalsIgnoreCase(SystemApiTypeEnum.EXTERNAL.getCode())) {
-            PrivilegeValidService privilegeValidService = (PrivilegeValidService) ApplicationContextHolder.getContext().getBean(system.getPrivilegeObjectName());
-            privilegeValidService.privilegeValid();
-        }
+//        String token = request.getHeader("Authorization");
+//        if (token == null) {
+//            token = request.getParameter("Authorization");
+//        }
+//        HandlerMethod handlerMethod = (HandlerMethod) handler;
+//        Method method = handlerMethod.getMethod();
+//        String url = request.getRequestURI();
+//        String ip = IP.getIpAddress(request);
+//        //如果前端请求的地址出错则抛出 404
+//        if (StringUtils.isNotBlank(url) && url.contains("/error")) {
+//            LogHelper.error(logger, "请求地址不正确,ip={1},url={1}", ip, url);
+//            throw new BusinessException(HttpStatus.FORBIDDEN.value(), SystemErrorCode.URL_NOT_EFFECTIVE);
+//        }
+//        // 具有@SystemType注解标注的api
+//        SystemType annotationSystem = method.getAnnotation(SystemType.class);
+//        LogHelper.debug(logger, "拦截器校验权限【PrivilegeInterceptor】,ip={0}, token={1}", ip, token);
+//        SystemApiTypeEnum system = SystemApiTypeEnum.INTERNAL;
+//        if (annotationSystem != null) {
+//            system = SystemApiTypeEnum.valueOf(annotationSystem.value().toUpperCase());
+//        }
+//        // 注解为common（不需要校验） 和notify（支付异步通知特殊处理） 标志不需要权限校验
+//        if (system.getCode().equalsIgnoreCase(SystemApiTypeEnum.INTERNAL.getCode()) || system.getCode().equalsIgnoreCase(SystemApiTypeEnum.EXTERNAL.getCode())) {
+//            PrivilegeValidService privilegeValidService = (PrivilegeValidService) ApplicationContextHolder.getContext().getBean(system.getPrivilegeObjectName());
+//            privilegeValidService.privilegeValid();
+//        }
         return true;
     }
 

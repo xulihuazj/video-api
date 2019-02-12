@@ -23,29 +23,25 @@ public class IPWhiteInterceptor implements HandlerInterceptor {
     private IpWhiteService ipWhiteService;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-        // 获取用户真实IP
-        String IP = WebHelper.getRemoteAddr();
-        // 获取用户请求路径
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        String IP = WebHelper.getRemoteAddr();// 获取用户真实IP
         String url = request.getServletPath();
-        if (!"/".equals(url.substring(url.length() - 1))) {
-            url = url + "/";
-        }
-        boolean bl = ipWhiteService.checkIpWhite(url, IP);
-        if (!bl) {
-            LogHelper.info("IP白名单检查不通过:当前请求url：" + url + ",ip地址:" + IP);
-        }
+//        if (!"/".equals(url.substring(url.length() - 1))) {
+//            url = url + "/";
+//        }
+//        boolean bl = ipWhiteService.checkIpWhite(url, IP);
+//        if (!bl) {
+//            LogHelper.info("IP白名单检查不通过:当前请求url：" + url + ",ip地址:" + IP);
+//        }
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-                           ModelAndView modelAndView) throws Exception {
+                           ModelAndView modelAndView) {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
     }
 }
