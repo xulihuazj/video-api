@@ -1,20 +1,19 @@
-package com.cf.api.request.app.user;
+package com.yinfeixing.video.api.request.app.user;
 
-import com.cf.api.enums.user.UserGenderEnum;
-import com.cf.entity.ToString;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.Remark;
 
-public class UserUpdateRequest extends ToString{
+public class UserUpdateRequest extends ToString {
     private static final long serialVersionUID = 5304996517735983075L;
 
     @Remark("用户名称")
-    private  String userName;
+    private String userName;
 
     @Remark("用户昵称")
-    private  String nickName;
+    private String nickName;
 
     @Remark("用户性别")
-    private UserGenderEnum userSex;
+    private String userSex;
 
     public String getUserName() {
         return userName;
@@ -32,11 +31,11 @@ public class UserUpdateRequest extends ToString{
         this.nickName = nickName;
     }
 
-    public UserGenderEnum getUserSex() {
+    public String getUserSex() {
         return userSex;
     }
 
-    public void setUserSex(UserGenderEnum userSex) {
+    public void setUserSex(String userSex) {
         this.userSex = userSex;
     }
 }

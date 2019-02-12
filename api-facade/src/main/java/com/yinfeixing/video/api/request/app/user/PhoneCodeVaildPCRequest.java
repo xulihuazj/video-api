@@ -1,8 +1,8 @@
-package com.cf.api.request.app.user;
+package com.yinfeixing.video.api.request.app.user;
 
-import com.cf.entity.ToString;
-import com.cf.utils.validate.RE;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.RE;
+import com.yinfeixing.utils.validate.Remark;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 /**
  *  手机换绑短信验证
  */
-public class PhoneCodeVaildPCRequest extends ToString{
+public class PhoneCodeVaildPCRequest extends ToString {
     private static final long serialVersionUID = -5817774000806777768L;
 
     @Remark("注册账号：目前只支持手机号")

@@ -1,10 +1,8 @@
-package com.cf.api.request;
-
-
+package com.yinfeixing.video.api.request.app.client;
 /**
  * ClientInfoModel
  *
- * @author liwei
+ * @author xulh
  * @date 2017/3/29
  * @description
  */

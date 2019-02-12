@@ -1,6 +1,6 @@
-package com.cf.api.response;
+package com.yinfeixing.video.api.response;
 
-import com.cf.entity.ToString;
+import com.yinfeixing.entity.ToString;
 
 /**
  * api相应
@@ -10,7 +10,6 @@ public class AbstractResponse extends ToString {
     /**
      * api返回码
      * 
-     * @see com.cf.api.enums.ResponseStatusCodeEnum
      */
     private String statusCode;
 

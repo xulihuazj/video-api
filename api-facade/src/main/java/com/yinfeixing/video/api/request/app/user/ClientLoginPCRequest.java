@@ -1,7 +1,8 @@
-package com.cf.api.request.app.user;
+package com.yinfeixing.video.api.request.app.user;
 
-import com.cf.utils.validate.Query;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.utils.validate.Query;
+import com.yinfeixing.utils.validate.Remark;
+import com.yinfeixing.video.api.request.app.user.ClientLoginRequest;
 
 import javax.validation.constraints.NotNull;
 
@@ -13,8 +14,9 @@ public class ClientLoginPCRequest extends ClientLoginRequest {
     private String imgCode;
 
 	@Remark("UUID")
-	@NotNull(message="uuid不能为空",groups=Query.class)
+	@NotNull(message="uuid不能为空",groups= Query.class)
 	private String uuid;
+
 	public String getImgCode() {
 		return imgCode;
 	}

@@ -1,4 +1,4 @@
-package com.cf.api.system;
+package com.yinfeixing.video.api.system;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;

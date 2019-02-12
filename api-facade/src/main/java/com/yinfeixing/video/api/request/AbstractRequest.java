@@ -1,7 +1,6 @@
-package com.cf.api.request;
+package com.yinfeixing.video.api.request;
 
-import com.cf.api.enums.common.Source;
-import com.cf.entity.ToString;
+import com.yinfeixing.entity.ToString;
 
 public class AbstractRequest extends ToString {
     /**
@@ -27,7 +26,7 @@ public class AbstractRequest extends ToString {
     /**
      * 请求来源（必传)
      */
-    private Source source;
+    private String source;
 
     /**
      * 用于接收来源信息
@@ -75,11 +74,11 @@ public class AbstractRequest extends ToString {
         this.dtMonitor = dtMonitor;
     }
 
-    public Source getSource() {
+    public String getSource() {
         return source;
     }
 
-    public void setSource(Source source) {
+    public void setSource(String source) {
         this.source = source;
     }
 }

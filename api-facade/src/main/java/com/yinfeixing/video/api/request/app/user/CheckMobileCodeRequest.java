@@ -1,9 +1,9 @@
-package com.cf.api.request.app.user;
+package com.yinfeixing.video.api.request.app.user;
 
-import com.cf.entity.ToString;
-import com.cf.utils.validate.Query;
-import com.cf.utils.validate.RE;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.Query;
+import com.yinfeixing.utils.validate.RE;
+import com.yinfeixing.utils.validate.Remark;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -18,7 +18,7 @@ public class CheckMobileCodeRequest extends ToString {
 	private String mobile;
 
 	@Remark("验证码")
-	@NotNull(message="验证码不能为空",groups=Query.class)
+	@NotNull(message="验证码不能为空",groups= Query.class)
 	private String code;
 
 	@Remark("FORGET:重置密码,ACTIVITY_CODE:活动验证码")

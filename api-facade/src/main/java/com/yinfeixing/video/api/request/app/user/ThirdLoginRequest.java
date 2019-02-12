@@ -1,29 +1,28 @@
-package com.cf.api.request.app.user;
+package com.yinfeixing.video.api.request.app.user;
 
-import com.cf.api.enums.app.user.LoginTypeEnum;
-import com.cf.entity.ToString;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.Remark;
 
 import javax.validation.constraints.NotNull;
 
 /**
  *  第三方登录
  */
-public class ThirdLoginRequest extends ToString{
+public class ThirdLoginRequest extends ToString {
     private static final long serialVersionUID = -4780392570447399887L;
 
     @Remark("用户类型")
-    private LoginTypeEnum loginType;
+    private String loginType;
 
     @Remark("第三方登录凭证不能为空")
     @NotNull(message = "登录凭证不能为空")
     private String loginCert;
 
-    public LoginTypeEnum getLoginType() {
+    public String getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(LoginTypeEnum loginType) {
+    public void setLoginType(String loginType) {
         this.loginType = loginType;
     }
 

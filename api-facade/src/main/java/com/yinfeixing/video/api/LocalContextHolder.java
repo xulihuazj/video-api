@@ -1,4 +1,4 @@
-package com.cf.api;
+package com.yinfeixing.video.api;
 
 /**
  * @Description

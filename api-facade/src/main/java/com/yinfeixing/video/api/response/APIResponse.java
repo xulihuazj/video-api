@@ -1,9 +1,8 @@
-package com.cf.api.response;
+package com.yinfeixing.video.api.response;
 
-import com.cf.api.enums.ResponseStatusCodeEnum;
+import com.yinfeixing.video.api.enums.ResponseStatusCodeEnum;
 
 public class APIResponse<T> extends AbstractResponse {
-
 
     private T bizResponse;
 

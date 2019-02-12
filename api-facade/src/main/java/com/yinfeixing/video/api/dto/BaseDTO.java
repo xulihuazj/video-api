@@ -1,6 +1,6 @@
-package com.cf.api.dto;
+package com.yinfeixing.video.api.dto;
 
-import com.cf.entity.ToString;
+import com.yinfeixing.entity.ToString;
 
 import java.util.Date;
 

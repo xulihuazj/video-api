@@ -1,9 +1,9 @@
-package com.cf.api.response.app.user;
+package com.yinfeixing.video.api.response.app.user;
 
-import com.cf.entity.ToString;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.Remark;
 
-public class UserDashboardInfoResponse extends ToString{
+public class UserDashboardInfoResponse extends ToString {
     private static final long serialVersionUID = 1800405596659886611L;
 
     @Remark("房间名称")
@@ -64,7 +64,6 @@ public class UserDashboardInfoResponse extends ToString{
     public void setRenterId(String renterId) {
         RenterId = renterId;
     }
-
 
     public String getRoomName() {
         return roomName;

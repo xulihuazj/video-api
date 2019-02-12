@@ -1,4 +1,4 @@
-package com.cf.api.request;
+package com.yinfeixing.video.api.request;
 
 public class APIRequest<T> extends AbstractRequest {
 

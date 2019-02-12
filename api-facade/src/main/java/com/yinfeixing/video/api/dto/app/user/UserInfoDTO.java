@@ -1,14 +1,13 @@
-package com.cf.api.dto.app.user;
+package com.yinfeixing.video.api.dto.app.user;
 
-import com.cf.api.enums.common.CretTypeEnum;
-import com.cf.entity.ToString;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.Remark;
 
 /**
  * UserInfoDTO.java 1.0.0 2018-06-04  16:33
  *   移动端用户信息
  */
-public class UserInfoDTO extends ToString{
+public class UserInfoDTO extends ToString {
     private static final long serialVersionUID = 2328426334488995628L;
 
     @Remark("用户名称")
@@ -28,12 +27,6 @@ public class UserInfoDTO extends ToString{
 
     @Remark("用户手机号")
     private String userPhone;
-
-    @Remark("证件类型")
-    private CretTypeEnum cretType;
-
-    @Remark("证件号")
-    private String  cretNum;
 
     @Remark("微信用户UUId")
     private String  unicode;
@@ -94,19 +87,4 @@ public class UserInfoDTO extends ToString{
         this.userPhone = userPhone;
     }
 
-    public CretTypeEnum getCretType() {
-        return cretType;
-    }
-
-    public void setCretType(CretTypeEnum cretType) {
-        this.cretType = cretType;
-    }
-
-    public String getCretNum() {
-        return cretNum;
-    }
-
-    public void setCretNum(String cretNum) {
-        this.cretNum = cretNum;
-    }
 }

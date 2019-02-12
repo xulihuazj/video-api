@@ -1,7 +1,7 @@
-package com.cf.api.response.app.user;
+package com.yinfeixing.video.api.response.app.user;
 
-import com.cf.entity.ToString;
-import com.cf.utils.validate.Remark;
+import com.yinfeixing.entity.ToString;
+import com.yinfeixing.utils.validate.Remark;
 
 public class CodeShowPCResponse extends ToString {
 
@@ -9,8 +9,10 @@ public class CodeShowPCResponse extends ToString {
 	
 	@Remark("SHOW:必须展示图形验证码，HIDE:无需展示图形验证码")
 	private String codeShow;
+
 	@Remark("说明")
 	private String explain;
+
 	public String getCodeShow() {
 		return codeShow;
 	}
