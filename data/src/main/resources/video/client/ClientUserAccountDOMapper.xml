@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinfeixing.video.repository.client.ClientUserAccountDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="account_type" jdbcType="VARCHAR" property="accountType" />
+    <result column="account_cert" jdbcType="VARCHAR" property="accountCert" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+    <result column="environment" jdbcType="VARCHAR" property="environment" />
+  </resultMap>
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+    insert into client_user_account (user_id, account_type, account_cert, 
+      create_time, last_modify_time, ext_info,environment
+      )
+    values (#{userId,jdbcType=BIGINT}, #{accountType,jdbcType=VARCHAR}, #{accountCert,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{extInfo,jdbcType=VARCHAR},
+      #{environment,jdbcType=VARCHAR})
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+    insert into client_user_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="accountType != null">
+        account_type,
+      </if>
+      <if test="accountCert != null">
+        account_cert,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="extInfo != null">
+        ext_info,
+      </if>
+      <if test="environment != null">
+        environment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCert != null">
+        #{accountCert,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        #{extInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null">
+        #{environment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectAccountByCretTypeAndNum" resultMap="BaseResultMap">
+    select
+    user_id,account_type,account_cert,create_time,last_modify_time,ext_info,environment
+    from client_user_account
+    <where>
+      <if test="accountType != null">
+        and account_type= #{accountType,jdbcType=VARCHAR}
+      </if>
+      <if test="accountCert != null">
+        and account_cert=#{accountCert,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <update id="updateAccountSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+    update client_user_account
+    <set>
+      <if test="accountType != null">
+        account_type= #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCert != null">
+        account_cert= #{accountCert,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateAccoutByCretTypeAndNum">
+    update client_user_account
+    <set>
+      <if test="newAccountCert != null">
+        account_cert= #{newAccountCert,jdbcType=VARCHAR}
+      </if>
+    </set>
+    <where>
+      <if test="accountType != null">
+        account_type= #{accountType,jdbcType=VARCHAR}
+      </if>
+      <if test="accountCert != null">
+        and account_cert= #{accountCert,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </update>
+  <delete id="deleteAcount">
+  delete from client_user_account where user_id = #{userId,jdbcType=BIGINT}
+</delete>
+  <select id="selectAccoutnByCretTypeAndUserId" resultMap="BaseResultMap">
+    select
+    user_id,account_type,account_cert,create_time,last_modify_time,ext_info,environment
+    from client_user_account
+    <where>
+      <if test="userId">
+       and user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="accountType != null">
+        and account_type= #{accountType,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteAccountByUserIdAndAccountType">
+      delete from client_user_account
+      <where>
+        <if test="userId!=null">
+          and user_id = #{userId,jdbcType=BIGINT}
+        </if>
+        <if test="accountType != null">
+          and account_type= #{accountType,jdbcType=VARCHAR}
+        </if>
+      </where>
+  </delete>
+  <insert id="insertUserAccountBatch"    parameterType="java.util.ArrayList">
+    insert into client_user_account (user_id,account_type,account_cert)
+    values
+    <foreach collection="list" item="item" open="(" separator="),(" close=")">
+      #{item.userId,jdbcType=BIGINT},
+      #{item.accountType,jdbcType=VARCHAR},
+      #{item.accountCert,jdbcType=VARCHAR}
+    </foreach>
+  </insert>
+  <update id="updateUserAccountBatch"  parameterType="java.util.List">
+    UPDATE client_user_account
+    SET account_cert = CASE user_id
+    <foreach collection="list" item="item" >
+      WHEN #{item.userId} THEN #{item.accountCert}
+    </foreach>
+    END
+    <where>
+      user_id in
+      <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+        #{item.userId,jdbcType=BIGINT}
+      </foreach>
+      <if test="accountType!=null">
+        and account_type=#{accountType}
+      </if>
+    </where>
+  </update>
+</mapper>

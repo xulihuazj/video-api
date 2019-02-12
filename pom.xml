@@ -16,6 +16,8 @@
         <module>data</module>
         <module>service-impl</module>
         <module>api-facade</module>
+        <module>untils</module>
+        <module>utils</module>
     </modules>
     <packaging>pom</packaging>
 

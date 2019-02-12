@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinfeixing.video.repository.client.ClientUserRelatedInfoDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserRelatedInfoDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="related_id" jdbcType="BIGINT" property="relatedId" />
+    <result column="related_type" jdbcType="VARCHAR" property="relatedType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+    <result column="environment" jdbcType="VARCHAR" property="environment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, related_id, related_type, create_time, last_modify_time, ext_info, environment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client_user_related_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from client_user_related_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.client.ClientUserRelatedInfoDO">
+    insert into client_user_related_info (id, user_id, related_id, 
+      related_type, create_time, last_modify_time, 
+      ext_info, environment)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{relatedId,jdbcType=BIGINT}, 
+      #{relatedType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{extInfo,jdbcType=VARCHAR}, #{environment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserRelatedInfoDO">
+    insert into client_user_related_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="relatedId != null">
+        related_id,
+      </if>
+      <if test="relatedType != null">
+        related_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="extInfo != null">
+        ext_info,
+      </if>
+      <if test="environment != null">
+        environment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="relatedId != null">
+        #{relatedId,jdbcType=BIGINT},
+      </if>
+      <if test="relatedType != null">
+        #{relatedType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        #{extInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null">
+        #{environment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserRelatedInfoDO">
+    update client_user_related_info
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="relatedId != null">
+        related_id = #{relatedId,jdbcType=BIGINT},
+      </if>
+      <if test="relatedType != null">
+        related_type = #{relatedType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        ext_info = #{extInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null">
+        environment = #{environment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.client.ClientUserRelatedInfoDO">
+    update client_user_related_info
+    set user_id = #{userId,jdbcType=BIGINT},
+      related_id = #{relatedId,jdbcType=BIGINT},
+      related_type = #{relatedType,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      ext_info = #{extInfo,jdbcType=VARCHAR},
+      environment = #{environment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="queryUserRelatedList"  resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from client_user_related_info
+    <where>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="relatedType != null">
+        and related_type = #{relatedType,jdbcType=VARCHAR}
+      </if>
+      <if test="currentRelateId != null">
+        AND related_id != #{currentRelateId}
+      </if>
+    </where>
+  </select>
+  <select id="queryUserRelatedListEqual"  resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from client_user_related_info
+    <where>
+      <if test="relatedType != null">
+        and related_type = #{relatedType,jdbcType=VARCHAR}
+      </if>
+      <if test="currentRelateId != null">
+        AND related_id = #{currentRelateId}
+      </if>
+    </where>
+  </select>
+
+  <insert id="insertBatchUserRelatedInfo" >
+    insert into client_user_related_info (user_id, related_id,related_type)
+    values
+    <foreach collection="list" item="item" open="(" separator="),(" close=")">
+      #{item.userId,jdbcType=BIGINT}, #{item.relatedId,jdbcType=BIGINT}, #{item.relatedType,jdbcType=VARCHAR}
+    </foreach>
+  </insert>
+  <delete id="deleteAcount">
+    delete from client_user_related_info where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+
+  <select id="queryUserRelatedListWithout" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from client_user_related_info
+    <where>
+      <if test="userId != null">
+        AND user_id = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="relatedType != null">
+        AND related_type = #{relatedType,jdbcType=VARCHAR}
+      </if>
+      <if test="currentRelateId != null">
+        AND related_id != #{currentRelateId}
+      </if>
+    </where>
+  </select>
+  <select id="queryUserIdByRelatedIds" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from client_user_related_info
+    <where>
+      <if test="relatedType != null">
+        AND related_type = #{relatedType,jdbcType=VARCHAR}
+      </if>
+      <if test="relatedIds!=null and relatedIds.size>0">
+        and related_id in
+        <foreach collection="relatedIds" item="status" index="index" open="(" separator="," close=")">
+          #{status,jdbcType=BIGINT}
+        </foreach>
+      </if>
+    </where>
+  </select>
+</mapper>

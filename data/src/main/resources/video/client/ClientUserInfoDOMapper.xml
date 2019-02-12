@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinfeixing.video.repository.client.ClientUserInfoDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserInfoDO">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="user_image_href" jdbcType="VARCHAR" property="userImageHref" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="cret_type" jdbcType="VARCHAR" property="cretType" />
+    <result column="cret_num" jdbcType="VARCHAR" property="cretNum" />
+    <result column="user_status" jdbcType="VARCHAR" property="userStatus" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+    <result column="environment" jdbcType="VARCHAR" property="environment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_sex, nick_name, user_image_href, user_phone, email, cret_type, 
+    cret_num, user_status, user_type, create_time, last_modify_time, ext_info, environment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client_user_info
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from client_user_info
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.client.ClientUserInfoDO">
+    insert into client_user_info (user_id, user_name, user_sex, 
+      nick_name, user_image_href, user_phone, 
+      email, cret_type, cret_num, 
+      user_status, create_time, last_modify_time, 
+      ext_info, environment)
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{userImageHref,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{cretType,jdbcType=VARCHAR}, #{cretNum,jdbcType=VARCHAR}, 
+      #{userStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{extInfo,jdbcType=VARCHAR}, #{environment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserInfoDO" useGeneratedKeys="true" keyProperty="userId">
+    insert into client_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="userImageHref != null">
+        user_image_href,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="cretType != null">
+        cret_type,
+      </if>
+      <if test="cretNum != null">
+        cret_num,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="extInfo != null">
+        ext_info,
+      </if>
+      <if test="environment != null">
+        environment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userImageHref != null">
+        #{userImageHref,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="cretType != null">
+        #{cretType,jdbcType=VARCHAR},
+      </if>
+      <if test="cretNum != null">
+        #{cretNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        #{extInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null">
+        #{environment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserInfoDO">
+    update client_user_info
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userImageHref != null">
+        user_image_href = #{userImageHref,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="cretType != null">
+        cret_type = #{cretType,jdbcType=VARCHAR},
+      </if>
+      <if test="cretNum != null">
+        cret_num = #{cretNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        ext_info = #{extInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="environment != null">
+        environment = #{environment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.client.ClientUserInfoDO">
+    update client_user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      user_image_href = #{userImageHref,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      cret_type = #{cretType,jdbcType=VARCHAR},
+      cret_num = #{cretNum,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      ext_info = #{extInfo,jdbcType=VARCHAR},
+      environment = #{environment,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <delete id="deleteAcount">
+    delete from client_user_info where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <select id="queryUserByUserIds" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client_user_info
+    <where>
+      <if test="userIds!=null and userIds.size>0">
+        and user_id in
+        <foreach collection="userIds" item="status" index="index" open="(" separator="," close=")">
+          #{status,jdbcType=BIGINT}
+        </foreach>
+      </if>
+    </where>
+  </select>
+  <select id="queryByAccountList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client_user_info
+    <where>
+      <if test="accountList!=null and accountList.size>0">
+        and user_phone in
+        <foreach collection="accountList" item="status" index="index" open="(" separator="," close=")">
+          #{status,jdbcType=VARCHAR}
+        </foreach>
+      </if>
+    </where>
+  </select>
+  <insert id="insertUserInfoBatch"    parameterType="java.util.List"  useGeneratedKeys="true" keyProperty="userId">
+    insert into client_user_info (user_phone,user_status,user_type,user_name,user_sex,cret_num,cret_type)
+    values
+    <foreach collection="list" item="item" open="(" separator="),(" close=")">
+      #{item.userPhone,jdbcType=VARCHAR},
+      #{item.userStatus,jdbcType=VARCHAR},
+      #{item.userType,jdbcType=VARCHAR},
+      #{item.userName,jdbcType=VARCHAR},
+      #{item.userSex,jdbcType=VARCHAR},
+      #{item.cretNum,jdbcType=VARCHAR},
+      #{item.cretType,jdbcType=VARCHAR}
+    </foreach>
+  </insert>
+  <update id="updateUserInfoBatch"  parameterType="java.util.List">
+    UPDATE client_user_info
+    SET user_phone = CASE user_id
+    <foreach collection="list" item="item" >
+      WHEN #{item.userId} THEN #{item.userPhone}
+    </foreach>
+    END
+    <where>
+         user_id in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+          #{item.userId,jdbcType=VARCHAR}
+        </foreach>
+    </where>
+  </update>
+  
+  <select id="searchClientUser" resultType="java.lang.Long">
+  	select
+    user_id
+    from client_user_info t
+    <where>
+    	t.user_status = 'EFFECTIVE'
+    	and (
+    	<if test="mobileList != null">
+   			<foreach collection="mobileList" item="mobile" index="index" open="(" separator=" or " close=")">
+	          t.user_phone = #{mobile}
+	        </foreach>
+    	</if>
+    	<if test="userName != null and mobileList != null">
+    		or 
+    		t.user_name = #{userName}
+    	</if>
+    	<if test="cretNum != null ">
+    		<if test="mobileList != null or userName != null">
+    			or 
+    		</if>
+    		(t.cret_num = #{cretNum} 
+    		<if test="cretType != null">
+    			and 
+    			t.cret_type = #{cretType,jdbcType=VARCHAR}
+    		</if>
+    		)
+    	</if>
+    	)
+    </where>
+  </select>
+</mapper>
