@@ -19,13 +19,15 @@ import com.yinfeixing.video.service.app.user.ClientUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 
-@Service
+@Repository
 public class ClientUserServiceImpl implements ClientUserService {
 
     private Logger logger = LogManager.getLogger(ClientUserServiceImpl.class);

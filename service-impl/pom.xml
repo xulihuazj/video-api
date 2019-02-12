@@ -20,6 +20,14 @@
             <groupId>com.yinfeixing.video</groupId>
             <artifactId>service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yinfeixing.video</groupId>
+            <artifactId>service-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yinfeixing.video</groupId>
+            <artifactId>data</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.yinfeixing.video</groupId>
@@ -117,18 +125,7 @@
             <artifactId>table-to-xls</artifactId>
             <version>0.0.1-RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>com.yinfeixing.video</groupId>
-            <artifactId>service-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.yinfeixing.video</groupId>
-            <artifactId>service-model</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.yinfeixing.video</groupId>
-            <artifactId>data</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>

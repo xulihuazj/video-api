@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -21,34 +22,34 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@MapperScan(basePackages = {Config.VIDEODB_PACKAGE}, annotationClass = VIDEODB.class, sqlSessionFactoryRef = "videodbSqlSessionFactory")
+@MapperScan(basePackages = {Config.VIDEODB_PACKAGE}, annotationClass = VIDEODB.class, sqlSessionFactoryRef = "pmsdbSqlSessionFactory")
 public class VIDEODBConfig {
 
-    static final String PMSMAPPER_LOCATION = "classpath*:videodb/*/*.xml";
+    static final String PMSMAPPER_LOCATION = "classpath*:video/*/*.xml";
 
-    @Bean(name = "videodbDataSource")
+    @Bean(name = "pmsdbDataSource")
     @Primary
-    @ConfigurationProperties(prefix = "pmsdb.datasource")
+    @ConfigurationProperties(prefix = "video.datasource")
     public DataSource pmsdbDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         return dataSource;
     }
 
-    @Bean(name = "videodbTransactionManager")
+    @Bean(name = "pmsdbTransactionManager")
     @Primary
     public DataSourceTransactionManager masterTransactionManager() {
         return new DataSourceTransactionManager(pmsdbDataSource());
     }
 
-    @Bean(name = "videodbTransactionTemplate")
+    @Bean(name = "pmsDBTransactionTemplate")
     @Primary
     public TransactionTemplate pmsDBTransactionTemplate() {
         return new TransactionTemplate(masterTransactionManager());
     }
 
-    @Bean(name = "videodbSqlSessionFactory")
+    @Bean(name = "pmsdbSqlSessionFactory")
     @Primary
-    public SqlSessionFactory pmsdbSqlSessionFactory(@Qualifier("videodbDataSource") DataSource pmsdbDataSource)
+    public SqlSessionFactory pmsdbSqlSessionFactory(@Qualifier("pmsdbDataSource") DataSource pmsdbDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(pmsdbDataSource);
