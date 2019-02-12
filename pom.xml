@@ -15,6 +15,7 @@
         <module>service-impl</module>
         <module>data</module>
         <module>utils</module>
+        <module>service-model</module>
     </modules>
     <packaging>pom</packaging>
 
