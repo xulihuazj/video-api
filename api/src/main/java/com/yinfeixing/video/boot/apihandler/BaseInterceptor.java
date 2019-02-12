@@ -1,9 +1,3 @@
-/*
- * BaseInterceptor.java 1.0.0 2017/7/16  下午4:32
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017/7/16  下午4:32 created by yinqiang
- */
 package com.yinfeixing.video.boot.apihandler;
 
 import org.springframework.web.method.HandlerMethod;
@@ -15,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * API参数预处理拦截器基类
  *
- * @author yinqiang
+ * @author xulh
  */
 public abstract class BaseInterceptor extends HandlerInterceptorAdapter {
 
@@ -56,9 +50,8 @@ public abstract class BaseInterceptor extends HandlerInterceptorAdapter {
      *
      * @param response
      * @param isInterceptor
-     * @throws Exception
      */
-    private boolean doHandler(HttpServletResponse response, boolean isInterceptor) throws Exception {
+    private boolean doHandler(HttpServletResponse response, boolean isInterceptor) {
         return isInterceptor;
     }
 

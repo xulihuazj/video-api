@@ -1,19 +1,19 @@
 package com.yinfeixing.video.api.client;
 
-
 import javax.annotation.Resource;
 import javax.management.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yinfeixing.video.api.BaseController;
+import com.yinfeixing.video.service.app.user.ClientUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/pms/client")
+@RequestMapping("/client")
 public class ClientUserController extends BaseController {
 
     @Resource
@@ -33,8 +33,8 @@ public class ClientUserController extends BaseController {
         super.success(this.pmsClientUserService.clientUserDetail(apiRequest), httpRequest, httpResponse);
     }
 
-    @PostMapping("/bindAccount")
-    @Idempotent
+    @PostMapping("/bind/account")
+//    @Idempotent
     public void bindAccount(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
         APIRequest<ClientUserChangeMobileBindingRequest> apiRequest = super.getObjectByRequest(
                 ClientUserChangeMobileBindingRequest.class, httpRequest, Query.class);
@@ -42,7 +42,7 @@ public class ClientUserController extends BaseController {
     }
 
     @PostMapping(value = "/valid/smsCode")
-    @SystemType
+//    @SystemType
     public void changePhoneValidCode(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
             throws Exception {
         // 获取请求业务参数对象

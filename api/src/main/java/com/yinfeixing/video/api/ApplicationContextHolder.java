@@ -1,8 +1,5 @@
 package com.yinfeixing.video.api;
 
-import com.cf.pms.ApplicationRuntimeContext;
-import com.cf.pms.model.system.UserAuthModel;
-import com.cf.pms.service.system.TokenHelpService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +13,7 @@ import javax.annotation.Resource;
 /**
  * ApplicationContextHolder
  *
- * @author liwei
+ * @author xulh
  * @date 2017/3/3
  * @description
  */
@@ -27,8 +24,8 @@ public class ApplicationContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext context;
 
-    @Resource
-    private TokenHelpService tokenHelpService;
+//    @Resource
+//    private TokenHelpService tokenHelpService;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -44,11 +41,11 @@ public class ApplicationContextHolder implements ApplicationContextAware {
      *
      * @return
      */
-    public ApplicationRuntimeContext getRuntimeContext(String token) {
-        ApplicationRuntimeContext runtimeContext = new ApplicationRuntimeContext();
-        if (StringUtils.isNotEmpty(token)) {
-            runtimeContext.setUserAuthModel(tokenHelpService.getUserModelByToken(token, UserAuthModel.class));
-        }
-        return runtimeContext;
-    }
+//    public ApplicationRuntimeContext getRuntimeContext(String token) {
+//        ApplicationRuntimeContext runtimeContext = new ApplicationRuntimeContext();
+//        if (StringUtils.isNotEmpty(token)) {
+//            runtimeContext.setUserAuthModel(tokenHelpService.getUserModelByToken(token, UserAuthModel.class));
+//        }
+//        return runtimeContext;
+//    }
 }

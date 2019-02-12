@@ -1,6 +1,6 @@
 package com.yinfeixing.video.boot.init;
 
-import com.cf.utils.log.LogHelper;
+import com.yinfeixing.utils.log.LogHelper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * PropertiesInitializer
  *
- * @author liwei
+ * @author xulh
  * @date 2017/3/28
  * @description Properties 文件初始化处理
  */

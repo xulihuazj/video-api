@@ -1,9 +1,3 @@
-/*
- * APIHandlerMethodArgumentResolver.java 1.0.0 2017/7/30  下午3:25
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017/7/30  下午3:25 created by yinqiang
- */
 package com.yinfeixing.video.boot.apihandler;
 
 import org.springframework.core.MethodParameter;
@@ -17,11 +11,7 @@ import javax.servlet.ServletRequest;
 
 @Component
 public class APIHandlerMethodArgumentResolver extends ServletModelAttributeMethodProcessor {
-    /**
-     * if "true", non-simple method arguments and
-     * return values are considered model attributes with or without a
-     * {@code @ModelAttribute} annotation
-     */
+
     public APIHandlerMethodArgumentResolver() {
         super(false);
     }

@@ -1,8 +1,9 @@
 package com.yinfeixing.video.boot.init;
 
-import com.cf.pms.common.MailConfig;
-import com.cf.utils.log.LogHelper;
-import com.cf.utils.mail.SendMailUtil;
+
+import com.yinfeixing.utils.log.LogHelper;
+import com.yinfeixing.utils.mail.SendMailUtil;
+import com.yinfeixing.video.boot.config.MailConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.concurrent.FutureTask;
 /**
  * 邮箱服务器初始化
  *
- * @author xulihua
+ * @author xulh
  * @Description
  * @Date 2017年7月11日下午4:00:42
  */

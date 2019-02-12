@@ -1,6 +1,6 @@
 package com.yinfeixing.video.boot.init;
 
-import com.cf.pms.ApiApplication;
+import com.yinfeixing.video.ApiApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

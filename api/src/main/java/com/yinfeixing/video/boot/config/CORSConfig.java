@@ -1,9 +1,3 @@
-/*
- * CorsConfig.java 1.0.0 2017/6/29  下午6:48
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017/6/29  下午6:48 created by yinqiang
- */
 package com.yinfeixing.video.boot.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,7 +9,7 @@ import org.springframework.web.filter.CorsFilter;
 /**
  * 设置跨域环境
  *
- * @author xulihua
+ * @author xulh
  */
 //@Conditional({OfflineEnvCondition.class,OnlineCondition.class})
 @Configuration

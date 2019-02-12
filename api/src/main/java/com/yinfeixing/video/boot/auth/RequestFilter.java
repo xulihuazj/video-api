@@ -1,9 +1,3 @@
-/*
- * AuthFilter.java 1.0.0 2017/6/26  上午11:35
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017/6/26  上午11:35 created by yinqiang
- */
 package com.yinfeixing.video.boot.auth;
 
 import com.cf.api.LocalContextHolder;
@@ -23,10 +17,8 @@ import java.util.UUID;
 @Component
 public class RequestFilter implements Filter {
 
-
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override
@@ -55,7 +47,6 @@ public class RequestFilter implements Filter {
 
     @Override
     public void destroy() {
-        //log4j日志增加traceid yinqiang 18-12-20
         ThreadContext.clearAll();
     }
 }

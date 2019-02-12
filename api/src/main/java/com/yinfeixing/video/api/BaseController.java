@@ -1,24 +1,12 @@
 package com.yinfeixing.video.api;
 
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
-import com.cf.api.GlobalLocalContext;
-import com.cf.api.LocalContextHolder;
-import com.cf.api.enums.common.Source;
-import com.cf.api.request.APIRequest;
-import com.cf.pms.common.Constant;
-import com.cf.pms.enums.EnumHelperUtil;
-import com.cf.pms.error.BizErrorCode;
-import com.cf.pms.error.SystemErrorCode;
-import com.cf.pms.exception.BusinessException;
-import com.cf.utils.emojiUtils.EmojiUtils;
-import com.cf.utils.log.LogHelper;
-import com.cf.utils.net.IP;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.yinfeixing.entity.EnumHelperUtil;
+import com.yinfeixing.utils.log.LogHelper;
 import org.apache.commons.lang3.ArrayUtils;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
@@ -30,42 +18,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.Set;
-
 /**
  * BaseController是所有Controller的基类,用于一些统一/公共部分的处理
- *
- * @author mazy
  * @description 所有Controller的基类
  */
-
 public abstract class BaseController {
 
     private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-
-    /**
-     * @Function: BaseController.java
-     * @Description: 获取云丁回调参数
-     * @param:TODO
-     * @return：String
-     * @author: mazy
-     * @date: 2018年5月10日 下午4:30:14
-     */
-    protected String yundingCallbackParameter(HttpServletRequest httpRequest) throws IOException {
-        String parameter = null;
-        if (httpRequest.getMethod().equals("GET")) {
-            parameter = this.convertGetParam(httpRequest.getParameterMap());
-        } else {
-            byte[] buffer = BaseController.getRequestPostBytes(httpRequest);
-            String charEncoding = httpRequest.getCharacterEncoding();
-            if (charEncoding == null) {
-                charEncoding = "UTF-8";
-            }
-            if (buffer != null) {
-                parameter = new String(buffer, charEncoding);
-            }
-        }
-        return parameter;
-    }
     
     protected String getBizString(HttpServletRequest httpRequest) throws IOException{
     	String bizString = null;
@@ -100,7 +59,7 @@ public abstract class BaseController {
      * @Description: 获取json请求对象
      * @param:type:业务对象类型，groups:数据校验时的分组
      * @return：T
-     * @author: mazy
+     * @author: xulh
      * @date: 2018年3月6日 上午10:17:12
      */
     protected <C> APIRequest<C> getObjectByRequest(Class<C> type, HttpServletRequest httpRequest, Class<?>... groups) throws Exception {
@@ -252,7 +211,7 @@ public abstract class BaseController {
      * @Description: 数据校验
      * @param:obj:需要校验的对象，groups:分组
      * @return：void
-     * @author: mazy
+     * @author: xulh
      * @date: 2018年3月6日 上午10:37:17
      */
     protected void validate(Object obj, Class<?>... groups) throws Exception {
@@ -281,7 +240,7 @@ public abstract class BaseController {
      * @Description: 成功时写入json数据
      * @param:obj:需要返回的业务对象
      * @return：void
-     * @author: mazy
+     * @author: xulh
      * @date: 2018年3月6日 上午10:35:44
      */
     protected void success(Object obj, HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {

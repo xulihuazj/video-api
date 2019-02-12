@@ -1,9 +1,9 @@
 package com.yinfeixing.video.api;
 
-import com.cf.pms.boot.apihandler.APIHandlerMethodArgumentResolver;
-import com.cf.pms.boot.auth.IPWhiteInterceptor;
-import com.cf.pms.boot.auth.IdempotentInterceptor;
-import com.cf.pms.boot.auth.PrivilegeInterceptor;
+import com.yinfeixing.video.boot.apihandler.APIHandlerMethodArgumentResolver;
+import com.yinfeixing.video.boot.auth.IPWhiteInterceptor;
+import com.yinfeixing.video.boot.auth.IdempotentInterceptor;
+import com.yinfeixing.video.boot.auth.PrivilegeInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -29,7 +29,6 @@ public class APIConfigurer extends WebMvcConfigurationSupport {
 
     @Resource
     private PrivilegeInterceptor privilegeInterceptor;
-
     @Resource
     private IPWhiteInterceptor iPWhiteInterceptor;
     @Resource
@@ -47,7 +46,6 @@ public class APIConfigurer extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         super.addResourceHandlers(registry);
-
     }
 
     @Bean

@@ -1,21 +1,9 @@
-/*
- * APIDataBinder.java 1.0.0 2017/7/30  下午11:22
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017/7/30  下午11:22 created by yinqiang
- */
 package com.yinfeixing.video.boot.apihandler;
 
-import com.cf.api.GlobalLocalContext;
-import com.cf.api.LocalContextHolder;
-import com.cf.api.enums.common.Source;
-import com.cf.pms.enums.BaseEnum;
-import com.cf.pms.enums.EnumHelperUtil;
-import com.cf.pms.error.SystemErrorCode;
-import com.cf.pms.exception.BusinessException;
-import com.cf.utils.log.LogHelper;
-import com.cf.utils.net.IP;
-import com.cf.utils.string.StringUtil;
+import com.yinfeixing.entity.BaseEnum;
+import com.yinfeixing.entity.EnumHelperUtil;
+import com.yinfeixing.utils.log.LogHelper;
+import com.yinfeixing.utils.string.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +20,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * @author yinqiang
+ * @author xulh
  * 自定义数据绑定
  */
 public class APIDataBinder extends ServletRequestDataBinder {

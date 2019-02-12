@@ -1,11 +1,6 @@
 package com.yinfeixing.video.boot.auth;
 
-import com.cf.api.system.Idempotent;
-import com.cf.pms.api.BaseController;
-import com.cf.pms.common.Constant;
-import com.cf.pms.service.idempotent.IdempotentService;
-import com.cf.utils.security.SecurityHelper;
-import com.cf.utils.uuid.UUIDUtil;
+import com.yinfeixing.video.api.BaseController;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -17,11 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
-
 /**
  * 
  * 幂等拦载器
- * @author mazy
+ * @author xulh
  *
  */
 @Component

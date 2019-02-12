@@ -1,9 +1,3 @@
-/*
- * AuthInterceptor.java 1.0.0 2017/6/26  下午4:40
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017/6/26  下午4:40 created by yinqiang
- */
 package com.yinfeixing.video.boot.auth;
 
 import com.cf.api.LocalContextHolder;

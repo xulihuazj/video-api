@@ -1,6 +1,5 @@
 package com.yinfeixing.video.boot.auth;
 
-
 import com.cf.pms.service.ipwhite.IpWhiteService;
 import com.cf.utils.log.LogHelper;
 import com.cf.utils.web.WebHelper;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * ip白名单检查
  *
- * @author mazy
+ * @author xulh
  */
 @Component
 public class IPWhiteInterceptor implements HandlerInterceptor {

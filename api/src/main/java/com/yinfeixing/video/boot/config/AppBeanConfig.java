@@ -1,9 +1,3 @@
-/*
- * AppBeanConfig.java 1.0.0 2017年7月5日 下午8:00:53
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2017年7月5日 下午8:00:53 created by xulihua
- */
 package com.yinfeixing.video.boot.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,7 +13,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 /**
  * 各个Bean 初始化
  *
- * @author xulihua
+ * @author xulh
  * @description
  * @date 2017年7月5日下午8:00:53
  */
@@ -39,7 +33,7 @@ public class AppBeanConfig {
      * 自定义异步调用时，所用的线程池
      *
      * @Description:
-     * @author: xulihua
+     * @author: xulh
      * @date: 2018/07/20 16:33
      */
     @Bean
@@ -57,7 +51,6 @@ public class AppBeanConfig {
 //        executor.setRejectedExecutionHandler();
 //        executor.setThreadFactory(new ThreadFactory() {
 //            private final AtomicLong index = new AtomicLong(1);
-//
 //            @Override
 //            public Thread newThread(Runnable r) {
 //                LogHelper.info("异步处理，当前线程：" + index.getAndIncrement());
