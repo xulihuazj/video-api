@@ -16,6 +16,9 @@
 .gitignore.bak
 *.classpath
 api/*.gitignore
+api/*mvnw*
+api/*.mvn/wrapper*
+service/*.iml
 *.classpath
 */*.gitignore
 */.settings
