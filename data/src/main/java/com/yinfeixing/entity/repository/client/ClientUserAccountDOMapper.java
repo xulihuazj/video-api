@@ -1,19 +1,19 @@
 package com.yinfeixing.entity.repository.client;
 
-import com.cf.pms.dataconfig.annotation.PMSDB;
+import com.yinfeixing.entity.dataconfig.annotation.VIDEODB;
 import com.yinfeixing.entity.dataobject.client.ClientUserAccountDO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@PMSDB
+@VIDEODB
 public interface ClientUserAccountDOMapper {
     int insert(ClientUserAccountDO record);
 
     int insertSelective(ClientUserAccountDO record);
 
     /**
-      * @Author: zhoujiahao
+      * @Author: xulh
       * @Description: 通过证件号和证件类型查询账户信息
       * @Date: 12:06 2018-05-31
       * @param accountType，accountCert
@@ -21,7 +21,7 @@ public interface ClientUserAccountDOMapper {
     ClientUserAccountDO  selectAccountByCretTypeAndNum(@Param(value = "accountType")String accountType,@Param(value = "accountCert") String accountCert);
 
     /**
-      * @Author: zhoujiahao
+      * @Author: xulh
       * @Description: 更新账号信息
       * @Date: 16:56 2018-06-05
       * @param clientUserAccountDO
@@ -30,7 +30,7 @@ public interface ClientUserAccountDOMapper {
     int updateAccountSelective(ClientUserAccountDO clientUserAccountDO);
 
     /**
-      * @Author: zhoujiahao
+      * @Author: xulh
       * @Description: 通过账号和类型修改账号
       * @Date: 17:35 2018-06-05
       * @param accountType，accountCert，newAccountCert

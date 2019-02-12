@@ -1,9 +1,3 @@
-/*
- * VIDEODBConfig.java 1.0.0 2018/2/27  下午3:35
- * Copyright © 2014-2017,52mamahome.com.All rights reserved
- * history :
- *     1. 2018/2/27  下午3:35 created by yinqiang
- */
 package com.yinfeixing.entity.dataconfig.dbconfig;
 
 import com.alibaba.druid.pool.DruidDataSource;

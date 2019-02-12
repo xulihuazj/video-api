@@ -1,6 +1,5 @@
 package com.yinfeixing.entity.dataobject.client;
 
-
 import com.yinfeixing.entity.DOBaseEntity;
 
 public class ClientUserPasswordDO extends DOBaseEntity {

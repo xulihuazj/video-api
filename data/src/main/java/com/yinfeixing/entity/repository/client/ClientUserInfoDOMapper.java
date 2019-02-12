@@ -1,17 +1,14 @@
 package com.yinfeixing.entity.repository.client;
 
-import com.cf.pms.dataconfig.annotation.PMSDB;
+import com.yinfeixing.entity.dataconfig.annotation.VIDEODB;
 import com.yinfeixing.entity.dataobject.client.ClientUserInfoDO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@PMSDB
-//@COMPANY(sysCompanyId = true)
+@VIDEODB
 public interface ClientUserInfoDOMapper {
     int deleteByPrimaryKey(Long userId);
-
-    int insert(ClientUserInfoDO record);
 
     int insertSelective(ClientUserInfoDO record);
 
@@ -19,12 +16,10 @@ public interface ClientUserInfoDOMapper {
 
     int updateByPrimaryKeySelective(ClientUserInfoDO record);
 
-    int updateByPrimaryKey(ClientUserInfoDO record);
-
     int deleteAcount(@Param(value = "userId") Long userId);
 
     /**
-      * @Author: zhoujiahao
+      * @Author: xulh
       * @Description: 通过用户id集合查询用户信息
       * @Date: 17:32 2018-06-19
       * @param userIds
@@ -33,7 +28,7 @@ public interface ClientUserInfoDOMapper {
     List<ClientUserInfoDO> queryUserByUserIds(@Param(value = "userIds")List<Long> userIds);
 
     /**
-      * @Author: zhoujiahao
+      * @Author: xulh
       * @Description: 批量插入用户信息
       * @Date: 11:32 2018-07-16
       * @param clientUserInfoModels
@@ -42,7 +37,7 @@ public interface ClientUserInfoDOMapper {
     int insertUserInfoBatch(@Param(value = "list")List<ClientUserInfoDO> clientUserInfoModels);
 
     /**
-     * @Author: zhoujiahao
+     * @Author: xulh
      * @Description: 通过手机号
      * @Date: 11:32 2018-07-16
      * @return
@@ -50,7 +45,7 @@ public interface ClientUserInfoDOMapper {
     List<ClientUserInfoDO> queryByAccountList(@Param(value = "accountList")List<String> accountList);
 
     /**
-      * @Author: zjh
+      * @Author: xulh
       * @Description: 批量更新用户信息
       * @Date: 16:59 2018-11-22
       * @return
