@@ -1,4 +1,4 @@
-package com.yinfeixing.entity.utils.json;
+package com.yinfeixing.utils.json;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -10,9 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 
 public class JsonUtil {
     public static List<String> list = new LinkedList();
-
-    public JsonUtil() {
-    }
 
     public static void getAllKey(Map<String, String> map, JSONObject jsonObject) {
         Iterator keys = jsonObject.keySet().iterator();

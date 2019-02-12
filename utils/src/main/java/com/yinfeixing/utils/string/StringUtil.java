@@ -1,5 +1,4 @@
-package com.yinfeixing.entity.utils.string;
-
+package com.yinfeixing.utils.string;
 
 import java.util.regex.Pattern;
 

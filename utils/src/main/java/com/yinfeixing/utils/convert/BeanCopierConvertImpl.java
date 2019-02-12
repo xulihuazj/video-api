@@ -1,10 +1,9 @@
-package com.yinfeixing.entity.utils.convert;
+package com.yinfeixing.utils.convert;
 
+import com.yinfeixing.utils.json.JSONHelper;
+import org.springframework.cglib.core.Converter;
 
 import java.util.Map;
-
-import com.yinfeixing.entity.utils.json.JSONHelper;
-import org.springframework.cglib.core.Converter;
 
 public class BeanCopierConvertImpl implements Converter {
     public BeanCopierConvertImpl() {

@@ -1,10 +1,10 @@
-package com.yinfeixing.entity.utils.log;
+package com.yinfeixing.utils.log;
 
 import java.text.MessageFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.yinfeixing.entity.utils.string.StringUtil;
+import com.yinfeixing.utils.string.StringUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;

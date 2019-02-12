@@ -1,4 +1,4 @@
-package com.yinfeixing.entity.utils.convert;
+package com.yinfeixing.utils.convert;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.yinfeixing.entity.utils.log.LogHelper;
+import com.yinfeixing.utils.log.LogHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.cglib.beans.BeanCopier;

@@ -1,4 +1,5 @@
-package com.yinfeixing.entity.utils.json;
+package com.yinfeixing.utils.json;
+
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
 
