@@ -1,4 +1,4 @@
-package com.yinfeixing.video.api.client;
+package com.yinfeixing.video.api.client.user;
 
 import com.yinfeixing.video.api.BaseController;
 import com.yinfeixing.video.api.system.SystemType;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/client/user")
 public class ClientUserController extends BaseController {
 
     @Resource

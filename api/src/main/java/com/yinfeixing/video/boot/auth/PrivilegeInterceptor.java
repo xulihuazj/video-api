@@ -32,7 +32,7 @@ public class PrivilegeInterceptor implements HandlerInterceptor {
     private Logger logger = LogManager.getLogger(PrivilegeInterceptor.class);
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String token = request.getHeader("Authorization");
         if (token == null) {
             token = request.getParameter("Authorization");
