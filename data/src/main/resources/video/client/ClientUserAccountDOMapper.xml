@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yinfeixing.video.repository.client.ClientUserAccountDOMapper">
-  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+<mapper namespace="com.yinfeixing.entity.repository.client.ClientUserAccountDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.entity.dataobject.client.ClientUserAccountDO">
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="account_type" jdbcType="VARCHAR" property="accountType" />
     <result column="account_cert" jdbcType="VARCHAR" property="accountCert" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
     <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
-    <result column="environment" jdbcType="VARCHAR" property="environment" />
   </resultMap>
-  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
-    insert into client_user_account (user_id, account_type, account_cert, 
-      create_time, last_modify_time, ext_info,environment
-      )
-    values (#{userId,jdbcType=BIGINT}, #{accountType,jdbcType=VARCHAR}, #{accountCert,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{extInfo,jdbcType=VARCHAR},
-      #{environment,jdbcType=VARCHAR})
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+
+  <insert id="insertSelective" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserAccountDO">
     insert into client_user_account
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -39,9 +30,6 @@
       </if>
       <if test="extInfo != null">
         ext_info,
-      </if>
-      <if test="environment != null">
-        environment,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -63,9 +51,6 @@
       <if test="extInfo != null">
         #{extInfo,jdbcType=VARCHAR},
       </if>
-      <if test="environment != null">
-        #{environment,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="selectAccountByCretTypeAndNum" resultMap="BaseResultMap">
@@ -81,7 +66,7 @@
       </if>
     </where>
   </select>
-  <update id="updateAccountSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserAccountDO">
+  <update id="updateAccountSelective" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserAccountDO">
     update client_user_account
     <set>
       <if test="accountType != null">

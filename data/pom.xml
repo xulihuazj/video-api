@@ -52,6 +52,11 @@
             <artifactId>druid</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.yinfeixing.video</groupId>
+            <artifactId>utils</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

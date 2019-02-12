@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yinfeixing.video.repository.client.ClientUserLoginLogDOMapper">
-  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO">
+<mapper namespace="com.yinfeixing.entity.repository.client.ClientUserLoginLogDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO">
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
     <result column="effective_time" jdbcType="TIMESTAMP" property="effectiveTime" />
@@ -11,25 +11,24 @@
     <result column="login_status" jdbcType="VARCHAR" property="loginStatus" />
     <result column="login_source" jdbcType="VARCHAR" property="loginSource" />
     <result column="source_version" jdbcType="VARCHAR" property="sourceVersion" />
+    <result column="login_city" jdbcType="VARCHAR" property="loginCity" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
-    <result column="environment" jdbcType="VARCHAR" property="environment" />
     <result column="ext_info" jdbcType="LONGVARCHAR" property="extInfo" />
-	<result column="login_city" jdbcType="VARCHAR" property="loginCity" />   
   </resultMap>
-  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO">
+  <insert id="insert" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO">
     insert into client_user_login_log (user_id, login_ip, effective_time, 
       expire_time, login_token, user_agent, 
       login_status, login_source, source_version, 
-      create_time, last_modify_time, environment, 
+      create_time, last_modify_time,
       ext_info,login_city)
     values (#{userId,jdbcType=BIGINT}, #{loginIp,jdbcType=VARCHAR}, #{effectiveTime,jdbcType=TIMESTAMP}, 
       #{expireTime,jdbcType=TIMESTAMP}, #{loginToken,jdbcType=VARCHAR}, #{userAgent,jdbcType=VARCHAR}, 
       #{loginStatus,jdbcType=VARCHAR}, #{loginSource,jdbcType=VARCHAR}, #{sourceVersion,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{environment,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP},
       #{extInfo,jdbcType=LONGVARCHAR},#{loginCity,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO">
+  <insert id="insertSelective" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO">
     insert into client_user_login_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -64,9 +63,6 @@
       </if>
       <if test="lastModifyTime != null">
         last_modify_time,
-      </if>
-      <if test="environment != null">
-        environment,
       </if>
       <if test="extInfo != null">
         ext_info,
@@ -109,9 +105,6 @@
       <if test="lastModifyTime != null">
         #{lastModifyTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="environment != null">
-        #{environment,jdbcType=VARCHAR},
-      </if>
       <if test="extInfo != null">
         #{extInfo,jdbcType=LONGVARCHAR},
       </if>
@@ -136,7 +129,7 @@
     </where>
   </select>
 
-  <update id="updateByTokenAndAgentSelective" parameterType="com.yinfeixing.video.dataobject.pmsdb.user.UserLoginCretificateDO" >
+  <update id="updateByTokenAndAgentSelective" parameterType="com.yinfeixing.entity.dataobject.pmsdb.user.UserLoginCretificateDO" >
     update client_user_login_log
     <set >
       <if test="userId != null" >
