@@ -1,7 +1,7 @@
 package com.yinfeixing.utils.cache;
 
 import com.alibaba.fastjson.TypeReference;
-import com.cf.utils.log.LogHelper;
+import com.yinfeixing.utils.log.LogHelper;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Calendar;

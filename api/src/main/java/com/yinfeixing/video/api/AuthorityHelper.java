@@ -1,6 +1,11 @@
 package com.yinfeixing.video.api;
 
 
+import com.yinfeixing.utils.net.IP;
+import com.yinfeixing.utils.web.WebHelper;
+import com.yinfeixing.video.api.request.APIRequest;
+import com.yinfeixing.video.api.request.app.client.ClientInfoDTO;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -18,13 +23,13 @@ public class AuthorityHelper {
         clientInfoDTO.setOriginalClientIp(WebHelper.getRemoteAddr());
         String originalClientSymbol = clientInfoDTO.getClientSymbol();
         if(apiRequest.getSource() == null){
-        	apiRequest.setSource(Source.WEB);
+        	apiRequest.setSource("WEB");
         }
         switch (apiRequest.getSource()) {
-		case ANDROID:
+		case "ANDROID":
 			originalClientSymbol = apiRequest.getDeviceId();
 			break;
-		case IOS:
+		case "IOS":
 			originalClientSymbol = apiRequest.getDeviceId();
 			break;
 		default:

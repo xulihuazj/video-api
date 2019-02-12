@@ -1,6 +1,11 @@
 package com.yinfeixing.video.boot.auth;
 
+import com.yinfeiixng.video.common.Constant;
+import com.yinfeixing.utils.security.SecurityHelper;
+import com.yinfeixing.utils.uuid.UUIDUtil;
 import com.yinfeixing.video.api.BaseController;
+import com.yinfeixing.video.api.system.Idempotent;
+import com.yinfeixing.video.service.idempotent.IdempotentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -32,11 +37,9 @@ public class IdempotentInterceptor extends BaseController implements HandlerInte
         Idempotent idempotent = method.getAnnotation(Idempotent.class);
         // 判断是否需要幂等校验
         if(idempotent != null){
-//            LogHelper.error("拦截器里的线程名："+Thread.currentThread().getId()+"|"+System.currentTimeMillis());
         	// 获取请求业务参数的内容
         	String biz = super.getBizString(request);
         	if(StringUtils.isNotBlank(biz)){
-//        		LogHelper.error("biz"+biz);
         		// 生成md5密文
         		String idempotentKey = SecurityHelper.MD5(biz);
         		// 存入request

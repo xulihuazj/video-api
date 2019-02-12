@@ -1,8 +1,9 @@
 package com.yinfeixing.video.boot.auth;
 
-import com.cf.pms.service.ipwhite.IpWhiteService;
-import com.cf.utils.log.LogHelper;
-import com.cf.utils.web.WebHelper;
+
+import com.yinfeixing.utils.log.LogHelper;
+import com.yinfeixing.utils.web.WebHelper;
+import com.yinfeixing.video.service.ip.IpWhiteService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

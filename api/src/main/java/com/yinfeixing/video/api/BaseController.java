@@ -1,11 +1,19 @@
 package com.yinfeixing.video.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.yinfeiixng.video.common.Constant;
+import com.yinfeiixng.video.error.BizErrorCode;
+import com.yinfeiixng.video.error.SystemErrorCode;
+import com.yinfeiixng.video.exception.BusinessException;
 import com.yinfeixing.entity.EnumHelperUtil;
+import com.yinfeixing.utils.emojiUtils.EmojiUtils;
 import com.yinfeixing.utils.log.LogHelper;
+import com.yinfeixing.utils.net.IP;
+import com.yinfeixing.video.api.request.APIRequest;
 import org.apache.commons.lang3.ArrayUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -65,7 +73,6 @@ public abstract class BaseController {
     protected <C> APIRequest<C> getObjectByRequest(Class<C> type, HttpServletRequest httpRequest, Class<?>... groups) throws Exception {
         APIRequest<C> request = null;
         GlobalLocalContext localContext = LocalContextHolder.getContext();
-        localContext.setRequestId(httpRequest.getHeader("requestId"));
         // TODO 还得调整
         if (httpRequest.getMethod().equals("GET")) {
             request = new APIRequest();
@@ -76,11 +83,10 @@ public abstract class BaseController {
             this.validate(biz, groups);
             request.setToken(httpRequest.getHeader("Authorization"));
             request.setBizRequest(biz);
-            localContext.setSource(EnumHelperUtil.getEnumByCode(Source.class, "getCode", httpRequest.getParameter("source")));
+            localContext.setSource(httpRequest.getParameter("source"));
             localContext.setVersion(httpRequest.getParameter("version"));
             localContext.setDeviceId(httpRequest.getParameter("device_id"));
             localContext.setCurrentIp(IP.getIpAddress(httpRequest));
-            localContext.setRequestId(httpRequest.getHeader("requestId"));
             request.setSource(localContext.getSource());
         } else {
             byte[] buffer = BaseController.getRequestPostBytes(httpRequest);
@@ -97,13 +103,13 @@ public abstract class BaseController {
                 }
                 request = JSONObject.parseObject(json.toJSONString(), new TypeReference<APIRequest<C>>() {});
                 request.setToken(httpRequest.getHeader("Authorization"));
-                localContext.setSource(EnumHelperUtil.getEnumByCode(Source.class, "getCode", request.getSource().getCode()));
+                localContext.setSource(httpRequest.getParameter("source"));
                 localContext.setVersion(request.getVersion());
                 localContext.setDeviceId(request.getDeviceId());
                 localContext.setCurrentIp(IP.getIpAddress(httpRequest));
                 if (json != null && request.getBizRequest() != null && type != null) {
 
-                    C biz = JSONObject.parseObject(JSONObject.toJSONString(request.getBizRequest()), (Class<C>) type);
+                    C biz = JSONObject.parseObject(JSONObject.toJSONString(request.getBizRequest()), type);
                     //对象数据校验
                     this.validate(biz, groups);
 

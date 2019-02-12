@@ -21,34 +21,9 @@ public class ClientUserController extends BaseController {
 
     @GetMapping("/list")
     public void clientList(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientUserListRequest> apiRequest = super.getObjectByRequest(ClientUserListRequest.class,
-                httpRequest, Query.class);
-        super.success(pmsClientUserService.searchClientUserList(apiRequest), httpRequest, httpResponse);
-    }
-
-    @GetMapping("/detail")
-    public void ClientUserDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientUserDetailRequest> apiRequest = super.getObjectByRequest(ClientUserDetailRequest.class,
-                httpRequest, Query.class);
-        super.success(this.pmsClientUserService.clientUserDetail(apiRequest), httpRequest, httpResponse);
-    }
-
-    @PostMapping("/bind/account")
-//    @Idempotent
-    public void bindAccount(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientUserChangeMobileBindingRequest> apiRequest = super.getObjectByRequest(
-                ClientUserChangeMobileBindingRequest.class, httpRequest, Query.class);
-        super.success(pmsClientUserService.bindAccount(apiRequest), httpRequest, httpResponse);
-    }
-
-    @PostMapping(value = "/valid/smsCode")
-//    @SystemType
-    public void changePhoneValidCode(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
-            throws Exception {
-        // 获取请求业务参数对象
-        APIRequest<PhoneCodeVaildPCRequest> clientAPIRequest = super.getObjectByRequest(PhoneCodeVaildPCRequest.class,
-                httpRequest, Add.class);
-        super.success(clientUserServiceImpl.validNewPhoneCode(clientAPIRequest), httpRequest, httpResponse);
+//        APIRequest<ClientUserListRequest> apiRequest = super.getObjectByRequest(ClientUserListRequest.class,
+//                httpRequest, Query.class);
+//        super.success(pmsClientUserService.searchClientUserList(apiRequest), httpRequest, httpResponse);
     }
 
 }

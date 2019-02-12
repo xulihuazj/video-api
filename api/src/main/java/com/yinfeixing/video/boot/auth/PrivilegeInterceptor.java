@@ -1,19 +1,14 @@
 package com.yinfeixing.video.boot.auth;
 
-import com.cf.api.LocalContextHolder;
-import com.cf.api.enums.system.SystemApiTypeEnum;
-import com.cf.api.system.SystemType;
-import com.cf.pms.api.ApplicationContextHolder;
-import com.cf.pms.dataconfig.plugin.CompanyHelper;
-import com.cf.pms.dataconfig.plugin.CompanyUtil;
-import com.cf.pms.dataconfig.plugin.WhiteHelper;
-import com.cf.pms.dataconfig.plugin.WhiteUtil;
-import com.cf.pms.error.SystemErrorCode;
-import com.cf.pms.exception.BusinessException;
-import com.cf.pms.service.PrivilegeValidService;
-import com.cf.utils.environment.EnvironmentEnum;
-import com.cf.utils.log.LogHelper;
-import com.cf.utils.net.IP;
+import com.yinfeiixng.video.error.SystemErrorCode;
+import com.yinfeiixng.video.exception.BusinessException;
+import com.yinfeixing.utils.log.LogHelper;
+import com.yinfeixing.utils.net.IP;
+import com.yinfeixing.video.api.ApplicationContextHolder;
+import com.yinfeixing.video.api.LocalContextHolder;
+import com.yinfeixing.video.api.enums.system.SystemApiTypeEnum;
+import com.yinfeixing.video.api.system.SystemType;
+import com.yinfeixing.video.service.privilege.PrivilegeValidService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -62,18 +57,10 @@ public class PrivilegeInterceptor implements HandlerInterceptor {
         if (annotationSystem != null) {
             system = SystemApiTypeEnum.valueOf(annotationSystem.value().toUpperCase());
         }
-        CompanyHelper.setSystemType(system.getCode());
         // 注解为common（不需要校验） 和notify（支付异步通知特殊处理） 标志不需要权限校验
         if (system.getCode().equalsIgnoreCase(SystemApiTypeEnum.INTERNAL.getCode()) || system.getCode().equalsIgnoreCase(SystemApiTypeEnum.EXTERNAL.getCode())) {
             PrivilegeValidService privilegeValidService = (PrivilegeValidService) ApplicationContextHolder.getContext().getBean(system.getPrivilegeObjectName());
             privilegeValidService.privilegeValid();
-        } else {
-            WhiteHelper.setWhiteList(true, EnvironmentEnum.COMMON.getCode());
-        }
-
-        if (StringUtils.isNotBlank(url) && url.contains("/login")) {
-            CompanyHelper.getChildCompanyIds(null);
-            WhiteHelper.setWhiteList(true, EnvironmentEnum.COMMON.getCode());
         }
         return true;
     }
@@ -84,10 +71,7 @@ public class PrivilegeInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-    	// 清空 WhitHelper的全局变量
-        WhiteUtil.clearLocalWhiteList();
-        // 清除CompanyUtil下的本地对象
-        CompanyUtil.clearLocalCompanyList();
+
         // 清除LocalContextHolder本地线和中的对象
         LocalContextHolder.clearContext();
         ThreadContext.clearAll();

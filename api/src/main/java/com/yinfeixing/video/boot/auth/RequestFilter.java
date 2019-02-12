@@ -1,8 +1,9 @@
 package com.yinfeixing.video.boot.auth;
 
-import com.cf.api.LocalContextHolder;
-import com.cf.pms.common.Constant;
-import com.cf.utils.string.StringUtil;
+
+import com.yinfeiixng.video.common.Constant;
+import com.yinfeixing.utils.string.StringUtil;
+import com.yinfeixing.video.api.LocalContextHolder;
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +25,6 @@ public class RequestFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         LocalContextHolder.setContext(LocalContextHolder.createEmptyContext());
-
-        //log4j日志增加traceid yinqiang 18-12-20
         String traceId =  UUID.randomUUID().toString();
         traceId = StringUtil.isEmpty(traceId)? "":traceId.replace("-","");
         ThreadContext.put(Constant.TRACE_ID, traceId);
@@ -35,7 +34,7 @@ public class RequestFilter implements Filter {
         if (request instanceof HttpServletRequest) {
             //如果是微信支付
             if (((HttpServletRequest) request).getRequestURI().contains("/order/weixin/pay/notify")) {
-                requestWrapper = new BodyReaderHttpServletRequestWrapper((HttpServletRequest) request);
+//                requestWrapper = new BodyReaderHttpServletRequestWrapper((HttpServletRequest) request);
             }
         }
         if (null == requestWrapper) {

@@ -67,6 +67,11 @@
             </dependency>
             <dependency>
                 <groupId>com.yinfeixing.video</groupId>
+                <artifactId>service-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yinfeixing.video</groupId>
                 <artifactId>utils</artifactId>
                 <version>${project.version}</version>
             </dependency>

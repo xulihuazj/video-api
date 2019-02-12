@@ -29,6 +29,10 @@
         </dependency>
         <dependency>
             <groupId>com.yinfeixing.video</groupId>
+            <artifactId>service-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yinfeixing.video</groupId>
             <artifactId>utils</artifactId>
         </dependency>
 

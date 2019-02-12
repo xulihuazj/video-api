@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * APIConfigurer
  *
- * @author liwei
+ * @author xulh
  * @date 2017/3/30
  * @description
  */

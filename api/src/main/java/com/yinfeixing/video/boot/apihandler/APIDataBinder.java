@@ -1,9 +1,14 @@
 package com.yinfeixing.video.boot.apihandler;
 
+import com.yinfeiixng.video.error.SystemErrorCode;
+import com.yinfeiixng.video.exception.BusinessException;
 import com.yinfeixing.entity.BaseEnum;
 import com.yinfeixing.entity.EnumHelperUtil;
 import com.yinfeixing.utils.log.LogHelper;
+import com.yinfeixing.utils.net.IP;
 import com.yinfeixing.utils.string.StringUtil;
+import com.yinfeixing.video.api.GlobalLocalContext;
+import com.yinfeixing.video.api.LocalContextHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -163,11 +168,10 @@ public class APIDataBinder extends ServletRequestDataBinder {
      */
     private void initializeContext(HttpServletRequest httpServletRequest) {
         GlobalLocalContext localContext = LocalContextHolder.getContext();
-        localContext.setSource(EnumHelperUtil.getEnumByCode(Source.class, "getCode", httpServletRequest.getParameter("source")));
+        localContext.setSource( httpServletRequest.getParameter("source"));
         localContext.setVersion(httpServletRequest.getParameter("version"));
         localContext.setDeviceId(httpServletRequest.getParameter("device_id"));
         localContext.setCurrentIp(IP.getIpAddress(httpServletRequest));
-        localContext.setRequestId(httpServletRequest.getHeader("requestId"));
         LocalContextHolder.setContext(localContext);
     }
 

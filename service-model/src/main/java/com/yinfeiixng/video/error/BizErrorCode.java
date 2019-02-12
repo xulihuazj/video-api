@@ -15,6 +15,7 @@ public enum BizErrorCode implements ErrorCode {
 
     REQUEST_PARAM_EMPTY_ERROR("10010000", "请求参数错误或缺失"),
 
+    PARAMETER_CHECK_ERROR("10010001", "参数校验异常"),
     ;
 
     BizErrorCode(String code, String message) {
