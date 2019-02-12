@@ -1,4 +1,4 @@
-package com.yinfeixing.entity.api;
+package com.yinfeixing.video;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
