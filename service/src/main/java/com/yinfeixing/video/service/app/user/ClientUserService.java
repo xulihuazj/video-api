@@ -1,18 +1,23 @@
 package com.yinfeixing.video.service.app.user;
 
+import com.yinfeixing.video.api.request.APIRequest;
+import com.yinfeixing.video.api.request.app.user.ClientRegisterRequest;
+import com.yinfeixing.video.api.response.APIResponse;
+import com.yinfeixing.video.api.response.app.user.RegisteredResponse;
+
 /**
  * @author xulh on 2018-05-31.
  */
 public interface ClientUserService {
 
-//    /**
-//      * @Author: xulh
-//      * @Description: 用户注册
-//      * @Date: 11:07 2018-05-31
-//      * @param request
-//      * @return
-//      */
-//    APIResponse<RegisteredResponse> registered(APIRequest<RegisteredRequest> request);
+    /**
+      * @Author: xulh
+      * @Description: 用户注册
+      * @Date: 11:07 2018-05-31
+      * @param request
+      * @return
+      */
+    APIResponse<RegisteredResponse> clientRegister(APIRequest<ClientRegisterRequest> request);
 //
 //    /**
 //      * @Author: xulh
