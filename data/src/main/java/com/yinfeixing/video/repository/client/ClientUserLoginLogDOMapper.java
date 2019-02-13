@@ -1,7 +1,7 @@
-package com.yinfeixing.entity.repository.client;
+package com.yinfeixing.video.repository.client;
 
-import com.yinfeixing.entity.dataconfig.annotation.VIDEODB;
-import com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO;
+import com.yinfeixing.video.dataconfig.annotation.VIDEODB;
+import com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO;
 import org.apache.ibatis.annotations.Param;
 
 @VIDEODB

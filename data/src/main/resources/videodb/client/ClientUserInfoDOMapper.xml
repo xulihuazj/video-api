@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yinfeixing.entity.repository.client.ClientUserInfoDOMapper">
-  <resultMap id="BaseResultMap" type="com.yinfeixing.entity.dataobject.client.ClientUserInfoDO">
+<mapper namespace="com.yinfeixing.video.repository.client.ClientUserInfoDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserInfoDO">
     <id column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
@@ -31,7 +31,7 @@
     delete from client_user_info
     where user_id = #{userId,jdbcType=BIGINT}
   </delete>
-  <insert id="insertSelective" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserInfoDO" useGeneratedKeys="true" keyProperty="userId">
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserInfoDO" useGeneratedKeys="true" keyProperty="userId">
     insert into client_user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -116,7 +116,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserInfoDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserInfoDO">
     update client_user_info
     <set>
       <if test="userName != null">

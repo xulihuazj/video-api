@@ -1,4 +1,4 @@
-package com.yinfeixing.entity.model.user;
+package com.yinfeixing.video.model.user;
 
 public class SysPositionResponseModel {
 

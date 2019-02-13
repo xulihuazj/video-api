@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yinfeixing.entity.repository.client.ClientUserLoginLogDOMapper">
-  <resultMap id="BaseResultMap" type="com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO">
+<mapper namespace="com.yinfeixing.video.repository.client.ClientUserLoginLogDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO">
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
     <result column="effective_time" jdbcType="TIMESTAMP" property="effectiveTime" />
@@ -16,7 +16,7 @@
     <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
     <result column="ext_info" jdbcType="LONGVARCHAR" property="extInfo" />
   </resultMap>
-  <insert id="insert" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO">
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO">
     insert into client_user_login_log (user_id, login_ip, effective_time, 
       expire_time, login_token, user_agent, 
       login_status, login_source, source_version, 
@@ -28,7 +28,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP},
       #{extInfo,jdbcType=LONGVARCHAR},#{loginCity,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yinfeixing.entity.dataobject.client.ClientUserLoginLogDO">
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO">
     insert into client_user_login_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">

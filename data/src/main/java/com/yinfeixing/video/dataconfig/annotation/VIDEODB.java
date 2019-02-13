@@ -1,4 +1,4 @@
-package com.yinfeixing.entity.dataconfig.annotation;
+package com.yinfeixing.video.dataconfig.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

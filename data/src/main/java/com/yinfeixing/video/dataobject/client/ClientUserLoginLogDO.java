@@ -1,4 +1,4 @@
-package com.yinfeixing.entity.dataobject.client;
+package com.yinfeixing.video.dataobject.client;
 
 import com.yinfeixing.entity.DOBaseEntity;
 
