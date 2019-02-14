@@ -28,7 +28,7 @@ public class VIDEODBConfig {
 
     @Bean(name = "pmsdbDataSource")
     @Primary
-    @ConfigurationProperties(prefix = "video.datasource")
+    @ConfigurationProperties(prefix = "videodb.datasource")
     public DataSource pmsdbDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         return dataSource;
