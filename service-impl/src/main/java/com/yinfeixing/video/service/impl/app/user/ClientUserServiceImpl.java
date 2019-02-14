@@ -3,6 +3,7 @@ package com.yinfeixing.video.service.impl.app.user;
 import com.yinfeiixng.video.enums.AccountTypeEnum;
 import com.yinfeiixng.video.enums.CommonStatusEnum;
 import com.yinfeiixng.video.enums.PasswordTypeEnum;
+import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.dataobject.client.ClientUserAccountDO;
 import com.yinfeixing.video.dataobject.client.ClientUserInfoDO;
 import com.yinfeixing.video.dataobject.client.ClientUserPasswordDO;
@@ -41,6 +42,7 @@ public class ClientUserServiceImpl implements ClientUserService {
 
     @Override
     public APIResponse<RegisteredResponse> clientRegister(APIRequest<ClientRegisterRequest> request) {
+        LogHelper.info(logger, "【客户端】【用户注册】，请求参数={0}", request);
         ClientRegisterRequest bizRequest = request.getBizRequest(ClientRegisterRequest.class);
         Assert.isTrue("PHONE".equals(bizRequest.getAccountType()) && !ValidUtil.validChinaPhone(bizRequest.getAccount()),
                 "请输入正确的手机号");

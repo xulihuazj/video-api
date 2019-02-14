@@ -22,12 +22,6 @@ public class ClientUserController extends BaseController {
     @Resource
     private ClientUserService clientUserServiceImpl;
 
-    @GetMapping("/list")
-    public void clientList(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-//        APIRequest<ClientUser> apiRequest = super.getObjectByRequest(ClientUserListRequest.class,
-//                httpRequest, Query.class);
-        super.success("11111", httpRequest, httpResponse);
-    }
 
     /**
      * 账号注册
