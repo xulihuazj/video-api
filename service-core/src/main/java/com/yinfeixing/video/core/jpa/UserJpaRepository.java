@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.io.Serializable;
 
 @Repository
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public interface UserJpaRepository extends Serializable,
         JpaRepository<ClientUserInfoDO, Long>, JpaSpecificationExecutor<ClientUserInfoDO> {
 

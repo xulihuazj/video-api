@@ -18,14 +18,14 @@ public class TransactionManagersConfig {
     EntityManagerFactory entityManagerFactory;
 
     @Resource
-    private DataSource dataSource;
+    private DataSource pmsdbDataSource;
 
     @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager tm =
                 new JpaTransactionManager();
         tm.setEntityManagerFactory(entityManagerFactory);
-        tm.setDataSource(dataSource);
+        tm.setDataSource(pmsdbDataSource);
         return tm;
     }
 }

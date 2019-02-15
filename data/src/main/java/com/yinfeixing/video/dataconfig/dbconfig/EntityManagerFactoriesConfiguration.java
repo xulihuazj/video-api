@@ -12,12 +12,12 @@ import javax.sql.DataSource;
 public class EntityManagerFactoriesConfiguration {
 
     @Resource
-    private DataSource dataSource;
+    private DataSource pmsdbDataSource;
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean emf() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(dataSource);
+        emf.setDataSource(pmsdbDataSource);
         emf.setPackagesToScan(
                 new String[]{"com.rick.entities"});
         emf.setJpaVendorAdapter(
