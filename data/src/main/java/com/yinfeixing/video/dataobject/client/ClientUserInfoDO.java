@@ -2,27 +2,39 @@ package com.yinfeixing.video.dataobject.client;
 
 import com.yinfeixing.entity.DOBaseEntity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "client_user_info")
 public class ClientUserInfoDO extends DOBaseEntity {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "user_sex")
     private String userSex;
 
+    @Column(name = "nick_name")
     private String nickName;
 
+    @Column(name = "user_image_href")
     private String userImageHref;
 
+    @Column(name = "user_phone")
     private String userPhone;
 
+    @Column(name = "email")
     private String email;
 
-    private String cretType;
-
-    private String cretNum;
-
+    @Column(name = "user_status")
     private String userStatus;
 
+    @Column(name = "user_type")
     private String userType;
 
     public String getUserType() {
@@ -87,22 +99,6 @@ public class ClientUserInfoDO extends DOBaseEntity {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
-    }
-
-    public String getCretType() {
-        return cretType;
-    }
-
-    public void setCretType(String cretType) {
-        this.cretType = cretType == null ? null : cretType.trim();
-    }
-
-    public String getCretNum() {
-        return cretNum;
-    }
-
-    public void setCretNum(String cretNum) {
-        this.cretNum = cretNum == null ? null : cretNum.trim();
     }
 
     public String getUserStatus() {

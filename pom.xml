@@ -99,6 +99,11 @@
                 <artifactId>spring-boot-starter-data-mongodb</artifactId>
                 <version>2.1.1.RELEASE</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>2.0.0.RELEASE</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -254,6 +259,34 @@
                 <groupId>me.chyxion</groupId>
                 <artifactId>table-to-xls</artifactId>
                 <version>0.0.1-RELEASE</version>
+            </dependency>
+
+            <!-- 编译期代码生成 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.6</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Querydsl -->
+            <!--<dependency>-->
+                <!--<groupId>com.querydsl</groupId>-->
+                <!--<artifactId>querydsl-core</artifactId>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>com.querydsl</groupId>-->
+                <!--<artifactId>querydsl-apt</artifactId>-->
+                <!--<scope>provided</scope>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>com.querydsl</groupId>-->
+                <!--<artifactId>querydsl-jpa</artifactId>-->
+            <!--</dependency>-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
             </dependency>
 
         </dependencies>

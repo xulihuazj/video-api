@@ -6,6 +6,7 @@ import com.yinfeiixng.video.enums.PasswordTypeEnum;
 import com.yinfeixing.utils.common.ValidUtil;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.utils.security.SecurityHelper;
+import com.yinfeixing.video.core.jpa.UserJpaRepository;
 import com.yinfeixing.video.dataobject.client.ClientUserAccountDO;
 import com.yinfeixing.video.dataobject.client.ClientUserInfoDO;
 import com.yinfeixing.video.dataobject.client.ClientUserPasswordDO;
@@ -33,6 +34,8 @@ public class ClientUserServiceImpl implements ClientUserService {
 
     @Resource
     private TransactionTemplate pmsDBTransactionTemplate;
+    @Resource
+    private UserJpaRepository userJpaRepository;
     @Resource
     private ClientUserAccountDOMapper clientUserAccountDOMapper;
     @Resource
