@@ -1,27 +1,15 @@
 package com.yinfeixing.video.boot.auth;
 
-import com.yinfeiixng.video.error.SystemErrorCode;
-import com.yinfeiixng.video.exception.BusinessException;
-import com.yinfeixing.utils.log.LogHelper;
-import com.yinfeixing.utils.net.IP;
-import com.yinfeixing.video.api.ApplicationContextHolder;
-import com.yinfeixing.video.api.LocalContextHolder;
-import com.yinfeixing.video.api.enums.system.SystemApiTypeEnum;
-import com.yinfeixing.video.api.system.SystemType;
-import com.yinfeixing.video.service.privilege.PrivilegeValidService;
-import org.apache.commons.lang3.StringUtils;
+import com.yinfeixing.video.LocalContextHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.Method;
 
 /**
  * 权限验证

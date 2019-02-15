@@ -1,9 +1,9 @@
 package com.yinfeixing.video.service.app.video;
 
-import com.yinfeixing.video.api.request.APIRequest;
-import com.yinfeixing.video.api.request.app.video.ClientVideoListRequest;
-import com.yinfeixing.video.api.response.APIResponse;
-import com.yinfeixing.video.api.response.app.video.ClientVideoListResponse;
+import com.yinfeixing.video.request.APIRequest;
+import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
+import com.yinfeixing.video.response.APIResponse;
+import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 
 public interface VideoService {
 

@@ -3,10 +3,10 @@ package com.yinfeiixng.video.model;
 
 import com.yinfeiixng.video.enums.SortEnum;
 import org.apache.commons.collections.CollectionUtils;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.data.domain.Sort;
 
 public class OrderSortParse {
 

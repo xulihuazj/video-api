@@ -1,7 +1,6 @@
 package com.yinfeixing.video.boot.auth;
 
 
-import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.utils.web.WebHelper;
 import com.yinfeixing.video.service.ip.IpWhiteService;
 import org.springframework.stereotype.Component;

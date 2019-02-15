@@ -1,9 +1,9 @@
 package com.yinfeixing.video.service.app.user;
 
-import com.yinfeixing.video.api.request.APIRequest;
-import com.yinfeixing.video.api.request.app.user.ClientRegisterRequest;
-import com.yinfeixing.video.api.response.APIResponse;
-import com.yinfeixing.video.api.response.app.user.RegisteredResponse;
+import com.yinfeixing.video.request.APIRequest;
+import com.yinfeixing.video.request.app.user.ClientRegisterRequest;
+import com.yinfeixing.video.response.APIResponse;
+import com.yinfeixing.video.response.app.user.RegisteredResponse;
 
 /**
  * @author xulh on 2018-05-31.
