@@ -3,6 +3,7 @@ package com.yinfeixing.video.client.video;
 import com.yinfeixing.utils.validate.Query;
 import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
+import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.service.app.video.VideoService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,4 +34,11 @@ public class VideoController extends BaseController {
         super.success(videoServiceImpl.videoList(apiRequest), httpRequest, httpResponse);
     }
 
+
+    @GetMapping("/list")
+    public void videoDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
+        APIRequest<ClientVideoDetailRequest> apiRequest = super.getObjectByRequest(ClientVideoDetailRequest.class,
+                httpRequest, Query.class);
+        super.success(videoServiceImpl.videoDetail(apiRequest), httpRequest, httpResponse);
+    }
 }

@@ -1,7 +1,7 @@
 package com.yinfeixing.video;
 
 import com.yinfeiixng.video.model.mongo.VideoModel;
-import com.yinfeixing.video.core.video.VideoRepository;
+import com.yinfeixing.video.core.video.VideoMongoRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class MongoDBTest {
 
     @Resource
-    private VideoRepository videoRepositoryImpl;
+    private VideoMongoRepository videoRepositoryImpl;
 
     @Test
     public void testSave() {

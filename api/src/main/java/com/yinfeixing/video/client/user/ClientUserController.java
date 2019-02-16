@@ -37,9 +37,9 @@ public class ClientUserController extends BaseController {
     public void clientRegister(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
         APIRequest<ClientRegisterRequest> apiRequest = super.getObjectByRequest(ClientRegisterRequest.class,
                 httpRequest, Add.class);
-        Optional<ClientUserInfoDO> userOptional = userJpaRepository.findById(1L);
-        System.out.println(userOptional.isPresent());
-//        super.success(clientUserServiceImpl.clientRegister(apiRequest), httpRequest, httpResponse);
+//        Optional<ClientUserInfoDO> userOptional = userJpaRepository.findById(1L);
+//        System.out.println(userOptional.isPresent());
+        super.success(clientUserServiceImpl.clientRegister(apiRequest), httpRequest, httpResponse);
     }
 
 

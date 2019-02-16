@@ -3,14 +3,14 @@ package com.yinfeixing.video.core.video.impl;
 import com.mongodb.client.result.UpdateResult;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.video.core.BaseMongoRepositoryImpl;
-import com.yinfeixing.video.core.video.VideoRepository;
+import com.yinfeixing.video.core.video.VideoMongoRepository;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class VideoRepositoryImpl extends BaseMongoRepositoryImpl<VideoModel> implements VideoRepository {
+public class VideoMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoModel> implements VideoMongoRepository {
 
     @Override
     protected Class<VideoModel> getEntityClass() {

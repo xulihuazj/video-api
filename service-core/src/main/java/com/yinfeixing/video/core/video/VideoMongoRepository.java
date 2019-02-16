@@ -3,7 +3,7 @@ package com.yinfeixing.video.core.video;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.video.core.BaseMongoRepository;
 
-public interface VideoRepository extends BaseMongoRepository<VideoModel> {
+public interface VideoMongoRepository extends BaseMongoRepository<VideoModel> {
 
     /**
      * 通过视频名称查询视频

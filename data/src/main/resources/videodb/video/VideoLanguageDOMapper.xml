@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinfeixing.video.repository.video.VideoLanguageDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.video.VideoLanguageDO">
+    <id column="vide_language_id" jdbcType="BIGINT" property="videLanguageId" />
+    <result column="video_id" jdbcType="BIGINT" property="videoId" />
+    <result column="language_id" jdbcType="INTEGER" property="languageId" />
+    <result column="vide_language_status" jdbcType="VARCHAR" property="videLanguageStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    vide_language_id, video_id, language_id, vide_language_status, create_time, last_modify_time, 
+    ext_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video_language_re
+    where vide_language_id = #{videLanguageId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from video_language_re
+    where vide_language_id = #{videLanguageId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.video.VideoLanguageDO">
+    insert into video_language_re (vide_language_id, video_id, language_id, 
+      vide_language_status, create_time, last_modify_time, 
+      ext_info)
+    values (#{videLanguageId,jdbcType=BIGINT}, #{videoId,jdbcType=BIGINT}, #{languageId,jdbcType=INTEGER}, 
+      #{videLanguageStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{extInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.video.VideoLanguageDO">
+    insert into video_language_re
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videLanguageId != null">
+        vide_language_id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="languageId != null">
+        language_id,
+      </if>
+      <if test="videLanguageStatus != null">
+        vide_language_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="extInfo != null">
+        ext_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videLanguageId != null">
+        #{videLanguageId,jdbcType=BIGINT},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="languageId != null">
+        #{languageId,jdbcType=INTEGER},
+      </if>
+      <if test="videLanguageStatus != null">
+        #{videLanguageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        #{extInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.video.VideoLanguageDO">
+    update video_language_re
+    <set>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="languageId != null">
+        language_id = #{languageId,jdbcType=INTEGER},
+      </if>
+      <if test="videLanguageStatus != null">
+        vide_language_status = #{videLanguageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        ext_info = #{extInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vide_language_id = #{videLanguageId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.video.VideoLanguageDO">
+    update video_language_re
+    set video_id = #{videoId,jdbcType=BIGINT},
+      language_id = #{languageId,jdbcType=INTEGER},
+      vide_language_status = #{videLanguageStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      ext_info = #{extInfo,jdbcType=VARCHAR}
+    where vide_language_id = #{videLanguageId,jdbcType=BIGINT}
+  </update>
+</mapper>

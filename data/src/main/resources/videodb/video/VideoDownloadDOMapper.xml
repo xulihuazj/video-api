@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinfeixing.video.repository.video.VideoDownloadDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.video.VideoDownloadDO">
+    <id column="video_address_id" jdbcType="BIGINT" property="videoAddressId" />
+    <result column="video_id" jdbcType="BIGINT" property="videoId" />
+    <result column="download_type" jdbcType="VARCHAR" property="downloadType" />
+    <result column="video_type" jdbcType="VARCHAR" property="videoType" />
+    <result column="download_size" jdbcType="DOUBLE" property="downloadSize" />
+    <result column="video_address" jdbcType="VARCHAR" property="videoAddress" />
+    <result column="video_address_status" jdbcType="VARCHAR" property="videoAddressStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    video_address_id, video_id, download_type, video_type, download_size, video_address, 
+    video_address_status, create_time, last_modify_time, ext_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video_download_info
+    where video_address_id = #{videoAddressId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from video_download_info
+    where video_address_id = #{videoAddressId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.video.VideoDownloadDO">
+    insert into video_download_info (video_address_id, video_id, download_type, 
+      video_type, download_size, video_address, 
+      video_address_status, create_time, last_modify_time, 
+      ext_info)
+    values (#{videoAddressId,jdbcType=BIGINT}, #{videoId,jdbcType=BIGINT}, #{downloadType,jdbcType=VARCHAR}, 
+      #{videoType,jdbcType=VARCHAR}, #{downloadSize,jdbcType=DOUBLE}, #{videoAddress,jdbcType=VARCHAR}, 
+      #{videoAddressStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{extInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.video.VideoDownloadDO">
+    insert into video_download_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoAddressId != null">
+        video_address_id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="downloadType != null">
+        download_type,
+      </if>
+      <if test="videoType != null">
+        video_type,
+      </if>
+      <if test="downloadSize != null">
+        download_size,
+      </if>
+      <if test="videoAddress != null">
+        video_address,
+      </if>
+      <if test="videoAddressStatus != null">
+        video_address_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="extInfo != null">
+        ext_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoAddressId != null">
+        #{videoAddressId,jdbcType=BIGINT},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="downloadType != null">
+        #{downloadType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null">
+        #{videoType,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadSize != null">
+        #{downloadSize,jdbcType=DOUBLE},
+      </if>
+      <if test="videoAddress != null">
+        #{videoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="videoAddressStatus != null">
+        #{videoAddressStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        #{extInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.video.VideoDownloadDO">
+    update video_download_info
+    <set>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="downloadType != null">
+        download_type = #{downloadType,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null">
+        video_type = #{videoType,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadSize != null">
+        download_size = #{downloadSize,jdbcType=DOUBLE},
+      </if>
+      <if test="videoAddress != null">
+        video_address = #{videoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="videoAddressStatus != null">
+        video_address_status = #{videoAddressStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        ext_info = #{extInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where video_address_id = #{videoAddressId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.video.VideoDownloadDO">
+    update video_download_info
+    set video_id = #{videoId,jdbcType=BIGINT},
+      download_type = #{downloadType,jdbcType=VARCHAR},
+      video_type = #{videoType,jdbcType=VARCHAR},
+      download_size = #{downloadSize,jdbcType=DOUBLE},
+      video_address = #{videoAddress,jdbcType=VARCHAR},
+      video_address_status = #{videoAddressStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      ext_info = #{extInfo,jdbcType=VARCHAR}
+    where video_address_id = #{videoAddressId,jdbcType=BIGINT}
+  </update>
+</mapper>

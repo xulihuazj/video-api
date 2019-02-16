@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinfeixing.video.repository.basic.BasicYearDOMapper">
+  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.basic.BasicYearDO">
+    <id column="year_id" jdbcType="INTEGER" property="yearId" />
+    <result column="year_num" jdbcType="INTEGER" property="yearNum" />
+    <result column="year_status" jdbcType="VARCHAR" property="yearStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    year_id, year_num, year_status, create_time, last_modify_time, ext_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from basic_year_info
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from basic_year_info
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.basic.BasicYearDO">
+    insert into basic_year_info (year_id, year_num, year_status, 
+      create_time, last_modify_time, ext_info
+      )
+    values (#{yearId,jdbcType=INTEGER}, #{yearNum,jdbcType=INTEGER}, #{yearStatus,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{extInfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.basic.BasicYearDO">
+    insert into basic_year_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yearId != null">
+        year_id,
+      </if>
+      <if test="yearNum != null">
+        year_num,
+      </if>
+      <if test="yearStatus != null">
+        year_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="extInfo != null">
+        ext_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yearId != null">
+        #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="yearNum != null">
+        #{yearNum,jdbcType=INTEGER},
+      </if>
+      <if test="yearStatus != null">
+        #{yearStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        #{extInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.basic.BasicYearDO">
+    update basic_year_info
+    <set>
+      <if test="yearNum != null">
+        year_num = #{yearNum,jdbcType=INTEGER},
+      </if>
+      <if test="yearStatus != null">
+        year_status = #{yearStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extInfo != null">
+        ext_info = #{extInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.basic.BasicYearDO">
+    update basic_year_info
+    set year_num = #{yearNum,jdbcType=INTEGER},
+      year_status = #{yearStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      ext_info = #{extInfo,jdbcType=VARCHAR}
+    where year_id = #{yearId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -4,10 +4,13 @@ import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.BaseMongoRepository;
-import com.yinfeixing.video.core.video.VideoRepository;
+import com.yinfeixing.video.core.jpa.VideoJpaRepository;
+import com.yinfeixing.video.core.video.VideoMongoRepository;
 import com.yinfeixing.video.request.APIRequest;
+import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.response.APIResponse;
+import com.yinfeixing.video.response.app.video.ClientVideoDetailResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 import com.yinfeixing.video.service.app.video.VideoService;
 import org.apache.logging.log4j.LogManager;
@@ -24,14 +27,16 @@ public class VideoServiceImpl implements VideoService {
     private Logger logger = LogManager.getLogger(VideoServiceImpl.class);
 
     @Resource
-    private VideoRepository videoRepositoryImpl;
+    private VideoMongoRepository videoMongoRepositoryImpl;
     @Resource
     private BaseMongoRepository baseMongoRepositoryImpl;
+    @Resource
+    private VideoJpaRepository videoJpaRepository;
 
     @Override
     public APIResponse<ClientVideoListResponse> videoList(APIRequest<ClientVideoListRequest> request) {
         LogHelper.info(logger, "【客户端】【视频列表】，请求参数={0}", request);
-        VideoModel video = videoRepositoryImpl.findVideoByVideoName("流浪地球");
+        VideoModel video = videoMongoRepositoryImpl.findVideoByVideoName("流浪地球");
         LogHelper.info(logger, "【客户端】【视频列表】，model={0}", video);
         VideoImageModel imageModel1 = new VideoImageModel() {{
             setVideoId(2L);
@@ -48,7 +53,7 @@ public class VideoServiceImpl implements VideoService {
         baseMongoRepositoryImpl.save(imageModel1);
         baseMongoRepositoryImpl.save(imageModel2);
         List<VideoImageModel> videoImageModelList = Arrays.asList(
-                imageModel1,imageModel2
+                imageModel1, imageModel2
         );
         VideoModel model = new VideoModel();
         model.setVideoId(2L);
@@ -59,7 +64,18 @@ public class VideoServiceImpl implements VideoService {
                 "科技的迅速发展，为科幻文学和科幻电影发展提供了沃土。" +
                 "影片的成功反映的是电影工业乃至国家的综合实力。”");
         model.setVideoImageList(videoImageModelList);
-        videoRepositoryImpl.save(model);
+        videoMongoRepositoryImpl.save(model);
         return APIResponse.instance(new ClientVideoListResponse());
+    }
+
+    @Override
+    public APIResponse<ClientVideoDetailResponse> videoDetail(APIRequest<ClientVideoDetailRequest> request) {
+        LogHelper.info(logger, "【客户端】【视频详情】，请求参数={0}", request);
+//        videoJpaRepository.findOne()
+
+
+
+
+        return APIResponse.instance(null);
     }
 }
