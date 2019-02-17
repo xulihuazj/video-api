@@ -39,6 +39,19 @@ public class VideoModel extends ToString {
     @Indexed(name = "idx_video_name", direction = IndexDirection.ASCENDING)
     private String videoName;
 
+    // 视频别名
+    @Field(value = "video_alias")
+    private String videoAliasJson;
+
+    // 演员表
+    @DBRef
+    private List<VideoPerformerModel> videoPerformerList;
+
+    // 摘要、简介
+    @Field(value = "summary")
+    private String summary;
+
+    // 剧情描述
     @Field(value = "describe")
     private String describe;
 
@@ -72,6 +85,30 @@ public class VideoModel extends ToString {
 
     public void setVideoName(String videoName) {
         this.videoName = videoName;
+    }
+
+    public String getVideoAliasJson() {
+        return videoAliasJson;
+    }
+
+    public void setVideoAliasJson(String videoAliasJson) {
+        this.videoAliasJson = videoAliasJson;
+    }
+
+    public List<VideoPerformerModel> getVideoPerformerList() {
+        return videoPerformerList;
+    }
+
+    public void setVideoPerformerList(List<VideoPerformerModel> videoPerformerList) {
+        this.videoPerformerList = videoPerformerList;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public String getDescribe() {

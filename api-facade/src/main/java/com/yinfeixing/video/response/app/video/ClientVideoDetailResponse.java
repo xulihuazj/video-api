@@ -1,18 +1,18 @@
 package com.yinfeixing.video.response.app.video;
 
 import com.yinfeixing.entity.ToString;
-import com.yinfeixing.video.dto.app.client.ClientVideoDto;
+import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
 
 public class ClientVideoDetailResponse extends ToString {
 
     // 视频详情
-    private ClientVideoDto clientVideo;
+    private ClientVideoDTO clientVideo;
 
-    public ClientVideoDto getClientVideo() {
+    public ClientVideoDTO getClientVideo() {
         return clientVideo;
     }
 
-    public void setClientVideo(ClientVideoDto clientVideo) {
+    public void setClientVideo(ClientVideoDTO clientVideo) {
         this.clientVideo = clientVideo;
     }
 }

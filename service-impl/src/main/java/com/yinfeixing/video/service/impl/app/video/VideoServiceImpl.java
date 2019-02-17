@@ -2,11 +2,13 @@ package com.yinfeixing.video.service.impl.app.video;
 
 import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
+import com.yinfeixing.utils.convert.CachedBeanCopier;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.BaseMongoRepository;
 import com.yinfeixing.video.core.jpa.VideoJpaRepository;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
 import com.yinfeixing.video.dataobject.video.VideoDO;
+import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
@@ -74,8 +76,21 @@ public class VideoServiceImpl implements VideoService {
     @Transactional(readOnly = true)
     public APIResponse<ClientVideoDetailResponse> videoDetail(APIRequest<ClientVideoDetailRequest> request) {
         LogHelper.info(logger, "【客户端】【视频详情】，请求参数={0}", request);
-        List<VideoDO> resultVideoList = videoJpaRepository.findAll();
-        LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideoList);
+        ClientVideoDetailRequest bizRequest = request.getBizRequest();
+        // 拿到详情
+        VideoDO resultVideo = videoJpaRepository.getOne(bizRequest.getVideoId());
+        if (null != resultVideo) {
+            ClientVideoDTO videoDto = CachedBeanCopier.copyConvert(resultVideo,ClientVideoDTO.class);
+            // MongoDB 信息
+            VideoModel videoModel = videoMongoRepositoryImpl.find(resultVideo.getVideoObjectId());
+            if (null != videoModel) {
+
+
+
+
+            }
+        }
+        LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
         return APIResponse.instance(null);
     }
 }

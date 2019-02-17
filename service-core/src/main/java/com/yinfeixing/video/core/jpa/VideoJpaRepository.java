@@ -1,11 +1,9 @@
 package com.yinfeixing.video.core.jpa;
 
 import com.yinfeixing.video.dataobject.video.VideoDO;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
 
