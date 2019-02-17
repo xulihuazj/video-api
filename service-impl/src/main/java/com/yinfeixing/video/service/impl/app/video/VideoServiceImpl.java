@@ -34,10 +34,12 @@ public class VideoServiceImpl implements VideoService {
     private VideoMongoRepository videoMongoRepositoryImpl;
     @Resource
     private BaseMongoRepository baseMongoRepositoryImpl;
-//    @Resource
+    //    @Resource
 //    private VideoJpaRepository videoJpaRepository;
     @Resource
     private VideoDOMapper videoDOMapper;
+
+    private VideoModel videoModel;
 
     @Override
     public APIResponse<ClientVideoListResponse> videoList(APIRequest<ClientVideoListRequest> request) {
@@ -59,8 +61,10 @@ public class VideoServiceImpl implements VideoService {
         if (null != resultVideo) {
             videoDto = CachedBeanCopier.copyConvert(resultVideo, ClientVideoDTO.class);
             // MongoDB 信息
-            VideoModel videoModel = videoMongoRepositoryImpl.find(resultVideo.getVideoObjectId());
+            this.videoModel  = videoMongoRepositoryImpl.findVideoByVideoName(resultVideo.getVideoName());
+//            this.videoModel = videoMongoRepositoryImpl.find(resultVideo.getVideoObjectId());
             if (null != videoModel) {
+                LogHelper.info(logger, "【客户端】【视频详情】，MongoDB响应值={0}", videoModel);
                 videoDto.setSummary(videoModel.getSummary());
                 videoDto.setDescribe(videoModel.getDescribe());
                 LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);

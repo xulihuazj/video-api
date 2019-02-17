@@ -14,6 +14,8 @@ public interface VideoMongoRepository extends BaseMongoRepository<VideoModel> {
      */
     VideoModel findVideoByVideoName(String videoName);
 
+    VideoModel findVideoByObjectId(String objectId);
+
     /**
      * 更新视频信息
      *
