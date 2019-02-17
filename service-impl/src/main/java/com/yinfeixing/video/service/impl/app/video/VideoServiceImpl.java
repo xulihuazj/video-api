@@ -2,12 +2,16 @@ package com.yinfeixing.video.service.impl.app.video;
 
 import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
+import com.yinfeiixng.video.model.mongo.VideoPerformerModel;
 import com.yinfeixing.utils.convert.CachedBeanCopier;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.BaseMongoRepository;
+import com.yinfeixing.video.core.video.PerformMongoRepository;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
 import com.yinfeixing.video.dataobject.video.VideoDO;
 import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
+import com.yinfeixing.video.dto.video.VideoDownloadDTO;
+import com.yinfeixing.video.dto.video.VideoPerformerDTO;
 import com.yinfeixing.video.repository.video.VideoDOMapper;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
@@ -16,14 +20,18 @@ import com.yinfeixing.video.response.APIResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoDetailResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 import com.yinfeixing.video.service.app.video.VideoService;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -33,18 +41,18 @@ public class VideoServiceImpl implements VideoService {
     @Resource
     private VideoMongoRepository videoMongoRepositoryImpl;
     @Resource
-    private BaseMongoRepository baseMongoRepositoryImpl;
+    private PerformMongoRepository performMongoRepositoryImpl;
     //    @Resource
 //    private VideoJpaRepository videoJpaRepository;
     @Resource
     private VideoDOMapper videoDOMapper;
 
-    private VideoModel videoModel;
-
     @Override
     public APIResponse<ClientVideoListResponse> videoList(APIRequest<ClientVideoListRequest> request) {
         LogHelper.info(logger, "【客户端】【视频列表】，请求参数={0}", request);
         ClientVideoListRequest bizRequest = request.getBizRequest();
+        List<VideoModel> videoModelList = videoMongoRepositoryImpl.findAll();
+        LogHelper.info(logger, "【客户端】【视频列表】，videoModelList={0}", videoModelList);
 
 
         return APIResponse.instance(new ClientVideoListResponse());
@@ -61,14 +69,18 @@ public class VideoServiceImpl implements VideoService {
         if (null != resultVideo) {
             videoDto = CachedBeanCopier.copyConvert(resultVideo, ClientVideoDTO.class);
             // MongoDB 信息
-            this.videoModel  = videoMongoRepositoryImpl.findVideoByVideoName(resultVideo.getVideoName());
+            VideoModel videoModel = videoMongoRepositoryImpl.findVideoByVideoName(resultVideo.getVideoName());
 //            this.videoModel = videoMongoRepositoryImpl.find(resultVideo.getVideoObjectId());
             if (null != videoModel) {
                 LogHelper.info(logger, "【客户端】【视频详情】，MongoDB响应值={0}", videoModel);
                 videoDto.setSummary(videoModel.getSummary());
                 videoDto.setDescribe(videoModel.getDescribe());
                 LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
-
+            }
+            List<VideoPerformerModel> performerModelList = performMongoRepositoryImpl.findPerformerByVideoId(resultVideo.getVideoId());
+            if (CollectionUtils.isNotEmpty(performerModelList)) {
+                List<String> performerList = performerModelList.stream().map(VideoPerformerModel::getPerformerName).collect(toList());
+                videoDto.setVideoPerformerList(performerList);
             }
             LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
         }

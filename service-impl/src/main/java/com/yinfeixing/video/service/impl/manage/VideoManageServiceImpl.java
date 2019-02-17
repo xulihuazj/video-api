@@ -38,14 +38,14 @@ public class VideoManageServiceImpl implements VideoManageService {
         VideoModel video = videoMongoRepositoryImpl.findVideoByVideoName("流浪地球");
         LogHelper.info(logger, "【客户端】【视频更新】，model={0}", video);
         VideoImageModel imageModel1 = new VideoImageModel() {{
-            setVideoId(2L);
-            setVideoImageId(1L);
+            setVideoId(3L);
+            setVideoImageId(3L);
             setVideoImageUrl("http://img1.52mamahome.com//hotel/8577905884221666.jpg");
             setVideoImageStatus("EFFECTIVE");
         }};
         VideoImageModel imageModel2 = new VideoImageModel() {{
-            setVideoId(2L);
-            setVideoImageId(2L);
+            setVideoId(3L);
+            setVideoImageId(4L);
             setVideoImageUrl("http://img1.52mamahome.com//hotel/620811780848501.jpg");
             setVideoImageStatus("EFFECTIVE");
         }};
@@ -55,20 +55,20 @@ public class VideoManageServiceImpl implements VideoManageService {
                 imageModel1, imageModel2
         );
         VideoPerformerModel performerModel = new VideoPerformerModel() {{
-            setVideoId(2L);
-            setPerformerName("怀亚特·罗素");
+            setVideoId(3L);
+            setPerformerName("威廉·达福");
         }};
         VideoPerformerModel performerMode2 = new VideoPerformerModel() {{
-            setVideoId(2L);
-            setPerformerName("皮鲁·埃斯贝克");
+            setVideoId(3L);
+            setPerformerName("帕特里克·威尔森");
         }};
         VideoPerformerModel performerMode3 = new VideoPerformerModel() {{
-            setVideoId(2L);
-            setPerformerName("约翰·艾德坡");
+            setVideoId(3L);
+            setPerformerName("杰森·莫玛");
         }};
         VideoPerformerModel performerMode4 = new VideoPerformerModel() {{
-            setVideoId(2L);
-            setPerformerName("马蒂尔德·奥利维耶");
+            setVideoId(3L);
+            setPerformerName("艾梅柏·希尔德");
         }};
         baseMongoRepositoryImpl.save(performerModel);
         baseMongoRepositoryImpl.save(performerMode2);
@@ -78,18 +78,18 @@ public class VideoManageServiceImpl implements VideoManageService {
                 performerModel, performerMode2, performerMode3, performerMode4
         );
         VideoAliasModel videoAliasModel = new VideoAliasModel() {{
-            setVideoId(2L);
-            setAliasName("大君主之役(港)");
+            setVideoId(3L);
+            setAliasName("水行侠(港/台)");
             setAliasStatus("EFFECTIVE");
         }};
         VideoAliasModel videoAliasMode2 = new VideoAliasModel() {{
-            setVideoId(2L);
-            setAliasName("霸王行动");
+            setVideoId(3L);
+            setAliasName("潜水侠");
             setAliasStatus("EFFECTIVE");
         }};
         VideoAliasModel videoAliasMode3 = new VideoAliasModel() {{
-            setVideoId(2L);
-            setAliasName("大君主行动");
+            setVideoId(3L);
+            setAliasName("Aquaman");
             setAliasStatus("EFFECTIVE");
         }};
         baseMongoRepositoryImpl.save(videoAliasModel);
@@ -99,14 +99,13 @@ public class VideoManageServiceImpl implements VideoManageService {
                 videoAliasModel, videoAliasMode2, videoAliasMode3
         );
         VideoModel model = new VideoModel();
-        model.setVideoId(2L);
-        model.setVideoName("流浪地球2222");
-        model.setSummary("出乎意料的B級片！狂暴B级血浆+年度A级体验 ");
-        model.setDescribe("被称为“中国第一部真正的科幻电影”，《流浪地球》的成功被赋予了“划时代”的意义，" +
-                "也吸引了许多曾经对“科幻片”这个标签不感兴趣的观众走进了电影院。" +
-                "《人民日报》点评该片称：“文学艺术离不开生长的土壤，科幻电影也不例外。" +
-                "科技的迅速发展，为科幻文学和科幻电影发展提供了沃土。" +
-                "影片的成功反映的是电影工业乃至国家的综合实力。”");
+        model.setVideoId(3L);
+        model.setVideoName("海王");
+        model.setSummary("爆炸和战斗，是一门艺术。暂更新至韩版硬字幕");
+        model.setDescribe("华纳兄弟影片公司与导演温子仁联手为您呈现波澜壮阔的动作冒险电影——《海王》！" +
+                "横跨七大洋的广阔海底世界徐徐展开，给观众带来震撼十足的视觉奇观。本片由杰森·莫玛领衔主演，" +
+                "讲述半人半亚特兰蒂斯血统的亚瑟·库瑞踏上永生难忘的征途——他不但需要直面自己的特殊身世，" +
+                "更不得不面对生而为王的考验：自己究竟能否配得上“海王”之名。");
         model.setVideoImageList(videoImageModelList);
         model.setVideoPerformerList(videoPerformerModelList);
         model.setVideoAliasList(videoAliasList);
