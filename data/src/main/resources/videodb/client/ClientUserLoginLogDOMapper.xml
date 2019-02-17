@@ -129,7 +129,7 @@
     </where>
   </select>
 
-  <update id="updateByTokenAndAgentSelective" parameterType="com.yinfeixing.entity.dataobject.pmsdb.user.UserLoginCretificateDO" >
+  <update id="updateByTokenAndAgentSelective" parameterType="com.yinfeixing.video.dataobject.client.ClientUserLoginLogDO" >
     update client_user_login_log
     <set >
       <if test="userId != null" >

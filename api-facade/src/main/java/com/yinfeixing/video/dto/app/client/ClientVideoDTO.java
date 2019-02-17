@@ -14,6 +14,7 @@ public class ClientVideoDTO extends VideoDTO {
     // 年代
     private Integer videoYear;
 
+    // 上映时间及地区
     private List<VideoReleaseDTO> videoReleaseList;
 
     // 视频别名

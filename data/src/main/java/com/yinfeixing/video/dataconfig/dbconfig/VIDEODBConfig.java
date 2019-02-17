@@ -24,7 +24,7 @@ import java.util.Properties;
 @MapperScan(basePackages = {Config.VIDEODB_PACKAGE}, annotationClass = VIDEODB.class, sqlSessionFactoryRef = "pmsdbSqlSessionFactory")
 public class VIDEODBConfig {
 
-    static final String PMSMAPPER_LOCATION = "classpath*:video/*/*.xml";
+    static final String PMSMAPPER_LOCATION = "classpath*:videodb/*/*.xml";
 
     @Bean(name = "pmsdbDataSource")
     @Primary
