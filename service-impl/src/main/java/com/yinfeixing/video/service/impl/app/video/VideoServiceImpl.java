@@ -79,18 +79,22 @@ public class VideoServiceImpl implements VideoService {
         ClientVideoDetailRequest bizRequest = request.getBizRequest();
         // 拿到详情
         VideoDO resultVideo = videoJpaRepository.getOne(bizRequest.getVideoId());
+        ClientVideoDTO videoDto = null;
         if (null != resultVideo) {
-            ClientVideoDTO videoDto = CachedBeanCopier.copyConvert(resultVideo,ClientVideoDTO.class);
+            videoDto = CachedBeanCopier.copyConvert(resultVideo, ClientVideoDTO.class);
             // MongoDB 信息
             VideoModel videoModel = videoMongoRepositoryImpl.find(resultVideo.getVideoObjectId());
             if (null != videoModel) {
-
-
-
+                videoDto.setSummary(videoModel.getSummary());
+                videoDto.setDescribe(videoModel.getDescribe());
+                LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
 
             }
+            LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
         }
-        LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
-        return APIResponse.instance(null);
+        ClientVideoDTO finalVideoDto = videoDto;
+        return APIResponse.instance(new ClientVideoDetailResponse() {{
+            setClientVideo(null != finalVideoDto ? finalVideoDto : new ClientVideoDTO());
+        }});
     }
 }

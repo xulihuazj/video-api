@@ -1,4 +1,4 @@
-package com.yinfeixing.video.dto.app.client;
+package com.yinfeixing.video.dto.video;
 
 import com.yinfeixing.entity.ToString;
 

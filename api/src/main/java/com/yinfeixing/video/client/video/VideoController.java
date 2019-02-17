@@ -35,7 +35,12 @@ public class VideoController extends BaseController {
         super.success(videoServiceImpl.videoList(apiRequest), httpRequest, httpResponse);
     }
 
-
+    /**
+     * 视频详情
+     * @param httpRequest
+     * @param httpResponse
+     * @throws Exception
+     */
     @GetMapping("/detail")
     @SystemType
     public void videoDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
