@@ -13,6 +13,8 @@ public class VideoDO extends DOBaseEntity {
 
     private String videoType;
 
+    private Integer downloadSum;
+
     private Integer playSum;
 
     private Integer commentSum;
@@ -38,7 +40,7 @@ public class VideoDO extends DOBaseEntity {
     }
 
     public void setVideoName(String videoName) {
-        this.videoName = videoName == null ? null : videoName.trim();
+        this.videoName = videoName;
     }
 
     public String getVideoObjectId() {
@@ -46,7 +48,7 @@ public class VideoDO extends DOBaseEntity {
     }
 
     public void setVideoObjectId(String videoObjectId) {
-        this.videoObjectId = videoObjectId == null ? null : videoObjectId.trim();
+        this.videoObjectId = videoObjectId;
     }
 
     public Long getVideoUpOfUser() {
@@ -62,7 +64,15 @@ public class VideoDO extends DOBaseEntity {
     }
 
     public void setVideoType(String videoType) {
-        this.videoType = videoType == null ? null : videoType.trim();
+        this.videoType = videoType;
+    }
+
+    public Integer getDownloadSum() {
+        return downloadSum;
+    }
+
+    public void setDownloadSum(Integer downloadSum) {
+        this.downloadSum = downloadSum;
     }
 
     public Integer getPlaySum() {

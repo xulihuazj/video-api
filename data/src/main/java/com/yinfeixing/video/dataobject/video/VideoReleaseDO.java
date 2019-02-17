@@ -1,6 +1,7 @@
 package com.yinfeixing.video.dataobject.video;
 
 import com.yinfeixing.entity.DOBaseEntity;
+
 import java.util.Date;
 
 public class VideoReleaseDO extends DOBaseEntity {

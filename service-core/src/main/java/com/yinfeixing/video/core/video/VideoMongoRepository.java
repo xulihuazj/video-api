@@ -2,7 +2,6 @@ package com.yinfeixing.video.core.video;
 
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.video.core.BaseMongoRepository;
-import org.springframework.data.repository.NoRepositoryBean;
 
 public interface VideoMongoRepository extends BaseMongoRepository<VideoModel> {
 

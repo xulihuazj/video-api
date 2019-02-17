@@ -1,6 +1,5 @@
 package com.yinfeixing.video.dataobject.client;
 
-import com.yinfeixing.entity.DOBaseEntity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;

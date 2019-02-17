@@ -11,7 +11,6 @@ import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.response.APIResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
-import com.yinfeixing.video.service.impl.app.video.VideoServiceImpl;
 import com.yinfeixing.video.service.manage.VideoManageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

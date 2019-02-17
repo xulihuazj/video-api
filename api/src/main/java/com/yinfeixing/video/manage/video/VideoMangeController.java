@@ -1,14 +1,11 @@
 package com.yinfeixing.video.manage.video;
 
 import com.yinfeixing.utils.validate.Add;
-import com.yinfeixing.utils.validate.Query;
 import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
-import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.service.manage.VideoManageService;
 import com.yinfeixing.video.system.SystemType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

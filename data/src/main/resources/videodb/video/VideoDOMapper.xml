@@ -1,200 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yinfeixing.video.repository.video.VideoDOMapper">
-  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.video.VideoDO">
-    <id column="video_id" jdbcType="BIGINT" property="videoId" />
-    <result column="video_name" jdbcType="VARCHAR" property="videoName" />
-    <result column="video_object_id" jdbcType="VARCHAR" property="videoObjectId" />
-    <result column="video_up_of_user" jdbcType="BIGINT" property="videoUpOfUser" />
-    <result column="video_type" jdbcType="VARCHAR" property="videoType" />
-    <result column="play_sum" jdbcType="INTEGER" property="playSum" />
-    <result column="comment_sum" jdbcType="INTEGER" property="commentSum" />
-    <result column="collect_sum" jdbcType="INTEGER" property="collectSum" />
-    <result column="support_sum" jdbcType="INTEGER" property="supportSum" />
-    <result column="oppose_sum" jdbcType="INTEGER" property="opposeSum" />
-    <result column="video_length" jdbcType="INTEGER" property="videoLength" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
-    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    video_id, video_name, video_object_id, video_up_of_user, video_type, play_sum, comment_sum, 
+    <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.video.VideoDO">
+        <id column="video_id" jdbcType="BIGINT" property="videoId"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="video_object_id" jdbcType="VARCHAR" property="videoObjectId"/>
+        <result column="video_up_of_user" jdbcType="BIGINT" property="videoUpOfUser"/>
+        <result column="video_type" jdbcType="VARCHAR" property="videoType"/>
+        <result column="download_sum" jdbcType="INTEGER" property="downloadSum"/>
+        <result column="play_sum" jdbcType="INTEGER" property="playSum"/>
+        <result column="comment_sum" jdbcType="INTEGER" property="commentSum"/>
+        <result column="collect_sum" jdbcType="INTEGER" property="collectSum"/>
+        <result column="support_sum" jdbcType="INTEGER" property="supportSum"/>
+        <result column="oppose_sum" jdbcType="INTEGER" property="opposeSum"/>
+        <result column="video_length" jdbcType="INTEGER" property="videoLength"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime"/>
+        <result column="ext_info" jdbcType="VARCHAR" property="extInfo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    video_id, video_name, video_object_id, video_up_of_user, video_type, download_sum, play_sum, comment_sum,
     collect_sum, support_sum, oppose_sum, video_length, create_time, last_modify_time, 
     ext_info
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from video_info
-    where video_id = #{videoId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video_info
+        where video_id = #{videoId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from video_info
     where video_id = #{videoId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.video.VideoDO">
-    insert into video_info (video_id, video_name, video_object_id, 
-      video_up_of_user, video_type, play_sum, 
-      comment_sum, collect_sum, support_sum, 
-      oppose_sum, video_length, create_time, 
-      last_modify_time, ext_info)
-    values (#{videoId,jdbcType=BIGINT}, #{videoName,jdbcType=VARCHAR}, #{videoObjectId,jdbcType=VARCHAR}, 
-      #{videoUpOfUser,jdbcType=BIGINT}, #{videoType,jdbcType=VARCHAR}, #{playSum,jdbcType=INTEGER}, 
-      #{commentSum,jdbcType=INTEGER}, #{collectSum,jdbcType=INTEGER}, #{supportSum,jdbcType=INTEGER}, 
-      #{opposeSum,jdbcType=INTEGER}, #{videoLength,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{lastModifyTime,jdbcType=TIMESTAMP}, #{extInfo,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.video.VideoDO">
-    insert into video_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="videoId != null">
-        video_id,
-      </if>
-      <if test="videoName != null">
-        video_name,
-      </if>
-      <if test="videoObjectId != null">
-        video_object_id,
-      </if>
-      <if test="videoUpOfUser != null">
-        video_up_of_user,
-      </if>
-      <if test="videoType != null">
-        video_type,
-      </if>
-      <if test="playSum != null">
-        play_sum,
-      </if>
-      <if test="commentSum != null">
-        comment_sum,
-      </if>
-      <if test="collectSum != null">
-        collect_sum,
-      </if>
-      <if test="supportSum != null">
-        support_sum,
-      </if>
-      <if test="opposeSum != null">
-        oppose_sum,
-      </if>
-      <if test="videoLength != null">
-        video_length,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="lastModifyTime != null">
-        last_modify_time,
-      </if>
-      <if test="extInfo != null">
-        ext_info,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="videoId != null">
-        #{videoId,jdbcType=BIGINT},
-      </if>
-      <if test="videoName != null">
-        #{videoName,jdbcType=VARCHAR},
-      </if>
-      <if test="videoObjectId != null">
-        #{videoObjectId,jdbcType=VARCHAR},
-      </if>
-      <if test="videoUpOfUser != null">
-        #{videoUpOfUser,jdbcType=BIGINT},
-      </if>
-      <if test="videoType != null">
-        #{videoType,jdbcType=VARCHAR},
-      </if>
-      <if test="playSum != null">
-        #{playSum,jdbcType=INTEGER},
-      </if>
-      <if test="commentSum != null">
-        #{commentSum,jdbcType=INTEGER},
-      </if>
-      <if test="collectSum != null">
-        #{collectSum,jdbcType=INTEGER},
-      </if>
-      <if test="supportSum != null">
-        #{supportSum,jdbcType=INTEGER},
-      </if>
-      <if test="opposeSum != null">
-        #{opposeSum,jdbcType=INTEGER},
-      </if>
-      <if test="videoLength != null">
-        #{videoLength,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModifyTime != null">
-        #{lastModifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="extInfo != null">
-        #{extInfo,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.video.VideoDO">
-    update video_info
-    <set>
-      <if test="videoName != null">
-        video_name = #{videoName,jdbcType=VARCHAR},
-      </if>
-      <if test="videoObjectId != null">
-        video_object_id = #{videoObjectId,jdbcType=VARCHAR},
-      </if>
-      <if test="videoUpOfUser != null">
-        video_up_of_user = #{videoUpOfUser,jdbcType=BIGINT},
-      </if>
-      <if test="videoType != null">
-        video_type = #{videoType,jdbcType=VARCHAR},
-      </if>
-      <if test="playSum != null">
-        play_sum = #{playSum,jdbcType=INTEGER},
-      </if>
-      <if test="commentSum != null">
-        comment_sum = #{commentSum,jdbcType=INTEGER},
-      </if>
-      <if test="collectSum != null">
-        collect_sum = #{collectSum,jdbcType=INTEGER},
-      </if>
-      <if test="supportSum != null">
-        support_sum = #{supportSum,jdbcType=INTEGER},
-      </if>
-      <if test="opposeSum != null">
-        oppose_sum = #{opposeSum,jdbcType=INTEGER},
-      </if>
-      <if test="videoLength != null">
-        video_length = #{videoLength,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModifyTime != null">
-        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="extInfo != null">
-        ext_info = #{extInfo,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where video_id = #{videoId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.video.VideoDO">
-    update video_info
-    set video_name = #{videoName,jdbcType=VARCHAR},
-      video_object_id = #{videoObjectId,jdbcType=VARCHAR},
-      video_up_of_user = #{videoUpOfUser,jdbcType=BIGINT},
-      video_type = #{videoType,jdbcType=VARCHAR},
-      play_sum = #{playSum,jdbcType=INTEGER},
-      comment_sum = #{commentSum,jdbcType=INTEGER},
-      collect_sum = #{collectSum,jdbcType=INTEGER},
-      support_sum = #{supportSum,jdbcType=INTEGER},
-      oppose_sum = #{opposeSum,jdbcType=INTEGER},
-      video_length = #{videoLength,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
-      ext_info = #{extInfo,jdbcType=VARCHAR}
-    where video_id = #{videoId,jdbcType=BIGINT}
-  </update>
+
+    <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.video.VideoDO">
+        insert into video_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="videoId != null">
+                video_id,
+            </if>
+            <if test="videoName != null">
+                video_name,
+            </if>
+            <if test="videoObjectId != null">
+                video_object_id,
+            </if>
+            <if test="videoUpOfUser != null">
+                video_up_of_user,
+            </if>
+            <if test="videoType != null">
+                video_type,
+            </if>
+            <if test="downloadSum != null">
+                download_sum,
+            </if>
+            <if test="playSum != null">
+                play_sum,
+            </if>
+            <if test="commentSum != null">
+                comment_sum,
+            </if>
+            <if test="collectSum != null">
+                collect_sum,
+            </if>
+            <if test="supportSum != null">
+                support_sum,
+            </if>
+            <if test="opposeSum != null">
+                oppose_sum,
+            </if>
+            <if test="videoLength != null">
+                video_length,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="lastModifyTime != null">
+                last_modify_time,
+            </if>
+            <if test="extInfo != null">
+                ext_info,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="videoId != null">
+                #{videoId,jdbcType=BIGINT},
+            </if>
+            <if test="videoName != null">
+                #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoObjectId != null">
+                #{videoObjectId,jdbcType=VARCHAR},
+            </if>
+            <if test="videoUpOfUser != null">
+                #{videoUpOfUser,jdbcType=BIGINT},
+            </if>
+            <if test="videoType != null">
+                #{videoType,jdbcType=VARCHAR},
+            </if>
+            <if test="downloadSum != null">
+                #{downloadSum,jdbcType=INTEGER},
+            </if>
+            <if test="playSum != null">
+                #{playSum,jdbcType=INTEGER},
+            </if>
+            <if test="commentSum != null">
+                #{commentSum,jdbcType=INTEGER},
+            </if>
+            <if test="collectSum != null">
+                #{collectSum,jdbcType=INTEGER},
+            </if>
+            <if test="supportSum != null">
+                #{supportSum,jdbcType=INTEGER},
+            </if>
+            <if test="opposeSum != null">
+                #{opposeSum,jdbcType=INTEGER},
+            </if>
+            <if test="videoLength != null">
+                #{videoLength,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModifyTime != null">
+                #{lastModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="extInfo != null">
+                #{extInfo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.video.VideoDO">
+        update video_info
+        <set>
+            <if test="videoName != null">
+                video_name = #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoObjectId != null">
+                video_object_id = #{videoObjectId,jdbcType=VARCHAR},
+            </if>
+            <if test="videoUpOfUser != null">
+                video_up_of_user = #{videoUpOfUser,jdbcType=BIGINT},
+            </if>
+            <if test="videoType != null">
+                video_type = #{videoType,jdbcType=VARCHAR},
+            </if>
+            <if test="downloadSum != null">
+                download_sum = #{downloadSum,jdbcType=INTEGER},
+            </if>
+            <if test="playSum != null">
+                play_sum = #{playSum,jdbcType=INTEGER},
+            </if>
+            <if test="commentSum != null">
+                comment_sum = #{commentSum,jdbcType=INTEGER},
+            </if>
+            <if test="collectSum != null">
+                collect_sum = #{collectSum,jdbcType=INTEGER},
+            </if>
+            <if test="supportSum != null">
+                support_sum = #{supportSum,jdbcType=INTEGER},
+            </if>
+            <if test="opposeSum != null">
+                oppose_sum = #{opposeSum,jdbcType=INTEGER},
+            </if>
+            <if test="videoLength != null">
+                video_length = #{videoLength,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModifyTime != null">
+                last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="extInfo != null">
+                ext_info = #{extInfo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where video_id = #{videoId,jdbcType=BIGINT}
+    </update>
+
 </mapper>

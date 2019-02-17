@@ -1,17 +1,13 @@
 package com.yinfeixing.video.service.impl.app.video;
 
-import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeiixng.video.model.mongo.VideoPerformerModel;
 import com.yinfeixing.utils.convert.CachedBeanCopier;
 import com.yinfeixing.utils.log.LogHelper;
-import com.yinfeixing.video.core.BaseMongoRepository;
 import com.yinfeixing.video.core.video.PerformMongoRepository;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
 import com.yinfeixing.video.dataobject.video.VideoDO;
 import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
-import com.yinfeixing.video.dto.video.VideoDownloadDTO;
-import com.yinfeixing.video.dto.video.VideoPerformerDTO;
 import com.yinfeixing.video.repository.video.VideoDOMapper;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
@@ -23,12 +19,10 @@ import com.yinfeixing.video.service.app.video.VideoService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
