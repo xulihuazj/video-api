@@ -1,5 +1,6 @@
 package com.yinfeixing.video.service.impl.manage;
 
+import com.yinfeiixng.video.model.mongo.VideoAliasModel;
 import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeiixng.video.model.mongo.VideoPerformerModel;
@@ -69,8 +70,33 @@ public class VideoManageServiceImpl implements VideoManageService {
             setVideoId(2L);
             setPerformerName("马蒂尔德·奥利维耶");
         }};
+        baseMongoRepositoryImpl.save(performerModel);
+        baseMongoRepositoryImpl.save(performerMode2);
+        baseMongoRepositoryImpl.save(performerMode3);
+        baseMongoRepositoryImpl.save(performerMode4);
         List<VideoPerformerModel> videoPerformerModelList = Arrays.asList(
                 performerModel, performerMode2, performerMode3, performerMode4
+        );
+        VideoAliasModel videoAliasModel = new VideoAliasModel() {{
+            setVideoId(2L);
+            setAliasName("大君主之役(港)");
+            setAliasStatus("EFFECTIVE");
+        }};
+        VideoAliasModel videoAliasMode2 = new VideoAliasModel() {{
+            setVideoId(2L);
+            setAliasName("霸王行动");
+            setAliasStatus("EFFECTIVE");
+        }};
+        VideoAliasModel videoAliasMode3 = new VideoAliasModel() {{
+            setVideoId(2L);
+            setAliasName("大君主行动");
+            setAliasStatus("EFFECTIVE");
+        }};
+        baseMongoRepositoryImpl.save(videoAliasModel);
+        baseMongoRepositoryImpl.save(videoAliasMode2);
+        baseMongoRepositoryImpl.save(videoAliasMode3);
+        List<VideoAliasModel> videoAliasList = Arrays.asList(
+                videoAliasModel, videoAliasMode2, videoAliasMode3
         );
         VideoModel model = new VideoModel();
         model.setVideoId(2L);
@@ -83,6 +109,7 @@ public class VideoManageServiceImpl implements VideoManageService {
                 "影片的成功反映的是电影工业乃至国家的综合实力。”");
         model.setVideoImageList(videoImageModelList);
         model.setVideoPerformerList(videoPerformerModelList);
+        model.setVideoAliasList(videoAliasList);
         videoMongoRepositoryImpl.save(model);
         return APIResponse.instance(new ClientVideoListResponse());
     }

@@ -27,21 +27,17 @@ public class VideoModel extends ToString {
     @Id//主键，不可重复，自带索引，可以在定义的列名上标注，需要自己生成并维护不重复的约束。
     private String id;
 
-    @Field(value = "video_id")
+    @Field(value = "video_info_video_id")
     //声明该字段需要加索引，加索引后以该字段为条件检索将大大提高速度
     //唯一索引的话是@Indexed(unique = true)
     //@CompoundIndex：复合索引，加复合索引后通过复合索引字段查询将大大提高速度
-    @Indexed(name = "idx_video_id", unique = true, direction = IndexDirection.ASCENDING)
+    @Indexed(name = "video_info_idx_video_id", unique = true, direction = IndexDirection.ASCENDING)
     private Long videoId;
 
     // @Field：代表一个字段，可以不加，不加的话默认以参数名为列名
     @Field(value = "video_name")
-    @Indexed(name = "idx_video_name", direction = IndexDirection.ASCENDING)
+    @Indexed(name = "video_info_idx_video_name", direction = IndexDirection.ASCENDING)
     private String videoName;
-
-    // 视频别名
-    @Field(value = "video_alias")
-    private String videoAliasJson;
 
     // 演员表
     @DBRef
@@ -65,6 +61,11 @@ public class VideoModel extends ToString {
     @Field(value = "video_image_list")
     private List<VideoImageModel> videoImageList;
 
+    // 视频别名
+    @DBRef
+    @Field(value = "video_alias_list")
+    private List<VideoAliasModel> videoAliasList;
+
     public String getId() {
         return id;
     }
@@ -87,14 +88,6 @@ public class VideoModel extends ToString {
 
     public void setVideoName(String videoName) {
         this.videoName = videoName;
-    }
-
-    public String getVideoAliasJson() {
-        return videoAliasJson;
-    }
-
-    public void setVideoAliasJson(String videoAliasJson) {
-        this.videoAliasJson = videoAliasJson;
     }
 
     public List<VideoPerformerModel> getVideoPerformerList() {
@@ -135,5 +128,13 @@ public class VideoModel extends ToString {
 
     public void setVideoImageList(List<VideoImageModel> videoImageList) {
         this.videoImageList = videoImageList;
+    }
+
+    public List<VideoAliasModel> getVideoAliasList() {
+        return videoAliasList;
+    }
+
+    public void setVideoAliasList(List<VideoAliasModel> videoAliasList) {
+        this.videoAliasList = videoAliasList;
     }
 }

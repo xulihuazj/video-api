@@ -17,11 +17,11 @@ public class VideoImageModel extends ToString {
     private String id;
 
     @Field(value = "video_image_id")
-    @Indexed(name = "idx_video_image_id", unique = true, direction = IndexDirection.ASCENDING)
+    @Indexed(name = "video_image_info_idx_video_image_id", unique = true, direction = IndexDirection.ASCENDING)
     private Long videoImageId;
 
     @Field(value = "video_id")
-    @Indexed(name = "idx_video_id")
+    @Indexed(name = "video_image_info_idx_video_id")
     private Long videoId;
 
     // 图片地址
@@ -29,7 +29,7 @@ public class VideoImageModel extends ToString {
     private String videoImageUrl;
 
     @Field(value = "video_image_status")
-    @Indexed(name = "idx_video_image_status")
+    @Indexed(name = "video_image_info_idx_video_image_status")
     private String videoImageStatus;
 
     public String getId() {

@@ -8,23 +8,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
- * 演员
+ * 视频别名
  */
-@Document(collection = "video_performer_info")
-public class VideoPerformerModel extends ToString {
+@Document(collection = "video_alias_info")
+public class VideoAliasModel extends ToString {
 
     @Id
     private String id;
 
     // 视频ID
-    @Indexed(name = "video_performer_info_idx_video_id", direction = IndexDirection.ASCENDING)
+    @Indexed(name = "video_image_info_idx_video_id", direction = IndexDirection.ASCENDING)
     private Long videoId;
 
+    // 别名
+    @Field(value = "alias_name")
+    @Indexed(name = "video_performer_info_idx_alias_name", direction = IndexDirection.ASCENDING)
+    private String aliasName;
 
-    // 演员名称
-    @Field(value = "performer_name")
-    @Indexed(name = "video_performer_info_idx_performer_name", direction = IndexDirection.ASCENDING)
-    private String performerName;
+    // 状态
+    private String aliasStatus;
 
     public String getId() {
         return id;
@@ -42,11 +44,19 @@ public class VideoPerformerModel extends ToString {
         this.videoId = videoId;
     }
 
-    public String getPerformerName() {
-        return performerName;
+    public String getAliasName() {
+        return aliasName;
     }
 
-    public void setPerformerName(String performerName) {
-        this.performerName = performerName;
+    public void setAliasName(String aliasName) {
+        this.aliasName = aliasName;
+    }
+
+    public String getAliasStatus() {
+        return aliasStatus;
+    }
+
+    public void setAliasStatus(String aliasStatus) {
+        this.aliasStatus = aliasStatus;
     }
 }
