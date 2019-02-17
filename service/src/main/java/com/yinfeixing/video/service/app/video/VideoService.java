@@ -9,6 +9,7 @@ import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 
 public interface VideoService {
 
+
     /**
      * 视频列表
      * @param apiRequest

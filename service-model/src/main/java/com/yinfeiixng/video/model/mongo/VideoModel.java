@@ -45,6 +45,7 @@ public class VideoModel extends ToString {
 
     // 演员表
     @DBRef
+    @Field(value = "video_performer_list")
     private List<VideoPerformerModel> videoPerformerList;
 
     // 摘要、简介
@@ -61,6 +62,7 @@ public class VideoModel extends ToString {
 
     //@DBRef：关联另一个document对象。类似于mysql的表关联，但并不一样，mongo不会做级联的操作。
     @DBRef
+    @Field(value = "video_image_list")
     private List<VideoImageModel> videoImageList;
 
     public String getId() {

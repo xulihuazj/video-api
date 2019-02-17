@@ -1,15 +1,15 @@
 package com.yinfeixing.video.core.jpa;
 
-import com.yinfeixing.video.dataobject.client.ClientUserInfoDO;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-
-import java.io.Serializable;
-
 //@Repository
 //@EnableTransactionManagement
-public interface UserJpaRepository extends Serializable,
-        JpaRepository<ClientUserInfoDO, Long>, JpaSpecificationExecutor<ClientUserInfoDO> {
+//public interface UserJpaRepository extends Serializable,
+//        JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
+//
+//
+//
+//}
+
+public interface UserJpaRepository {
 
 
 
