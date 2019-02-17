@@ -83,4 +83,18 @@ public class VideoServiceImpl implements VideoService {
             setClientVideo(null != finalVideoDto ? finalVideoDto : new ClientVideoDTO());
         }});
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public APIResponse<ClientVideoDetailResponse> videoDownloadIncrease(APIRequest<ClientVideoDetailRequest> request) {
+        LogHelper.info(logger, "【客户端】【视频下载计数】，请求参数={0}", request);
+
+
+        ClientVideoDTO finalVideoDto = null;
+        return APIResponse.instance(new ClientVideoDetailResponse() {{
+            setClientVideo(null != finalVideoDto ? finalVideoDto : new ClientVideoDTO());
+        }});
+    }
+
+
 }

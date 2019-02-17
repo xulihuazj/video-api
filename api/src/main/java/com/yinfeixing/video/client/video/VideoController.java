@@ -48,4 +48,18 @@ public class VideoController extends BaseController {
                 httpRequest, Query.class);
         super.success(videoServiceImpl.videoDetail(apiRequest), httpRequest, httpResponse);
     }
+
+    /**
+     * 视频下载计数
+     * @param httpRequest
+     * @param httpResponse
+     * @throws Exception
+     */
+    @GetMapping("/download/increase")
+    @SystemType
+    public void videoDownloadIncrease(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
+        APIRequest<ClientVideoDetailRequest> apiRequest = super.getObjectByRequest(ClientVideoDetailRequest.class,
+                httpRequest, Query.class);
+        super.success(videoServiceImpl.videoDownloadIncrease(apiRequest), httpRequest, httpResponse);
+    }
 }

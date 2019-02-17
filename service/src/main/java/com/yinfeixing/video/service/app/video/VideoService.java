@@ -24,4 +24,11 @@ public interface VideoService {
      */
     APIResponse<ClientVideoDetailResponse> videoDetail(APIRequest<ClientVideoDetailRequest> apiRequest);
 
+
+    /**
+     * 视频下载计数
+     * @param apiRequest
+     * @return
+     */
+    APIResponse<ClientVideoDetailResponse>  videoDownloadIncrease(APIRequest<ClientVideoDetailRequest> apiRequest);
 }
