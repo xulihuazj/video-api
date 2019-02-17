@@ -6,6 +6,7 @@ import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.BaseMongoRepository;
 import com.yinfeixing.video.core.jpa.VideoJpaRepository;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
+import com.yinfeixing.video.dataobject.video.VideoDO;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
@@ -16,6 +17,7 @@ import com.yinfeixing.video.service.app.video.VideoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -69,13 +71,11 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public APIResponse<ClientVideoDetailResponse> videoDetail(APIRequest<ClientVideoDetailRequest> request) {
         LogHelper.info(logger, "【客户端】【视频详情】，请求参数={0}", request);
-//        videoJpaRepository.findOne()
-
-
-
-
+        List<VideoDO> resultVideoList = videoJpaRepository.findAll();
+        LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideoList);
         return APIResponse.instance(null);
     }
 }

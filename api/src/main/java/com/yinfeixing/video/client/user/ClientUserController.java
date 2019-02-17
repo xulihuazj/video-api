@@ -22,9 +22,6 @@ public class ClientUserController extends BaseController {
 
     @Resource
     private ClientUserService clientUserServiceImpl;
-    @Resource
-    private UserJpaRepository userJpaRepository;
-
 
     /**
      * 账号注册
@@ -37,8 +34,6 @@ public class ClientUserController extends BaseController {
     public void clientRegister(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
         APIRequest<ClientRegisterRequest> apiRequest = super.getObjectByRequest(ClientRegisterRequest.class,
                 httpRequest, Add.class);
-//        Optional<ClientUserInfoDO> userOptional = userJpaRepository.findById(1L);
-//        System.out.println(userOptional.isPresent());
         super.success(clientUserServiceImpl.clientRegister(apiRequest), httpRequest, httpResponse);
     }
 

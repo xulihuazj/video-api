@@ -6,6 +6,7 @@ import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.service.app.video.VideoService;
+import com.yinfeixing.video.system.SystemType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +36,8 @@ public class VideoController extends BaseController {
     }
 
 
-    @GetMapping("/list")
+    @GetMapping("/detail")
+    @SystemType
     public void videoDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
         APIRequest<ClientVideoDetailRequest> apiRequest = super.getObjectByRequest(ClientVideoDetailRequest.class,
                 httpRequest, Query.class);

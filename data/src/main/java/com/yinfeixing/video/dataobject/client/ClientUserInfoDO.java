@@ -1,11 +1,15 @@
 package com.yinfeixing.video.dataobject.client;
 
 import com.yinfeixing.entity.DOBaseEntity;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "client_user_info")
+@EntityListeners(AuditingEntityListener.class)
 public class ClientUserInfoDO extends DOBaseEntity {
 
     @Id

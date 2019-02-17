@@ -3,8 +3,11 @@ package com.yinfeixing.video;
 import com.yinfeixing.video.system.SystemType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,12 +16,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class},
+        scanBasePackages ="com.yinfeixing.video")
 @EnableScheduling
 @EnableAsync
+@EnableJpaAuditing
+//@EntityScan(basePackages = "com.yinfeixing.video.core")
 public class ApiApplication {
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/index")
     @SystemType
     public String index() {
         return "Hello,videodb api!";

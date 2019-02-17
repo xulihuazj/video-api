@@ -17,6 +17,10 @@
     <dependencies>
         <dependency>
             <groupId>com.yinfeixing.video</groupId>
+            <artifactId>data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yinfeixing.video</groupId>
             <artifactId>api-facade</artifactId>
         </dependency>
         <dependency>
@@ -54,6 +58,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
         </dependency>
 
         <dependency>
