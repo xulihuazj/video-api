@@ -1,4 +1,4 @@
-package com.yinfeixing.video.client.user;
+package com.yinfeixing.video.api.client.user;
 
 import com.yinfeixing.utils.validate.Add;
 import com.yinfeixing.video.BaseController;

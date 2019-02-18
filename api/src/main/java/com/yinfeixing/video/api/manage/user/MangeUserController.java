@@ -1,4 +1,4 @@
-package com.yinfeixing.video.manage.user;
+package com.yinfeixing.video.api.manage.user;
 
 import com.yinfeixing.video.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.yinfeixing.video.manage.video;
+package com.yinfeixing.video.api.manage.video;
 
 import com.yinfeixing.utils.validate.Add;
 import com.yinfeixing.video.BaseController;
