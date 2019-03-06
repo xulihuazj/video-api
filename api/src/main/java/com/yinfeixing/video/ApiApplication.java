@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class},
-        scanBasePackages ="com.yinfeixing.video")
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableScheduling
 @EnableAsync
-@EnableJpaAuditing
+//@EnableJpaAuditing
 //@EntityScan(basePackages = "com.yinfeixing.video.core")
 public class ApiApplication {
 

@@ -84,6 +84,12 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- 引入 WebFlux 替换Tomcat 提高服务性能 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+            </dependency>
+
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -153,11 +159,11 @@
                 <version>3.2.2</version>
             </dependency>
             <!-- validator -->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>${hibernate.validator}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator}</version>
+            </dependency>
 
             <!-- ElasticJobAutoConfiguration自动配置类作用-->
             <dependency>
@@ -279,19 +285,19 @@
             </dependency>
             <!-- Querydsl -->
             <!--<dependency>-->
-                <!--<groupId>com.querydsl</groupId>-->
-                <!--<artifactId>querydsl-core</artifactId>-->
+            <!--<groupId>com.querydsl</groupId>-->
+            <!--<artifactId>querydsl-core</artifactId>-->
             <!--</dependency>-->
 
             <!--<dependency>-->
-                <!--<groupId>com.querydsl</groupId>-->
-                <!--<artifactId>querydsl-apt</artifactId>-->
-                <!--<scope>provided</scope>-->
+            <!--<groupId>com.querydsl</groupId>-->
+            <!--<artifactId>querydsl-apt</artifactId>-->
+            <!--<scope>provided</scope>-->
             <!--</dependency>-->
 
             <!--<dependency>-->
-                <!--<groupId>com.querydsl</groupId>-->
-                <!--<artifactId>querydsl-jpa</artifactId>-->
+            <!--<groupId>com.querydsl</groupId>-->
+            <!--<artifactId>querydsl-jpa</artifactId>-->
             <!--</dependency>-->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
