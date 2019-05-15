@@ -3,6 +3,8 @@ package com.yinfeixing.video.core.video;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.video.core.BaseMongoRepository;
 
+import java.util.List;
+
 public interface VideoMongoRepository extends BaseMongoRepository<VideoModel> {
 
     /**
@@ -13,6 +15,20 @@ public interface VideoMongoRepository extends BaseMongoRepository<VideoModel> {
      */
     VideoModel findVideoByVideoName(String videoName);
 
+    /**
+     * 模糊查询
+     *
+     * @param videoName
+     * @return
+     */
+    List<VideoModel> findVideoListByName(String videoName);
+
+    /**
+     * 通过ObjectId查询视频
+     *
+     * @param objectId
+     * @return
+     */
     VideoModel findVideoByObjectId(String objectId);
 
     /**

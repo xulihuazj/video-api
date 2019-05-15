@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class VideoMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoModel> implements VideoMongoRepository {
 
@@ -22,6 +24,13 @@ public class VideoMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoModel
         Query query = new Query(Criteria.where("video_name").is(videoName));
         VideoModel model = mongoTemplate.findOne(query, VideoModel.class);
         return model;
+    }
+
+    @Override
+    public List<VideoModel> findVideoListByName(String videoName) {
+        Query query = new Query(Criteria.where("video_name").is(videoName));
+        List<VideoModel> modelList = mongoTemplate.find(query, VideoModel.class);
+        return modelList;
     }
 
     @Override
