@@ -76,7 +76,6 @@ public abstract class BaseMongoRepositoryImpl<T> implements BaseMongoRepository<
     @Override
     public List<T> findAll() {
         Class<T> entityClass = this.getEntityClass();
-        System.out.println(entityClass);
         return this.mongoTemplate.findAll(this.getEntityClass());
     }
 

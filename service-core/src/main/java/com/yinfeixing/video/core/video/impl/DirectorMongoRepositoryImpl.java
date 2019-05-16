@@ -1,7 +1,6 @@
 package com.yinfeixing.video.core.video.impl;
 
 import com.yinfeiixng.video.model.mongo.VideoDirectorModel;
-import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.video.core.BaseMongoRepositoryImpl;
 import com.yinfeixing.video.core.video.DirectorMongoRepository;
 import org.springframework.data.mongodb.core.query.Criteria;

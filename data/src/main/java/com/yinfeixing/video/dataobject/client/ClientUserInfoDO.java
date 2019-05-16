@@ -1,14 +1,11 @@
 package com.yinfeixing.video.dataobject.client;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "client_user_info")
-@EntityListeners(AuditingEntityListener.class)
+//
+//@Entity
+//@Table(name = "client_user_info")
+//@EntityListeners(AuditingEntityListener.class)
 public class ClientUserInfoDO {
-
+/*
     @Id
     @GeneratedValue
     @Column(name = "user_id")
@@ -108,6 +105,6 @@ public class ClientUserInfoDO {
 
     public void setUserStatus(String userStatus) {
         this.userStatus = userStatus == null ? null : userStatus.trim();
-    }
+    }*/
 
 }

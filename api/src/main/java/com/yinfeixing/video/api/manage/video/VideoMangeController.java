@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RestController(value = "VideoMangeController2")
+@RestController
 @RequestMapping("/manage/video")
 public class VideoMangeController extends BaseController {
 

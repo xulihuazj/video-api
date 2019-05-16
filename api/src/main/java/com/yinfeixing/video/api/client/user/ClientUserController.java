@@ -5,7 +5,6 @@ import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.user.ClientRegisterRequest;
 import com.yinfeixing.video.service.app.user.ClientUserService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

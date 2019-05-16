@@ -19,6 +19,8 @@ import com.yinfeixing.video.service.app.video.VideoService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +34,9 @@ public class VideoServiceImpl implements VideoService {
 
     private Logger logger = LogManager.getLogger(VideoServiceImpl.class);
 
-    @Resource
+//    @Resource
+    @Autowired
+    @Qualifier(value = "videoMongoRepositoryImpl")
     private VideoMongoRepository videoMongoRepositoryImpl;
     @Resource
     private PerformMongoRepository performMongoRepositoryImpl;

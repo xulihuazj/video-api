@@ -6,6 +6,8 @@ import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeiixng.video.model.mongo.VideoPerformerModel;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.BaseMongoRepository;
+import com.yinfeixing.video.core.video.ImageMongoRepository;
+import com.yinfeixing.video.core.video.PerformMongoRepository;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
@@ -14,6 +16,8 @@ import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 import com.yinfeixing.video.service.manage.VideoManageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,12 +27,22 @@ import java.util.List;
 @Service
 public class VideoManageServiceImpl implements VideoManageService {
 
-    private Logger logger = LogManager.getLogger(VideoManageServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(VideoManageServiceImpl.class);
 
-    @Resource
+    //    @Resource
+    @Autowired
+    @Qualifier(value = "videoMongoRepositoryImpl")
     private VideoMongoRepository videoMongoRepositoryImpl;
-    @Resource
-    private BaseMongoRepository baseMongoRepositoryImpl;
+    @Autowired
+    @Qualifier(value = "imageMongoRepositoryImpl")
+    private ImageMongoRepository imageMongoRepositoryImpl;
+    @Autowired
+    @Qualifier(value = "performMongoRepositoryImpl")
+    private PerformMongoRepository performMongoRepositoryImpl;
+    //    @Resource
+//    @Autowired
+//    @Qualifier(value = "baseMongoRepositoryImpl")
+//    private BaseMongoRepository baseMongoRepositoryImpl;
 
     @Override
     public APIResponse<ClientVideoListResponse> videoUpdate(APIRequest<ClientVideoListRequest> request) {
@@ -48,8 +62,8 @@ public class VideoManageServiceImpl implements VideoManageService {
             setVideoImageUrl("http://img1.52mamahome.com//hotel/620811780848501.jpg");
             setVideoImageStatus("EFFECTIVE");
         }};
-        baseMongoRepositoryImpl.save(imageModel1);
-        baseMongoRepositoryImpl.save(imageModel2);
+        imageMongoRepositoryImpl.save(imageModel1);
+        imageMongoRepositoryImpl.save(imageModel2);
         List<VideoImageModel> videoImageModelList = Arrays.asList(
                 imageModel1, imageModel2
         );
@@ -69,10 +83,10 @@ public class VideoManageServiceImpl implements VideoManageService {
             setVideoId(3L);
             setPerformerName("艾梅柏·希尔德");
         }};
-        baseMongoRepositoryImpl.save(performerModel);
-        baseMongoRepositoryImpl.save(performerMode2);
-        baseMongoRepositoryImpl.save(performerMode3);
-        baseMongoRepositoryImpl.save(performerMode4);
+        performMongoRepositoryImpl.save(performerModel);
+        performMongoRepositoryImpl.save(performerMode2);
+        performMongoRepositoryImpl.save(performerMode3);
+        performMongoRepositoryImpl.save(performerMode4);
         List<VideoPerformerModel> videoPerformerModelList = Arrays.asList(
                 performerModel, performerMode2, performerMode3, performerMode4
         );
@@ -91,9 +105,9 @@ public class VideoManageServiceImpl implements VideoManageService {
             setAliasName("Aquaman");
             setAliasStatus("EFFECTIVE");
         }};
-        baseMongoRepositoryImpl.save(videoAliasModel);
-        baseMongoRepositoryImpl.save(videoAliasMode2);
-        baseMongoRepositoryImpl.save(videoAliasMode3);
+//        baseMongoRepositoryImpl.save(videoAliasModel);
+//        baseMongoRepositoryImpl.save(videoAliasMode2);
+//        baseMongoRepositoryImpl.save(videoAliasMode3);
         List<VideoAliasModel> videoAliasList = Arrays.asList(
                 videoAliasModel, videoAliasMode2, videoAliasMode3
         );
