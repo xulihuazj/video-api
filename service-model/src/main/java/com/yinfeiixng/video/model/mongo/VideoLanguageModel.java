@@ -6,22 +6,23 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "video_director_info")
-public class VideoDirectorModel extends ToString {
+
+@Document(collection = "video_language_info")
+public class VideoLanguageModel extends ToString {
 
     @Id
     private String id;
 
     @Field(value = "video_id")
-    @Indexed(name = "video_director_info_idx_video_id")
+    @Indexed(name = "video_language_info_idx_video_id")
     private String videoId;
 
     @Field(value = "video_type")
     private String videoType;
 
     // 导演
-    @Field(value = "director_name")
-    private String directorName;
+    @Field(value = "language_name")
+    private String languageName;
 
     public String getId() {
         return id;
@@ -47,11 +48,11 @@ public class VideoDirectorModel extends ToString {
         this.videoType = videoType;
     }
 
-    public String getDirectorName() {
-        return directorName;
+    public String getLanguageName() {
+        return languageName;
     }
 
-    public void setDirectorName(String directorName) {
-        this.directorName = directorName;
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
     }
 }

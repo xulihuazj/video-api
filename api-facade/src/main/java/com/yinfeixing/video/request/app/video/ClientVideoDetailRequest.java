@@ -6,14 +6,18 @@ import javax.validation.constraints.NotNull;
 
 public class ClientVideoDetailRequest extends ToString {
 
-    @NotNull(message = "视频id不为空")
-    private Long videoId;
+    /**
+     * 视频id不为空
+     */
+    @NotNull(message = "视频ID")
+    private String videoId;
 
-    public Long getVideoId() {
+    public String getVideoId() {
         return videoId;
     }
 
-    public void setVideoId(Long videoId) {
+    public void setVideoId(String videoId) {
         this.videoId = videoId;
     }
+
 }

@@ -1,11 +1,11 @@
 package com.yinfeixing.video.core.video;
 
-import com.yinfeiixng.video.model.mongo.VideoDirectorModel;
+import com.yinfeiixng.video.model.mongo.VideoLanguageModel;
 import com.yinfeixing.video.core.BaseMongoRepository;
 
 import java.util.List;
 
-public interface DirectorMongoRepository extends BaseMongoRepository<VideoDirectorModel> {
+public interface LanguageMongoRepository  extends BaseMongoRepository<VideoLanguageModel> {
 
     /**
      * 查询导演信息
@@ -14,6 +14,6 @@ public interface DirectorMongoRepository extends BaseMongoRepository<VideoDirect
      * @param type    类型
      * @return
      */
-    List<VideoDirectorModel> findDirectorByVideoId(String videoId, String type);
+    List<VideoLanguageModel> findLanguageByVideoId(String videoId, String type);
 
 }

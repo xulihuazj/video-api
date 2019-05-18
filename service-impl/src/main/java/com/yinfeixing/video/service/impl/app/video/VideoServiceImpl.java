@@ -1,13 +1,14 @@
 package com.yinfeixing.video.service.impl.app.video;
 
-import com.yinfeiixng.video.model.mongo.VideoModel;
-import com.yinfeiixng.video.model.mongo.VideoPerformerModel;
+import com.yinfeiixng.video.model.PageModel;
+import com.yinfeiixng.video.model.mongo.*;
 import com.yinfeixing.utils.convert.CachedBeanCopier;
 import com.yinfeixing.utils.log.LogHelper;
-import com.yinfeixing.video.core.video.PerformMongoRepository;
-import com.yinfeixing.video.core.video.VideoMongoRepository;
+import com.yinfeixing.video.core.video.*;
 import com.yinfeixing.video.dataobject.video.VideoDO;
 import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
+import com.yinfeixing.video.dto.video.VideoCommentDTO;
+import com.yinfeixing.video.dto.video.VideoDTO;
 import com.yinfeixing.video.repository.video.VideoDOMapper;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
@@ -24,7 +25,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.RegEx;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -34,12 +37,23 @@ public class VideoServiceImpl implements VideoService {
 
     private Logger logger = LogManager.getLogger(VideoServiceImpl.class);
 
-//    @Resource
+    //    @Resource
     @Autowired
     @Qualifier(value = "videoMongoRepositoryImpl")
     private VideoMongoRepository videoMongoRepositoryImpl;
+    @Autowired
+    @Qualifier(value = "movieMongoRepositoryImpl")
+    private MovieMongoRepository movieMongoRepositoryImpl;
+
+
     @Resource
     private PerformMongoRepository performMongoRepositoryImpl;
+    @Resource
+    private DirectorMongoRepository directorMongoRepositoryImpl;
+    @Resource
+    private LanguageMongoRepository languageMongoRepositoryImpl;
+    @Resource
+    private VideoCommentRepository videoCommentRepositoryImpl;
     //    @Resource
 //    private VideoJpaRepository videoJpaRepository;
     @Resource
@@ -49,38 +63,72 @@ public class VideoServiceImpl implements VideoService {
     public APIResponse<ClientVideoListResponse> videoList(APIRequest<ClientVideoListRequest> request) {
         LogHelper.info(logger, "【客户端】【视频列表】，请求参数={0}", request);
         ClientVideoListRequest bizRequest = request.getBizRequest();
-        List<VideoModel> videoModelList = videoMongoRepositoryImpl.findAll();
-        LogHelper.info(logger, "【客户端】【视频列表】，videoModelList={0}", videoModelList);
-
-
-        return APIResponse.instance(new ClientVideoListResponse());
+        PageModel<MovieModel> moviePageModel = movieMongoRepositoryImpl.findMovieBySearchForPage(bizRequest.getPageNum(), bizRequest.getPageSize(), bizRequest.getSearchContent());
+        ClientVideoListResponse bizResponse = new ClientVideoListResponse();
+        if (null != moviePageModel) {
+            bizResponse.setTotal(moviePageModel.getTotalCount());
+            bizResponse.setTotalPage(moviePageModel.getTotalPage());
+            List<MovieModel> result = moviePageModel.getResult();
+            if (CollectionUtils.isNotEmpty(result)) {
+                List<VideoDTO> videoList = new ArrayList<>(result.size());
+                for (MovieModel movie : result) {
+                    videoList.add(new VideoDTO() {{
+                        setVideoObjectId(movie.getId());
+                        setVideoName(movie.getMovieName());
+                        setVideoLength(movie.getMovieLength());
+                    }});
+                }
+                bizResponse.setVideoList(videoList);
+            }
+        }
+        LogHelper.info(logger, "【客户端】【视频列表】，videoModelList={0}", bizResponse);
+        return APIResponse.instance(bizResponse);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public APIResponse<ClientVideoDetailResponse> videoDetail(APIRequest<ClientVideoDetailRequest> request) {
         LogHelper.info(logger, "【客户端】【视频详情】，请求参数={0}", request);
         ClientVideoDetailRequest bizRequest = request.getBizRequest();
-        // 拿到详情
-        VideoDO resultVideo = videoDOMapper.selectByPrimaryKey(bizRequest.getVideoId());
-        ClientVideoDTO videoDto = null;
-        if (null != resultVideo) {
-            videoDto = CachedBeanCopier.copyConvert(resultVideo, ClientVideoDTO.class);
-            // MongoDB 信息
-            VideoModel videoModel = videoMongoRepositoryImpl.findVideoByVideoName(resultVideo.getVideoName());
-//            this.videoModel = videoMongoRepositoryImpl.find(resultVideo.getVideoObjectId());
-            if (null != videoModel) {
-                LogHelper.info(logger, "【客户端】【视频详情】，MongoDB响应值={0}", videoModel);
-                videoDto.setSummary(videoModel.getSummary());
-                videoDto.setDescribe(videoModel.getDescribe());
-                LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
-            }
-            List<VideoPerformerModel> performerModelList = performMongoRepositoryImpl.findPerformerByVideoId(resultVideo.getVideoId());
+        String videoObjectId = bizRequest.getVideoId();
+        MovieModel movieModel = movieMongoRepositoryImpl.find(videoObjectId);
+        ClientVideoDTO videoDto = new ClientVideoDTO();
+        if (null != movieModel) {
+            LogHelper.info(logger, "【客户端】【视频详情】，MongoDB响应值={0}", movieModel);
+            videoDto.setVideoName(movieModel.getMovieName());
+            videoDto.setYearNum(movieModel.getYearNum());
+            videoDto.setVideoResolution(movieModel.getMovieResolution());
+            videoDto.setReleaseTime(movieModel.getReleaseTime());
+            videoDto.setLanguageName(movieModel.getLanguageName());
+            videoDto.setVideoImage(movieModel.getMovieImage());
+            videoDto.setZoneName(movieModel.getZoneName());
+            videoDto.setSummary(movieModel.getSummary());
+            videoDto.setDescribe(movieModel.getDescribe());
+            List<VideoPerformerModel> performerModelList = performMongoRepositoryImpl.findPerformerByVideoId(movieModel.getId(), "MOVIE");
+            // 演员
             if (CollectionUtils.isNotEmpty(performerModelList)) {
                 List<String> performerList = performerModelList.stream().map(VideoPerformerModel::getPerformerName).collect(toList());
                 videoDto.setVideoPerformerList(performerList);
             }
-            LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", resultVideo);
+            List<VideoDirectorModel> videoDirectorList = directorMongoRepositoryImpl.findDirectorByVideoId(movieModel.getId(), "MOVIE");
+            // 导演
+            if (CollectionUtils.isNotEmpty(videoDirectorList)) {
+                List<String> directorList = videoDirectorList.stream().map(VideoDirectorModel::getDirectorName).collect(toList());
+                videoDto.setVideoDirectorList(directorList);
+            }
+            List<VideoLanguageModel> videoLanguageList = languageMongoRepositoryImpl.findLanguageByVideoId(movieModel.getId(), "MOVIE");
+            // 语言
+            if (CollectionUtils.isNotEmpty(videoLanguageList)) {
+                List<String> languageList = videoLanguageList.stream().map(VideoLanguageModel::getLanguageName).collect(toList());
+                videoDto.setVideoLanguageList(languageList);
+            }
+            List<VideoCommentModel> videoCommentList = videoCommentRepositoryImpl.findCommentByVideoId(movieModel.getId(), "MOVIE");
+            // 评论
+            if (CollectionUtils.isNotEmpty(videoCommentList)) {
+                List<VideoCommentDTO> commentList = CachedBeanCopier.copyConvertList(videoCommentList, VideoCommentDTO.class);
+                videoDto.setVideoCommentList(commentList);
+            }
+            LogHelper.info(logger, "【客户端】【视频详情】，响应值={0}", videoDto);
+
         }
         ClientVideoDTO finalVideoDto = videoDto;
         return APIResponse.instance(new ClientVideoDetailResponse() {{

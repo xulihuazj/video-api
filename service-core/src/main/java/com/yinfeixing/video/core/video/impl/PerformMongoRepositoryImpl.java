@@ -18,8 +18,9 @@ public class PerformMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoPer
     }
 
     @Override
-    public List<VideoPerformerModel> findPerformerByVideoId(Long videoId) {
+    public List<VideoPerformerModel> findPerformerByVideoId(String videoId, String type) {
         Query query = new Query(Criteria.where("video_id").is(videoId));
+        query.addCriteria(Criteria.where("video_type").is(type));
         List<VideoPerformerModel> modelList = mongoTemplate.find(query, VideoPerformerModel.class);
         return modelList;
     }

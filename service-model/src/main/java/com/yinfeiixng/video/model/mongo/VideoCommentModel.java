@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "video_director_info")
-public class VideoDirectorModel extends ToString {
+@Document(collection = "video_comment_info")
+public class VideoCommentModel extends ToString {
 
     @Id
     private String id;
@@ -19,9 +19,17 @@ public class VideoDirectorModel extends ToString {
     @Field(value = "video_type")
     private String videoType;
 
-    // 导演
-    @Field(value = "director_name")
-    private String directorName;
+    // 来源
+    @Field(value = "comment_source")
+    private String commentSource;
+
+    // 评分
+    @Field(value = "comment_score")
+    private String commentScore;
+
+    // 连接
+    @Field(value = "comment_score_link")
+    private String commentScoreLink;
 
     public String getId() {
         return id;
@@ -47,11 +55,27 @@ public class VideoDirectorModel extends ToString {
         this.videoType = videoType;
     }
 
-    public String getDirectorName() {
-        return directorName;
+    public String getCommentSource() {
+        return commentSource;
     }
 
-    public void setDirectorName(String directorName) {
-        this.directorName = directorName;
+    public void setCommentSource(String commentSource) {
+        this.commentSource = commentSource;
+    }
+
+    public String getCommentScore() {
+        return commentScore;
+    }
+
+    public void setCommentScore(String commentScore) {
+        this.commentScore = commentScore;
+    }
+
+    public String getCommentScoreLink() {
+        return commentScoreLink;
+    }
+
+    public void setCommentScoreLink(String commentScoreLink) {
+        this.commentScoreLink = commentScoreLink;
     }
 }

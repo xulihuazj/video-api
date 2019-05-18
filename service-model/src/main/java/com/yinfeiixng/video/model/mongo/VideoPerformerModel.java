@@ -20,6 +20,9 @@ public class VideoPerformerModel extends ToString {
     @Indexed(name = "video_performer_info_idx_video_id", direction = IndexDirection.ASCENDING)
     private Long videoId;
 
+    @Field(value = "video_type")
+    private String videoType;
+
 
     // 演员名称
     @Field(value = "performer_name")
@@ -40,6 +43,14 @@ public class VideoPerformerModel extends ToString {
 
     public void setVideoId(Long videoId) {
         this.videoId = videoId;
+    }
+
+    public String getVideoType() {
+        return videoType;
+    }
+
+    public void setVideoType(String videoType) {
+        this.videoType = videoType;
     }
 
     public String getPerformerName() {

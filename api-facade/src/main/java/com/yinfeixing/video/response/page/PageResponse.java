@@ -9,13 +9,24 @@ public class PageResponse extends ToString {
     /**
      *  总条数
      */
-    private Long total;
+    private int total;
 
-    public Long getTotal() {
+    // 总页数
+    private int totalPage;
+
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(int total) {
         this.total = total;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
     }
 }

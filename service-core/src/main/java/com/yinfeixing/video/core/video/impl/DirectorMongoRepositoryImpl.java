@@ -5,9 +5,11 @@ import com.yinfeixing.video.core.BaseMongoRepositoryImpl;
 import com.yinfeixing.video.core.video.DirectorMongoRepository;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class DirectorMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoDirectorModel> implements DirectorMongoRepository {
 
     @Override
@@ -16,8 +18,9 @@ public class DirectorMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoDi
     }
 
     @Override
-    public List<VideoDirectorModel> findDirectorByVideoId(Long videoId) {
-        Query query = new Query(Criteria.where("videoId").is(videoId));
+    public List<VideoDirectorModel> findDirectorByVideoId(String videoId, String type) {
+        Query query = new Query(Criteria.where("video_id").is(videoId));
+        query.addCriteria(Criteria.where("video_type").is(type));
         List<VideoDirectorModel> modelList = mongoTemplate.find(query, VideoDirectorModel.class);
         return modelList;
     }

@@ -6,25 +6,32 @@ public class VideoDTO extends ToString {
 
     private Long videoId;
 
+    // 名称
     private String videoName;
 
     private String videoObjectId;
 
+    // 上传者
     private Long videoUpOfUser;
 
+    // 类型
     private String videoType;
 
+    // 播放次数
     private Integer playSum;
 
+    // 评论次数
     private Integer commentSum;
 
     private Integer collectSum;
 
+    // 支持人数
     private Integer supportSum;
 
     private Integer opposeSum;
 
-    private Integer videoLength;
+    // 长度
+    private String videoLength;
 
     public Long getVideoId() {
         return videoId;
@@ -106,11 +113,11 @@ public class VideoDTO extends ToString {
         this.opposeSum = opposeSum;
     }
 
-    public Integer getVideoLength() {
+    public String getVideoLength() {
         return videoLength;
     }
 
-    public void setVideoLength(Integer videoLength) {
+    public void setVideoLength(String videoLength) {
         this.videoLength = videoLength;
     }
 }

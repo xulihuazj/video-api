@@ -19,7 +19,7 @@ import java.util.List;
  * @author xulh
  */
 //标注在实体类上，类似于hibernate的entity注解，标明由mongo来维护该表。
-@Document(collection = "video_info")
+@Document(collection = "movie_info")
 public class VideoModel extends ToString {
 
     private static final long serialVersionUID = 3503790361839243561L;

@@ -1,5 +1,6 @@
 package com.yinfeixing.video.service.impl.manage;
 
+import com.yinfeiixng.video.model.PageModel;
 import com.yinfeiixng.video.model.mongo.VideoAliasModel;
 import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
@@ -124,5 +125,24 @@ public class VideoManageServiceImpl implements VideoManageService {
         model.setVideoAliasList(videoAliasList);
         videoMongoRepositoryImpl.save(model);
         return APIResponse.instance(new ClientVideoListResponse());
+    }
+
+    @Override
+    public APIResponse<ClientVideoListResponse> videoSearch(APIRequest<ClientVideoListRequest> request) {
+        LogHelper.info(logger, "【客户端】【视频更新】，请求参数={0}", request);
+        ClientVideoListRequest bizRequest = request.getBizRequest();
+        String searchContent = bizRequest.getSearchContent();
+        PageModel pageModel = new PageModel(bizRequest.getPageNum(), bizRequest.getPageSize());
+        List<String> videoObjectIdList = Arrays.asList("0");
+
+        videoMongoRepositoryImpl.searchVideo(videoObjectIdList, searchContent, pageModel);
+
+
+        return null;
+    }
+
+    @Override
+    public APIResponse<ClientVideoListResponse> videoDetail(APIRequest<ClientVideoListRequest> apiRequest) {
+        return null;
     }
 }

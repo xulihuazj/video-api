@@ -1,6 +1,8 @@
 package com.yinfeixing.video.core.video.impl;
 
 import com.mongodb.client.result.UpdateResult;
+import com.yinfeiixng.video.model.PageModel;
+import com.yinfeiixng.video.model.mongo.MovieModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeixing.video.core.BaseMongoRepositoryImpl;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
@@ -9,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -17,6 +20,13 @@ public class VideoMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoModel
     @Override
     protected Class<VideoModel> getEntityClass() {
         return VideoModel.class;
+    }
+
+    @Override
+    public List<MovieModel> findMovieByMovieName(String movieName) {
+        Query query = new Query(Criteria.where("movie_name").is(movieName));
+        List<MovieModel> model = mongoTemplate.find(query, MovieModel.class);
+        return model;
     }
 
     @Override
@@ -55,6 +65,11 @@ public class VideoMongoRepositoryImpl extends BaseMongoRepositoryImpl<VideoModel
     public void deleteVideoById(Long videoId) {
         Query query = new Query(Criteria.where("video_id").is(videoId));
         mongoTemplate.remove(query, VideoModel.class);
+    }
+
+    @Override
+    public List<VideoModel> searchVideo(List<String> videoObjectIdList, String searchContent, PageModel pageModel) {
+        return null;
     }
 
 
