@@ -6,21 +6,25 @@ import com.yinfeixing.utils.convert.CachedBeanCopier;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.video.*;
 import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
+import com.yinfeixing.video.dto.video.DicDTO;
 import com.yinfeixing.video.dto.video.VideoCommentDTO;
 import com.yinfeixing.video.dto.video.VideoDTO;
 import com.yinfeixing.video.repository.video.VideoDOMapper;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
+import com.yinfeixing.video.request.app.video.DicRequest;
 import com.yinfeixing.video.response.APIResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoDetailResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
+import com.yinfeixing.video.response.app.video.DicResponse;
 import com.yinfeixing.video.service.app.video.VideoService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,8 +46,6 @@ public class VideoServiceImpl implements VideoService {
     @Autowired
     @Qualifier(value = "movieMongoRepositoryImpl")
     private MovieMongoRepository movieMongoRepositoryImpl;
-
-
     @Resource
     private PerformMongoRepository performMongoRepositoryImpl;
     @Resource
@@ -52,6 +54,16 @@ public class VideoServiceImpl implements VideoService {
     private LanguageMongoRepository languageMongoRepositoryImpl;
     @Resource
     private VideoCommentRepository videoCommentRepositoryImpl;
+    @Resource
+    private MongoTemplate mongoTemplate;
+    //    @Resource
+//    private DicLanguageRepository dicLanguageRepositoryImpl;
+//    @Resource
+//    private DicZoneRepository dicZoneRepositoryImpl;
+//    @Resource
+//    private DicYearRepository dicYearRepositoryImpl;
+//    @Resource
+//    private DicCategoryRepository dicCategoryRepositoryImpl;
     //    @Resource
 //    private VideoJpaRepository videoJpaRepository;
     @Resource
@@ -144,6 +156,51 @@ public class VideoServiceImpl implements VideoService {
         return APIResponse.instance(new ClientVideoDetailResponse() {{
             setClientVideo(null != finalVideoDto ? finalVideoDto : new ClientVideoDTO());
         }});
+    }
+
+
+    @Override
+    public APIResponse<DicResponse> baseInfoSearch(APIRequest<DicRequest> apiRequest) {
+        LogHelper.info(logger, "【客户端】【基础字典查询】，请求参数={0}", apiRequest);
+        DicRequest bizRequest = apiRequest.getBizRequest();
+        List<DicDTO> dicList;
+        switch (bizRequest.getType()) {
+            case "ZONE":
+                List<DicZoneModel> zoneList = mongoTemplate.findAll(DicZoneModel.class);
+                dicList = zoneList.stream().map(zone -> new DicDTO() {{
+                    setDicCode(zone.getId());
+                    setDicValue(zone.getZone());
+                }}).collect(toList());
+                break;
+            case "YEAR":
+                List<DicYearModel> yearList = mongoTemplate.findAll(DicYearModel.class);
+                dicList = yearList.stream().map(zone -> new DicDTO() {{
+                    setDicCode(zone.getId());
+                    setDicValue(zone.getYear());
+                }}).collect(toList());
+                break;
+            case "LANGUAGE":
+                List<DicLanguageModel> languageList = mongoTemplate.findAll(DicLanguageModel.class);
+                dicList = languageList.stream().map(zone -> new DicDTO() {{
+                    setDicCode(zone.getId());
+                    setDicValue(zone.getLanguage());
+                }}).collect(toList());
+                break;
+            case "CATEGORY":
+                List<DicCategoryModel> categoryList = mongoTemplate.findAll(DicCategoryModel.class);
+                dicList = categoryList.stream().map(zone -> new DicDTO() {{
+                    setDicCode(zone.getId());
+                    setDicValue(zone.getCategory());
+                }}).collect(toList());
+                break;
+            default:
+                dicList = new ArrayList<>();
+                break;
+        }
+        DicResponse dicResponse = new DicResponse();
+        dicResponse.setDicList(CollectionUtils.isNotEmpty(dicList) ? dicList : new ArrayList<>());
+        LogHelper.info(logger, "【客户端】【基础字典查询】，响应内容={0}", dicResponse);
+        return APIResponse.instance(dicResponse);
     }
 
 

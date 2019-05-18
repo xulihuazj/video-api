@@ -5,6 +5,7 @@ import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
+import com.yinfeixing.video.request.app.video.DicRequest;
 import com.yinfeixing.video.service.app.video.VideoService;
 import com.yinfeixing.video.system.SystemType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,4 +66,20 @@ public class VideoController extends BaseController {
                 httpRequest, Query.class);
         super.success(videoServiceImpl.videoDownloadIncrease(apiRequest), httpRequest, httpResponse);
     }
+
+    /**
+     * 基础字典数据搜索
+     *
+     * @param httpRequest
+     * @param httpResponse
+     * @throws Exception
+     */
+    @GetMapping("/dic/search")
+    @SystemType
+    public void baseInfoSearch(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
+        APIRequest<DicRequest> apiRequest = super.getObjectByRequest(DicRequest.class,
+                httpRequest, Query.class);
+        super.success(videoServiceImpl.baseInfoSearch(apiRequest), httpRequest, httpResponse);
+    }
+
 }
