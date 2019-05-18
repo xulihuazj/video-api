@@ -7,7 +7,7 @@ public class PageResponse extends ToString {
     private static final long serialVersionUID = -7977504122202614680L;
 
     /**
-     *  总条数
+     * 总条数
      */
     private int total;
 

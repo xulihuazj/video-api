@@ -52,8 +52,8 @@ public class SendMailUtil {
         int num = recipients.size();
         InternetAddress[] addresses = new InternetAddress[num];
 
-        for(int i = 0; i < num; ++i) {
-            addresses[i] = new InternetAddress((String)recipients.get(i));
+        for (int i = 0; i < num; ++i) {
+            addresses[i] = new InternetAddress((String) recipients.get(i));
         }
 
         message.setRecipients(RecipientType.TO, addresses);
@@ -63,10 +63,10 @@ public class SendMailUtil {
     }
 
     public static void send(String recipient, MailEntity mail) throws AddressException, MessagingException {
-        send((String)recipient, mail.getSubject(), mail.getContent());
+        send((String) recipient, mail.getSubject(), mail.getContent());
     }
 
     public static void send(List<String> recipients, MailEntity mail) throws AddressException, MessagingException {
-        send((List)recipients, mail.getSubject(), mail.getContent());
+        send((List) recipients, mail.getSubject(), mail.getContent());
     }
 }

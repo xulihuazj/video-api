@@ -5,7 +5,6 @@ import com.yinfeiixng.video.model.mongo.*;
 import com.yinfeixing.utils.convert.CachedBeanCopier;
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.video.core.video.*;
-import com.yinfeixing.video.dataobject.video.VideoDO;
 import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
 import com.yinfeixing.video.dto.video.VideoCommentDTO;
 import com.yinfeixing.video.dto.video.VideoDTO;
@@ -25,7 +24,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.RegEx;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;

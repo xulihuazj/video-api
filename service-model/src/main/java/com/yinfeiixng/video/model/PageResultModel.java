@@ -7,19 +7,18 @@ import java.util.List;
 
 public class PageResultModel<T> extends ToString {
     /**
-    * 当前页数(需要手动set)
-    * */
+     * 当前页数(需要手动set)
+     */
     private int page;
 
     /**
-    *
-    * 总记录数
-    * */
+     * 总记录数
+     */
     private long total;
 
     /**
-    * 分页数据
-    * */
+     * 分页数据
+     */
     private List<T> datas;
 
     public PageResultModel() {

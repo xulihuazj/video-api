@@ -1,7 +1,8 @@
 package com.yinfeiixng.video.exception;
 
-/** 
+/**
  * 统一常量
+ *
  * @author xulh
  */
 public class ResConstant {

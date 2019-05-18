@@ -1,4 +1,5 @@
 package com.yinfeixing.utils.mail;
+
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 

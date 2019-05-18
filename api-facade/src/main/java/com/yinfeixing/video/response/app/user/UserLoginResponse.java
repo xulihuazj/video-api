@@ -5,9 +5,9 @@ import com.yinfeixing.utils.validate.Remark;
 import com.yinfeixing.video.dto.app.user.UserInfoDTO;
 
 /**
- *  移动端用户登录成功
+ * 移动端用户登录成功
  */
-public class UserLoginResponse  extends ToString {
+public class UserLoginResponse extends ToString {
     private static final long serialVersionUID = -7149303450569616990L;
 
     @Remark("用户信息")

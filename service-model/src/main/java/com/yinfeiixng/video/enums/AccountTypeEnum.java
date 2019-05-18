@@ -2,11 +2,11 @@ package com.yinfeiixng.video.enums;
 
 public enum AccountTypeEnum {
 
-    PHONE("PHONE","手机号"),
+    PHONE("PHONE", "手机号"),
 
-    WEIXIN("WEIXIN","微信"),
+    WEIXIN("WEIXIN", "微信"),
 
-    EMAIL("EMAIL","邮箱"),
+    EMAIL("EMAIL", "邮箱"),
 
     ;
 

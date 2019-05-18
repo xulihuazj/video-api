@@ -4,7 +4,7 @@ import com.yinfeixing.entity.ToString;
 import com.yinfeixing.utils.validate.Remark;
 
 /**
- *  移动端登录
+ * 移动端登录
  */
 public class ClientLoginRequest extends ToString {
     private static final long serialVersionUID = 7829558954065690715L;

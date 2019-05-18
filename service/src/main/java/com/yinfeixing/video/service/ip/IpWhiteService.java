@@ -17,7 +17,7 @@ public interface IpWhiteService {
      * @Function: IpWhiteService.java
      * @Description: 加载ip白名单配置，并存储到redis
      * @param:TODO
-     * @return：Map<String, Map<String   ,   IpWhiteListModel>>
+     * @return：Map<String, Map<String, IpWhiteListModel>>
      * @author: mazy
      * @date: 2018年5月31日 下午4:58:08
      */

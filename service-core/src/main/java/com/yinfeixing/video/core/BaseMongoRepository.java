@@ -142,10 +142,10 @@ public interface BaseMongoRepository<T> {
      *
      * @param pageNo   当前页码
      * @param pageSize 页容量
-     * @param propName  参数key-value
+     * @param propName 参数key-value
      * @return 分页模型对象（不会为null）
      */
-    PageModel<T> pageByProp(int pageNo, int pageSize, String propName,Object propValue);
+    PageModel<T> pageByProp(int pageNo, int pageSize, String propName, Object propValue);
 
     /**
      * 根据参数分页查询结果集合并排序<br>
@@ -153,7 +153,7 @@ public interface BaseMongoRepository<T> {
      *
      * @param pageNo   当前页码
      * @param pageSize 页容量
-     * @param propName  参数key-value
+     * @param propName 参数key-value
      * @param sort     排序字段，_id或_id asc或 _id asc，name desc<br>
      *                 为空则不排序，不指定排序方式则默认升序排序
      * @return 分页模型对象（不会为null）

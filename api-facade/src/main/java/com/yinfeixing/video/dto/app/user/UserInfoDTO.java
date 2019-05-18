@@ -5,7 +5,7 @@ import com.yinfeixing.utils.validate.Remark;
 
 /**
  * UserInfoDTO.java 1.0.0 2018-06-04  16:33
- *   移动端用户信息
+ * 移动端用户信息
  */
 public class UserInfoDTO extends ToString {
     private static final long serialVersionUID = 2328426334488995628L;
@@ -29,7 +29,7 @@ public class UserInfoDTO extends ToString {
     private String userPhone;
 
     @Remark("微信用户UUId")
-    private String  unicode;
+    private String unicode;
 
     public String getUnicode() {
         return unicode;

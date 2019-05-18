@@ -5,8 +5,7 @@ package com.yinfeiixng.video.exception;
  *
  * @author xulh
  * @date 2017/3/29
- * @description
- * 错误实体
+ * @description 错误实体
  */
 public class ErrorModel {
     /**
@@ -21,6 +20,7 @@ public class ErrorModel {
 
     /**
      * 获取错误代码
+     *
      * @return
      */
     public String getStatusCode() {
@@ -29,6 +29,7 @@ public class ErrorModel {
 
     /**
      * 设置错误代码
+     *
      * @param statusCode 错误代码
      */
     public void setStatusCode(String statusCode) {
@@ -37,6 +38,7 @@ public class ErrorModel {
 
     /**
      * 获取错误消息
+     *
      * @return
      */
     public String getMessage() {
@@ -45,6 +47,7 @@ public class ErrorModel {
 
     /**
      * 设置错误消息
+     *
      * @param message
      */
     public void setMessage(String message) {
@@ -54,11 +57,12 @@ public class ErrorModel {
 
     /**
      * 构造函数
-     * @param code      错误代码
-     * @param message   错误消息
+     *
+     * @param code    错误代码
+     * @param message 错误消息
      */
-    public ErrorModel(Integer code, String message){
-        if(code !=null) {
+    public ErrorModel(Integer code, String message) {
+        if (code != null) {
             this.statusCode = code.toString();
         }
         this.message = message;
@@ -67,7 +71,7 @@ public class ErrorModel {
     /**
      * 无参数构造函数
      */
-    public ErrorModel(){
+    public ErrorModel() {
 
     }
 }

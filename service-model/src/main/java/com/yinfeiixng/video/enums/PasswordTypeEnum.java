@@ -4,7 +4,7 @@ import com.yinfeixing.entity.BaseEnum;
 
 public enum PasswordTypeEnum implements BaseEnum {
 
-    LOGIN("LOGIN","登录"),
+    LOGIN("LOGIN", "登录"),
     ;
 
     private String code;

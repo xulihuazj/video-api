@@ -6,7 +6,6 @@ import com.yinfeiixng.video.model.mongo.VideoImageModel;
 import com.yinfeiixng.video.model.mongo.VideoModel;
 import com.yinfeiixng.video.model.mongo.VideoPerformerModel;
 import com.yinfeixing.utils.log.LogHelper;
-import com.yinfeixing.video.core.BaseMongoRepository;
 import com.yinfeixing.video.core.video.ImageMongoRepository;
 import com.yinfeixing.video.core.video.PerformMongoRepository;
 import com.yinfeixing.video.core.video.VideoMongoRepository;
@@ -21,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 

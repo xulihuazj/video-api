@@ -11,13 +11,13 @@ public enum SystemErrorCode implements ErrorCode {
 
     JWS_SIGN_ERROR("50010001", "token验证异常"),
 
-    SYSTEM_ERROR("50010002","系统异常"),
+    SYSTEM_ERROR("50010002", "系统异常"),
 
-    TOKEN_NULL("50010009","请求头中未带入token或token为空"),
+    TOKEN_NULL("50010009", "请求头中未带入token或token为空"),
 
     URL_NOT_EFFECTIVE("90010015", "当前请求地址不存在或者未生效"),
 
-    TOKEN_EXPIRED("50010016","token过期"),
+    TOKEN_EXPIRED("50010016", "token过期"),
 
     ;
 

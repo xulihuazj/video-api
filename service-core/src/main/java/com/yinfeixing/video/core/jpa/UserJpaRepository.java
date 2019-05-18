@@ -12,5 +12,4 @@ package com.yinfeixing.video.core.jpa;
 public interface UserJpaRepository {
 
 
-
 }

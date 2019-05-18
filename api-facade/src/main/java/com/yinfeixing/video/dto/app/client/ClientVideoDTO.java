@@ -3,7 +3,6 @@ package com.yinfeixing.video.dto.app.client;
 import com.yinfeixing.video.dto.video.VideoCommentDTO;
 import com.yinfeixing.video.dto.video.VideoDTO;
 import com.yinfeixing.video.dto.video.VideoDownloadDTO;
-import com.yinfeixing.video.dto.video.VideoReleaseDTO;
 
 import java.util.List;
 

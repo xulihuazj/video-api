@@ -1,14 +1,13 @@
 package com.yinfeixing.utils.gifcode;
 
-public class NeuQuant
-{
+public class NeuQuant {
     protected static final int netsize = 256; /* number of colours used */
     /* four primes near 500 - assume no image has a length so large */
- /* that it is divisible by all four primes */
+    /* that it is divisible by all four primes */
     protected static final int prime1 = 499;
     protected static final int prime2 = 491;
     protected static final int prime3 = 487;
-    protected static final int prime4 = 503; 
+    protected static final int prime4 = 503;
     protected static final int minpicturebytes = (3 * prime4);
     /* minimum size for input image */
  /* Program Skeleton
@@ -64,6 +63,7 @@ public class NeuQuant
     /* bias and freq arrays for learning */
     protected int[] freq = new int[netsize];
     protected int[] radpower = new int[initrad];
+
     /* radpower for precomputation */
  /* Initialise network in range (0,0,0) to (255,255,255) and set parameters
     ----------------------------------------------------------------------- */
@@ -82,6 +82,7 @@ public class NeuQuant
             bias[i] = 0;
         }
     }
+
     public byte[] colorMap() {
         byte[] map = new byte[3 * netsize];
         int[] index = new int[netsize];
@@ -96,6 +97,7 @@ public class NeuQuant
         }
         return map;
     }
+
     /* Insertion sort of network and building of netindex[0..255] (to do after unbias)
        ------------------------------------------------------------------------------- */
     public void inxbuild() {
@@ -109,7 +111,7 @@ public class NeuQuant
             p = network[i];
             smallpos = i;
             smallval = p[1]; /* index on g */
-   /* find smallest in i..netsize-1 */
+            /* find smallest in i..netsize-1 */
             for (j = i + 1; j < netsize; j++) {
                 q = network[j];
                 if (q[1] < smallval) { /* index on g */
@@ -118,7 +120,7 @@ public class NeuQuant
                 }
             }
             q = network[smallpos];
-   /* swap p (i) and q (smallpos) entries */
+            /* swap p (i) and q (smallpos) entries */
             if (i != smallpos) {
                 j = q[0];
                 q[0] = p[0];
@@ -133,7 +135,7 @@ public class NeuQuant
                 q[3] = p[3];
                 p[3] = j;
             }
-   /* smallval entry is now in position i */
+            /* smallval entry is now in position i */
             if (smallval != previouscol) {
                 netindex[previouscol] = (startpos + i) >> 1;
                 for (j = previouscol + 1; j < smallval; j++)
@@ -146,6 +148,7 @@ public class NeuQuant
         for (j = previouscol + 1; j < 256; j++)
             netindex[j] = maxnetpos; /* really 256 */
     }
+
     /* Main Learning Loop
        ------------------ */
     public void learn() {
@@ -212,6 +215,7 @@ public class NeuQuant
         }
         //fprintf(stderr,"finished 1D learning: final alpha=%f !/n",((float)alpha)/initalpha);
     }
+
     /* Search for BGR values 0..255 (after net is unbiased) and return colour index
        ---------------------------------------------------------------------------- */
     public int map(int b, int g, int r) {
@@ -276,12 +280,14 @@ public class NeuQuant
         }
         return (best);
     }
+
     public byte[] process() {
         learn();
         unbiasnet();
         inxbuild();
         return colorMap();
     }
+
     /* Unbias network to give byte values 0..255 and record position i to prepare for sort
        ----------------------------------------------------------------------------------- */
     public void unbiasnet() {
@@ -293,6 +299,7 @@ public class NeuQuant
             network[i][3] = i; /* record colour no */
         }
     }
+
     /* Move adjacent neurons by precomputed alpha*(1-((i-j)^2/[r]^2)) in radpower[|i-j|]
        --------------------------------------------------------------------------------- */
     protected void alterneigh(int rad, int i, int b, int g, int r) {
@@ -329,22 +336,24 @@ public class NeuQuant
             }
         }
     }
+
     /* Move neuron i towards biased (b,g,r) by factor alpha
        ---------------------------------------------------- */
     protected void altersingle(int alpha, int i, int b, int g, int r) {
-  /* alter hit neuron */
+        /* alter hit neuron */
         int[] n = network[i];
         n[0] -= (alpha * (n[0] - b)) / initalpha;
         n[1] -= (alpha * (n[1] - g)) / initalpha;
         n[2] -= (alpha * (n[2] - r)) / initalpha;
     }
+
     /* Search for biased BGR values
        ---------------------------- */
     protected int contest(int b, int g, int r) {
-  /* finds closest neuron (min dist) and updates freq */
-  /* finds best neuron (min dist-bias) and returns position */
-  /* for frequently chosen neurons, freq[i] is high and bias[i] is negative */
-  /* bias[i] = gamma*((1/netsize)-freq[i]) */
+        /* finds closest neuron (min dist) and updates freq */
+        /* finds best neuron (min dist-bias) and returns position */
+        /* for frequently chosen neurons, freq[i] is high and bias[i] is negative */
+        /* bias[i] = gamma*((1/netsize)-freq[i]) */
         int i, dist, a, biasdist, betafreq;
         int bestpos, bestbiaspos, bestd, bestbiasd;
         int[] n;

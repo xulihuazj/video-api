@@ -31,82 +31,82 @@ public class Constant {
     /**
      * vacant_index 房间 空置指数 ： 默认值 100
      */
-    public static final String  VACANTINDEX_DEFAULT_VALUE = "100";
-
-   /**
-    * pms用户信息过期时间
-    */
-   public static final int USERINFO_EXPIRATION_TIME = 3600;
+    public static final String VACANTINDEX_DEFAULT_VALUE = "100";
 
     /**
-    *  移动端用户信息过期时间 30天
-    */
-   public static final int EXTERNAL_EXPIRATION_TIME = 3600*24*30;
+     * pms用户信息过期时间
+     */
+    public static final int USERINFO_EXPIRATION_TIME = 3600;
+
+    /**
+     * 移动端用户信息过期时间 30天
+     */
+    public static final int EXTERNAL_EXPIRATION_TIME = 3600 * 24 * 30;
 
 
     /**
-     *  常量值 -1
+     * 常量值 -1
      */
     public static final int PARENT_ID = -1;
 
     /**
-     *  常量值 1
+     * 常量值 1
      */
     public static final int PAGE_NO = 1;
 
     /**
-     *  每页总数 10
+     * 每页总数 10
      */
     public static final int PAGE_COUNT = 10;
 
     /**
-     *   常量值 0
+     * 常量值 0
      */
     public static final int ZERO = 0;
 
     /**
-     *  byte 0
+     * byte 0
      */
-    public  static  final  byte BYTE=0;
+    public static final byte BYTE = 0;
 
     public static final String PMSUSERTOKEN = "PMSUSERTOKEN";
 
     /**
-     *  常量值 root
+     * 常量值 root
      */
-     public  static  final  String GROUP_CODE="root";
+    public static final String GROUP_CODE = "root";
 
     /**
-     *  常量
+     * 常量
      */
-    public  static  final  String  COMPARE="#";
+    public static final String COMPARE = "#";
 
     /**
-     *  英文点号  .
+     * 英文点号  .
      */
-    public  static  final  String  POINT=".";
+    public static final String POINT = ".";
 
     /**
-     *  破折号.
+     * 破折号.
      */
-    public  static  final  String  DASH="-";
+    public static final String DASH = "-";
 
 
     /**
-     *  逗号
+     * 逗号
      */
-    public  static  final  String  COMMA=",";
+    public static final String COMMA = ",";
 
     /**
-     *  权限码更改
+     * 权限码更改
      */
-    public  static  final  String  PRIVIELGE_CHANGE="岗位权限更改";
+    public static final String PRIVIELGE_CHANGE = "岗位权限更改";
 
     /**
-     *  折扣审核权限
+     * 折扣审核权限
      */
-    public  static  final  String  DISCOUNT_PRIVILEGE="所有折扣权限";
-    
+    public static final String DISCOUNT_PRIVILEGE = "所有折扣权限";
+
     /**
      * 图片验证码过期时间，单位为秒
      */
@@ -114,44 +114,44 @@ public class Constant {
 
 
     /**
-     *  获取API url地址缓存KEY
+     * 获取API url地址缓存KEY
      */
-    public  static  final  String  API_USE_KEY="API_USE_KEY";
+    public static final String API_USE_KEY = "API_USE_KEY";
 
     /**
-     *  云盯响应成功码
+     * 云盯响应成功码
      */
-    public  static  final  int  YUNDING_SUCCESS_CODE=1000;
+    public static final int YUNDING_SUCCESS_CODE = 1000;
 
     /**
-     *  云盯响应成功
+     * 云盯响应成功
      */
-    public  static  final  String  YUNDING_SUCCESS="成功";
+    public static final String YUNDING_SUCCESS = "成功";
 
     /**
-     *  云盯响应失败
+     * 云盯响应失败
      */
-    public  static  final  String  YUNDING_FAILED="失败";
+    public static final String YUNDING_FAILED = "失败";
 
     /**
-     *  缓存品牌信息
+     * 缓存品牌信息
      */
-    public  static  final  String  BRAND_INFO="BRAND_INFO";
-    
+    public static final String BRAND_INFO = "BRAND_INFO";
+
     /**
      * ip白名单配置过期时间为一小时（单位秒）
      */
     public static final int IP_WHITE_TIME = 3600;
-    
+
     /**
      * ip白名单的key
      */
     public static final String IP_WHITE_KEY = "IP_WHITE_KEY_20180604";
 
     /**
-     *  缓存项系统用户项目信息
+     * 缓存项系统用户项目信息
      */
-    public  static  final  String  PROJECT_INFO="PROJECT_INFO";
+    public static final String PROJECT_INFO = "PROJECT_INFO";
 
     /**
      * 缓存移动端用户token信息
@@ -171,19 +171,19 @@ public class Constant {
     /**
      * 合同模版ftl文件名
      */
-    public static final String CONTRACT_FTL_NAME="contract.ftl";
+    public static final String CONTRACT_FTL_NAME = "contract.ftl";
 
 
     public static final Long DATE_HOUR_2 = Long.valueOf(1000 * 60 * 60 * 2);
-    
+
     public static String API_BODY_KEY = "PMS_API_BODY_KEY";
-    
+
     public static String IDEMPOTENT_KEY = "PMS_API_IDEMPOTENT_KEY";
-    
+
     public static String IDEMPOTENT_UUID = "PMS_API_IDEMPOTENT_UUID";
-    
+
     public static String H5_IMG_PAGE_KEY = "H5_IMG_PAGE_KEY";
-    
+
     public static String TODAY_FIRST_NUMBER_SIZE = "TODAY_FIRST_NUMBER_SIZE";
 
     /**

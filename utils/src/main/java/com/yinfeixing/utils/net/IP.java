@@ -15,22 +15,22 @@ import java.net.InetAddress;
  * @description
  */
 public class IP {
-    private static Logger logger =  LoggerFactory.getLogger(IP.class);
+    private static Logger logger = LoggerFactory.getLogger(IP.class);
 
     /**
      * 获取本机的IP地址
+     *
      * @return
      */
-    public static String getLocalIP(){
+    public static String getLocalIP() {
         String localIP = null;
-        try{
+        try {
             InetAddress inetAddress = InetAddress.getLocalHost();
-            if(inetAddress!= null){
+            if (inetAddress != null) {
                 localIP = inetAddress.getHostAddress();
             }
-        }
-        catch (Exception ex){
-            logger.error("getLocalAddress error!",ex);
+        } catch (Exception ex) {
+            logger.error("getLocalAddress error!", ex);
         }
         return localIP;
     }
@@ -60,7 +60,7 @@ public class IP {
 
     public static String getAliIpAddress(HttpServletRequest request) {
         String ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-        if(StringUtils.isNotEmpty(ip) && ip.split(",").length > 0){
+        if (StringUtils.isNotEmpty(ip) && ip.split(",").length > 0) {
             return ip.split(",")[0];
         }
         ip = request.getHeader("x-forwarded-for");

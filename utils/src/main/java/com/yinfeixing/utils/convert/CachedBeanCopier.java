@@ -37,7 +37,7 @@ public class CachedBeanCopier {
 
             try {
                 Object targetObject = targetClass.newInstance();
-                copier.copy(sourceObject, targetObject, (Converter)converter);
+                copier.copy(sourceObject, targetObject, (Converter) converter);
                 return (TargetType) targetObject;
             } catch (IllegalAccessException | InstantiationException var6) {
                 LogHelper.exception(var6, logger, "对象类型转换异常，method={0}", new Object[]{"CachedBeanCopier.copyConvert()"});
@@ -55,7 +55,7 @@ public class CachedBeanCopier {
             List<TargetType> targetTypes = new ArrayList();
             Iterator var4 = originObjs.iterator();
 
-            while(var4.hasNext()) {
+            while (var4.hasNext()) {
                 OriginType originType = (OriginType) var4.next();
                 targetTypes.add(copyConvert(originType, targetTypeClass));
             }
@@ -76,8 +76,8 @@ public class CachedBeanCopier {
             if (org.apache.commons.collections.CollectionUtils.isNotEmpty(masters)) {
                 Iterator var7 = masters.iterator();
 
-                while(true) {
-                    while(true) {
+                while (true) {
+                    while (true) {
                         Object master;
                         String masterId;
                         Class claMearges;
@@ -88,7 +88,7 @@ public class CachedBeanCopier {
                                     return masters;
                                 }
 
-                                master = (Object)var7.next();
+                                master = (Object) var7.next();
                                 Method getID = master.getClass().getMethod(idMasterGetter);
                                 masterId = getID.invoke(master).toString();
                                 claMearges = null;
@@ -103,7 +103,7 @@ public class CachedBeanCopier {
                                     Field[] var17 = fields;
                                     int var16 = fields.length;
 
-                                    for(int var15 = 0; var15 < var16; ++var15) {
+                                    for (int var15 = 0; var15 < var16; ++var15) {
                                         Field field = var17[var15];
                                         if (field.getGenericType().getTypeName().equals(claMearges.getTypeName())) {
                                             fieldName = field.getName();
@@ -111,14 +111,14 @@ public class CachedBeanCopier {
                                         }
                                     }
                                 }
-                            } while(claMearges == null);
-                        } while(fieldName == null);
+                            } while (claMearges == null);
+                        } while (fieldName == null);
 
                         String setterFieldName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1, fieldName.length());
                         Method setterFieldMethod = master.getClass().getMethod(setterFieldName, claMearges);
                         Iterator var23 = mearges.iterator();
 
-                        while(var23.hasNext()) {
+                        while (var23.hasNext()) {
                             T mearge = (T) var23.next();
                             Method meargeIdGetter = mearge.getClass().getMethod(idMeargeGetter);
                             String meargeId = meargeIdGetter.invoke(mearge).toString();

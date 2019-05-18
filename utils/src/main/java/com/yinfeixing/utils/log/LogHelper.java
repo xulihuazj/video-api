@@ -22,7 +22,7 @@ public class LogHelper {
                 Matcher matcher = pattern.matcher(message);
                 StringBuilder flags = new StringBuilder();
 
-                while(matcher.find()) {
+                while (matcher.find()) {
                     flags.append(matcher.group()).append(" ");
                     if (flags.length() > 64) {
                         break;

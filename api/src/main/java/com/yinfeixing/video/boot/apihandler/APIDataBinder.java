@@ -167,7 +167,7 @@ public class APIDataBinder extends ServletRequestDataBinder {
      */
     private void initializeContext(HttpServletRequest httpServletRequest) {
         GlobalLocalContext localContext = LocalContextHolder.getContext();
-        localContext.setSource( httpServletRequest.getParameter("source"));
+        localContext.setSource(httpServletRequest.getParameter("source"));
         localContext.setVersion(httpServletRequest.getParameter("version"));
         localContext.setDeviceId(httpServletRequest.getParameter("device_id"));
         localContext.setCurrentIp(IP.getIpAddress(httpServletRequest));

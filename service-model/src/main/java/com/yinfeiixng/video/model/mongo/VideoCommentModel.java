@@ -16,6 +16,7 @@ public class VideoCommentModel extends ToString {
     @Indexed(name = "video_director_info_idx_video_id")
     private String videoId;
 
+    // 类型：MOVIE、
     @Field(value = "video_type")
     private String videoType;
 

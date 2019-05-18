@@ -11,6 +11,6 @@ public interface BaseEnum {
     String getCode();
 
     String getDesc();
-    
-    
+
+
 }

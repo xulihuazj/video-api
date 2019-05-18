@@ -9,11 +9,12 @@ public class AbstractResponse extends ToString {
 
     /**
      * api返回码
-     * 
      */
     private String statusCode;
 
-    /** 消息 */
+    /**
+     * 消息
+     */
     private String message;
 
     /**

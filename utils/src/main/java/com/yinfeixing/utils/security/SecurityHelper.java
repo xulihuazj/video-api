@@ -232,13 +232,14 @@ public class SecurityHelper {
         Security.addProvider(new BouncyCastleProvider());
         initialized = true;
     }
-    
+
     /**
-     *  利用java原生的摘要实现SHA256加密
+     * 利用java原生的摘要实现SHA256加密
+     *
      * @param str 加密后的报文
      * @return
      */
-    public static String getSHA256StrJava(String str){
+    public static String getSHA256StrJava(String str) {
         MessageDigest messageDigest;
         String encodeStr = "";
         try {
@@ -255,15 +256,16 @@ public class SecurityHelper {
 
     /**
      * 将byte转为16进制
+     *
      * @param bytes
      * @return
      */
-    private static String byte2Hex(byte[] bytes){
+    private static String byte2Hex(byte[] bytes) {
         StringBuffer stringBuffer = new StringBuffer();
         String temp = null;
-        for (int i=0;i<bytes.length;i++){
+        for (int i = 0; i < bytes.length; i++) {
             temp = Integer.toHexString(bytes[i] & 0xFF);
-            if (temp.length()==1){
+            if (temp.length() == 1) {
                 //1得到一位的进行补0操作
                 stringBuffer.append("0");
             }
@@ -272,24 +274,24 @@ public class SecurityHelper {
         return stringBuffer.toString();
     }
 
-    public  static String decode(String decodeData){
-        if(StringUtils.isBlank(decodeData)){
-            return  null;
+    public static String decode(String decodeData) {
+        if (StringUtils.isBlank(decodeData)) {
+            return null;
         }
         try {
-            decodeData=  URLDecoder.decode(decodeData, "UTF-8");
+            decodeData = URLDecoder.decode(decodeData, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return decodeData;
     }
 
-    public  static String encode(String data){
-        if(StringUtils.isBlank(data)){
-            return  null;
+    public static String encode(String data) {
+        if (StringUtils.isBlank(data)) {
+            return null;
         }
         try {
-            data=  URLEncoder.encode(data, "UTF-8");
+            data = URLEncoder.encode(data, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -297,8 +299,8 @@ public class SecurityHelper {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(desEncrypt("{\"appId\":\"wx2e33be8771859aae\",\"mchId\":\"1509160431\",\"key\":\"lvjulogin5252100MMHLoGINddafda24\",\"publicKeySecret\":\"8e1d9b90e81ce5851d34d428b1b9a38a\",\"nativeAppId\":\"wxe1029b92873ea0b3\",\"nativeMchId\":\"1511049921\"}","12345678"));
-        System.out.println(desDecrypt(desEncrypt("{\"appId\":\"wx2e33be8771859aae\",\"mchId\":\"1509160431\",\"key\":\"lvjulogin5252100MMHLoGINddafda24\",\"publicKeySecret\":\"8e1d9b90e81ce5851d34d428b1b9a38a\",\"nativeAppId\":\"wxe1029b92873ea0b3\",\"nativeMchId\":\"1511049921\"}","12345678"),"12345678"));
-}
+        System.out.println(desEncrypt("{\"appId\":\"wx2e33be8771859aae\",\"mchId\":\"1509160431\",\"key\":\"lvjulogin5252100MMHLoGINddafda24\",\"publicKeySecret\":\"8e1d9b90e81ce5851d34d428b1b9a38a\",\"nativeAppId\":\"wxe1029b92873ea0b3\",\"nativeMchId\":\"1511049921\"}", "12345678"));
+        System.out.println(desDecrypt(desEncrypt("{\"appId\":\"wx2e33be8771859aae\",\"mchId\":\"1509160431\",\"key\":\"lvjulogin5252100MMHLoGINddafda24\",\"publicKeySecret\":\"8e1d9b90e81ce5851d34d428b1b9a38a\",\"nativeAppId\":\"wxe1029b92873ea0b3\",\"nativeMchId\":\"1511049921\"}", "12345678"), "12345678"));
+    }
 }
 

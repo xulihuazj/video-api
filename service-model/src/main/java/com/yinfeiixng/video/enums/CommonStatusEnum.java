@@ -5,7 +5,8 @@ public enum CommonStatusEnum {
 
     EFFECTIVE("EFFECTIVE", "有效"),
 
-    INVALID("INVALID", "无效"),;
+    INVALID("INVALID", "无效"),
+    ;
 
     String code;
 

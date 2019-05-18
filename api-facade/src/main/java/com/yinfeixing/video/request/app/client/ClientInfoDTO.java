@@ -1,4 +1,5 @@
 package com.yinfeixing.video.request.app.client;
+
 /**
  * ClientInfoModel
  *
@@ -60,6 +61,7 @@ public class ClientInfoDTO {
 
     /**
      * 获取原始客户端的IP
+     *
      * @return
      */
     public String getOriginalClientIp() {
@@ -68,6 +70,7 @@ public class ClientInfoDTO {
 
     /**
      * 设置原始客户端的IP
+     *
      * @param originalClientIp
      */
     public void setOriginalClientIp(String originalClientIp) {
@@ -76,6 +79,7 @@ public class ClientInfoDTO {
 
     /**
      * 获取原始客户端的标志（浏览器为UserAgent,APP为设备ID)
+     *
      * @return
      */
     public String getOriginalClientSymbol() {
@@ -84,6 +88,7 @@ public class ClientInfoDTO {
 
     /**
      * 设置原始客户端的标志（浏览器为UserAgent,APP为设备ID)
+     *
      * @param originalClientSymbol
      */
     public void setOriginalClientSymbol(String originalClientSymbol) {

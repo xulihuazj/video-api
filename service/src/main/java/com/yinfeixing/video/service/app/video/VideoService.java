@@ -11,6 +11,7 @@ public interface VideoService {
 
     /**
      * 视频列表
+     *
      * @param apiRequest
      * @return
      */
@@ -18,16 +19,19 @@ public interface VideoService {
 
     /**
      * 视频详情
+     *
      * @param apiRequest
      * @return
      */
     APIResponse<ClientVideoDetailResponse> videoDetail(APIRequest<ClientVideoDetailRequest> apiRequest);
 
-
     /**
      * 视频下载计数
+     *
      * @param apiRequest
      * @return
      */
-    APIResponse<ClientVideoDetailResponse>  videoDownloadIncrease(APIRequest<ClientVideoDetailRequest> apiRequest);
+    APIResponse<ClientVideoDetailResponse> videoDownloadIncrease(APIRequest<ClientVideoDetailRequest> apiRequest);
+
+
 }

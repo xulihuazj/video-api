@@ -15,8 +15,8 @@ public class JsonUtil {
     public static void getAllKey(Map<String, String> map, JSONObject jsonObject) {
         Iterator keys = jsonObject.keySet().iterator();
 
-        while(keys.hasNext()) {
-            String key = (String)keys.next();
+        while (keys.hasNext()) {
+            String key = (String) keys.next();
             if (isJsonObject(jsonObject.get(key).toString())) {
                 JSONObject innerObject = JSONObject.parseObject(JSONObject.toJSONString(jsonObject.get(key)));
                 getAllKey(map, innerObject);
@@ -33,7 +33,7 @@ public class JsonUtil {
         if (jsonArrayStr != null && isArrayOrObject(jsonArrayStr)) {
             JSONArray jsonArray = JSONArray.parseArray(jsonArrayStr);
 
-            for(int j = 0; j < jsonArray.size(); ++j) {
+            for (int j = 0; j < jsonArray.size(); ++j) {
                 if (StringUtils.isNotBlank(jsonArray.get(j).toString())) {
                     if (isJsonObject(jsonArray.get(j).toString())) {
                         JSONObject innerObject = JSONObject.parseObject(jsonArray.get(j).toString());

@@ -11,12 +11,12 @@ import com.yinfeixing.video.response.app.user.RegisteredResponse;
 public interface ClientUserService {
 
     /**
-      * @Author: xulh
-      * @Description: 用户注册
-      * @Date: 11:07 2018-05-31
-      * @param request
-      * @return
-      */
+     * @param request
+     * @return
+     * @Author: xulh
+     * @Description: 用户注册
+     * @Date: 11:07 2018-05-31
+     */
     APIResponse<RegisteredResponse> clientRegister(APIRequest<ClientRegisterRequest> request);
 //
 //    /**

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yinfeixing.video.repository.video.VideoTypeDOMapper">
-  <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.video.VideoTypeDO">
-    <id column="video_type_id" jdbcType="BIGINT" property="videoTypeId" />
-    <result column="video_id" jdbcType="BIGINT" property="videoId" />
-    <result column="type_id" jdbcType="INTEGER" property="typeId" />
-    <result column="video_type_status" jdbcType="VARCHAR" property="videoTypeStatus" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
-    <result column="ext_info" jdbcType="VARCHAR" property="extInfo" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.yinfeixing.video.dataobject.video.VideoTypeDO">
+        <id column="video_type_id" jdbcType="BIGINT" property="videoTypeId"/>
+        <result column="video_id" jdbcType="BIGINT" property="videoId"/>
+        <result column="type_id" jdbcType="INTEGER" property="typeId"/>
+        <result column="video_type_status" jdbcType="VARCHAR" property="videoTypeStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime"/>
+        <result column="ext_info" jdbcType="VARCHAR" property="extInfo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     video_type_id, video_id, type_id, video_type_status, create_time, last_modify_time, 
     ext_info
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from video_type_re
-    where video_type_id = #{videoTypeId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video_type_re
+        where video_type_id = #{videoTypeId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from video_type_re
     where video_type_id = #{videoTypeId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
+    <insert id="insert" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
     insert into video_type_re (video_type_id, video_id, type_id, 
       video_type_status, create_time, last_modify_time, 
       ext_info)
@@ -32,80 +32,80 @@
       #{videoTypeStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
       #{extInfo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
-    insert into video_type_re
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="videoTypeId != null">
-        video_type_id,
-      </if>
-      <if test="videoId != null">
-        video_id,
-      </if>
-      <if test="typeId != null">
-        type_id,
-      </if>
-      <if test="videoTypeStatus != null">
-        video_type_status,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="lastModifyTime != null">
-        last_modify_time,
-      </if>
-      <if test="extInfo != null">
-        ext_info,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="videoTypeId != null">
-        #{videoTypeId,jdbcType=BIGINT},
-      </if>
-      <if test="videoId != null">
-        #{videoId,jdbcType=BIGINT},
-      </if>
-      <if test="typeId != null">
-        #{typeId,jdbcType=INTEGER},
-      </if>
-      <if test="videoTypeStatus != null">
-        #{videoTypeStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModifyTime != null">
-        #{lastModifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="extInfo != null">
-        #{extInfo,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
-    update video_type_re
-    <set>
-      <if test="videoId != null">
-        video_id = #{videoId,jdbcType=BIGINT},
-      </if>
-      <if test="typeId != null">
-        type_id = #{typeId,jdbcType=INTEGER},
-      </if>
-      <if test="videoTypeStatus != null">
-        video_type_status = #{videoTypeStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModifyTime != null">
-        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="extInfo != null">
-        ext_info = #{extInfo,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where video_type_id = #{videoTypeId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
+    <insert id="insertSelective" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
+        insert into video_type_re
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="videoTypeId != null">
+                video_type_id,
+            </if>
+            <if test="videoId != null">
+                video_id,
+            </if>
+            <if test="typeId != null">
+                type_id,
+            </if>
+            <if test="videoTypeStatus != null">
+                video_type_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="lastModifyTime != null">
+                last_modify_time,
+            </if>
+            <if test="extInfo != null">
+                ext_info,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="videoTypeId != null">
+                #{videoTypeId,jdbcType=BIGINT},
+            </if>
+            <if test="videoId != null">
+                #{videoId,jdbcType=BIGINT},
+            </if>
+            <if test="typeId != null">
+                #{typeId,jdbcType=INTEGER},
+            </if>
+            <if test="videoTypeStatus != null">
+                #{videoTypeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModifyTime != null">
+                #{lastModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="extInfo != null">
+                #{extInfo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
+        update video_type_re
+        <set>
+            <if test="videoId != null">
+                video_id = #{videoId,jdbcType=BIGINT},
+            </if>
+            <if test="typeId != null">
+                type_id = #{typeId,jdbcType=INTEGER},
+            </if>
+            <if test="videoTypeStatus != null">
+                video_type_status = #{videoTypeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModifyTime != null">
+                last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="extInfo != null">
+                ext_info = #{extInfo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where video_type_id = #{videoTypeId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yinfeixing.video.dataobject.video.VideoTypeDO">
     update video_type_re
     set video_id = #{videoId,jdbcType=BIGINT},
       type_id = #{typeId,jdbcType=INTEGER},

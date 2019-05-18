@@ -14,7 +14,7 @@ public enum UniqueBusinessCode {
 
     INVOICE_NO_GE("06", "开票编号"),
 
-            ;
+    ;
 
     private String code;
     private String desc;

@@ -8,15 +8,15 @@ package com.yinfeixing.video.enums.system;
 
 public enum SystemApiTypeEnum {
 
-    COMMON("common","不需要校验", "common"),
+    COMMON("common", "不需要校验", "common"),
 
-    NOTIFY("NOTIFY","支付异步通知特殊处理", "notify"),
+    NOTIFY("NOTIFY", "支付异步通知特殊处理", "notify"),
 
-    INTERNAL("internal","内部系统", "internalValidPrivilege"),
+    INTERNAL("internal", "内部系统", "internalValidPrivilege"),
 
-    EXTERNAL("external","外部系统", "externalValidPrivilege"),
+    EXTERNAL("external", "外部系统", "externalValidPrivilege"),
 
-            ;
+    ;
 
     SystemApiTypeEnum(String code, String desc, String privilegeObjectName) {
         this.code = code;

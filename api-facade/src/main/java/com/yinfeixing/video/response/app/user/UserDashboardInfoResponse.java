@@ -7,31 +7,31 @@ public class UserDashboardInfoResponse extends ToString {
     private static final long serialVersionUID = 1800405596659886611L;
 
     @Remark("房间名称")
-    private  String roomName;
+    private String roomName;
 
     @Remark("房间余额")
-    private  String prepayTotalAmount;
+    private String prepayTotalAmount;
 
     @Remark("门锁密码")
-    private  String doorPassword;
+    private String doorPassword;
 
     @Remark("已扣水电费")
-    private  String consumTotalAmount;
+    private String consumTotalAmount;
 
     @Remark("本期-已扣水电费")
     private String consumePeriodAmount;
 
     @Remark("租约ID")
-    private  String LeaseId;
+    private String LeaseId;
 
     @Remark("房间ID")
-    private  String roomId;
+    private String roomId;
 
     @Remark("租客信息ID")
-    private  String RenterId;
+    private String RenterId;
 
     @Remark("租约房间ID")
-    private  String leaseRoomId;
+    private String leaseRoomId;
 
     public String getLeaseId() {
         return LeaseId;

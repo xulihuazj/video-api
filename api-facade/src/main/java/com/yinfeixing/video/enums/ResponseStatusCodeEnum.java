@@ -5,7 +5,8 @@ package com.yinfeixing.video.enums;
  */
 public enum ResponseStatusCodeEnum {
 
-    SUCCESS("SUCCESS", "成功"),;
+    SUCCESS("SUCCESS", "成功"),
+    ;
 
     /**
      * The Code.

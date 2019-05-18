@@ -32,7 +32,7 @@ public class PinYinUtils {
             HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
             defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
 
-            for(int i = 0; i < nameChars.length; ++i) {
+            for (int i = 0; i < nameChars.length; ++i) {
                 if (nameChars[i] > 128) {
                     try {
                         afterProcessStr = afterProcessStr + PinyinHelper.toHanyuPinyinStringArray(nameChars[i], defaultFormat)[0].charAt(0);

@@ -22,7 +22,7 @@ public class ClientUserLoginLogDO extends DOBaseEntity {
     private String loginSource;
 
     private String sourceVersion;
-    
+
     private String loginCity;
 
 
@@ -98,13 +98,13 @@ public class ClientUserLoginLogDO extends DOBaseEntity {
         this.sourceVersion = sourceVersion == null ? null : sourceVersion.trim();
     }
 
-	public String getLoginCity() {
-		return loginCity;
-	}
+    public String getLoginCity() {
+        return loginCity;
+    }
 
-	public void setLoginCity(String loginCity) {
-		this.loginCity = loginCity;
-	}
-    
-    
+    public void setLoginCity(String loginCity) {
+        this.loginCity = loginCity;
+    }
+
+
 }

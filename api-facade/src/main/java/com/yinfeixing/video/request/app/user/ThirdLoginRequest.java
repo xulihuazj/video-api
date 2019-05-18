@@ -6,7 +6,7 @@ import com.yinfeixing.utils.validate.Remark;
 import javax.validation.constraints.NotNull;
 
 /**
- *  第三方登录
+ * 第三方登录
  */
 public class ThirdLoginRequest extends ToString {
     private static final long serialVersionUID = -4780392570447399887L;

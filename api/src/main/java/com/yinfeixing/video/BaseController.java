@@ -26,42 +26,44 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.Set;
+
 /**
  * BaseController是所有Controller的基类,用于一些统一/公共部分的处理
+ *
  * @description 所有Controller的基类
  */
 public abstract class BaseController {
 
     private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-    
-    protected String getBizString(HttpServletRequest httpRequest) throws IOException{
-    	String bizString = null;
-    	if (httpRequest.getMethod().equals("GET")) {
-    		bizString = this.convertGetParam(httpRequest.getParameterMap());
-    		bizString = EmojiUtils.emojiConvert(bizString);
-    	}else{
-    		 byte[] buffer = BaseController.getRequestPostBytes(httpRequest);
-             String charEncoding = httpRequest.getCharacterEncoding();
-             if (charEncoding == null) {
-                 charEncoding = "UTF-8";
-             }
-             if (buffer != null) {
-                 //字符串转json对象
-                 JSONObject json = JSONObject.parseObject(EmojiUtils.emojiConvert(new String(buffer, charEncoding)));
-                 //打印整个请求对象
-                 if(null != json){
-                     LogHelper.info(json.toJSONString());
-                 }
-                 APIRequest request = JSONObject.parseObject(json.toJSONString(), new TypeReference<APIRequest>() {
-                 });
-                 if (json != null && request.getBizRequest() != null) {
-                	 bizString = JSONObject.toJSONString(request.getBizRequest());
-                 }
-             }
-    	}
-    	return bizString;
+
+    protected String getBizString(HttpServletRequest httpRequest) throws IOException {
+        String bizString = null;
+        if (httpRequest.getMethod().equals("GET")) {
+            bizString = this.convertGetParam(httpRequest.getParameterMap());
+            bizString = EmojiUtils.emojiConvert(bizString);
+        } else {
+            byte[] buffer = BaseController.getRequestPostBytes(httpRequest);
+            String charEncoding = httpRequest.getCharacterEncoding();
+            if (charEncoding == null) {
+                charEncoding = "UTF-8";
+            }
+            if (buffer != null) {
+                //字符串转json对象
+                JSONObject json = JSONObject.parseObject(EmojiUtils.emojiConvert(new String(buffer, charEncoding)));
+                //打印整个请求对象
+                if (null != json) {
+                    LogHelper.info(json.toJSONString());
+                }
+                APIRequest request = JSONObject.parseObject(json.toJSONString(), new TypeReference<APIRequest>() {
+                });
+                if (json != null && request.getBizRequest() != null) {
+                    bizString = JSONObject.toJSONString(request.getBizRequest());
+                }
+            }
+        }
+        return bizString;
     }
-    
+
     /**
      * @Function: BaseController.java
      * @Description: 获取json请求对象
@@ -98,10 +100,11 @@ public abstract class BaseController {
                 //字符串转json对象
                 JSONObject json = JSONObject.parseObject(EmojiUtils.emojiConvert(new String(buffer, charEncoding)));
                 //打印整个请求对象
-                if(null != json){
+                if (null != json) {
                     LogHelper.info(json.toJSONString());
                 }
-                request = JSONObject.parseObject(json.toJSONString(), new TypeReference<APIRequest<C>>() {});
+                request = JSONObject.parseObject(json.toJSONString(), new TypeReference<APIRequest<C>>() {
+                });
                 request.setToken(httpRequest.getHeader("Authorization"));
                 localContext.setSource(httpRequest.getParameter("source"));
                 localContext.setVersion(request.getVersion());
@@ -148,32 +151,32 @@ public abstract class BaseController {
      * @author: mazy
      * @date: 2018年3月6日 上午10:06:37
      */
-	private static byte[] getRequestPostBytes(HttpServletRequest request) throws IOException {
-		int contentLength = request.getContentLength();
-		byte[] body = null;
-		if (request.getAttribute(Constant.API_BODY_KEY) != null) {
-			body = (byte[]) request.getAttribute(Constant.API_BODY_KEY);
-		} else if(contentLength > 0){
-			byte[] buffer = new byte[contentLength];
-			try {
-				for (int i = 0; i < contentLength;) {
+    private static byte[] getRequestPostBytes(HttpServletRequest request) throws IOException {
+        int contentLength = request.getContentLength();
+        byte[] body = null;
+        if (request.getAttribute(Constant.API_BODY_KEY) != null) {
+            body = (byte[]) request.getAttribute(Constant.API_BODY_KEY);
+        } else if (contentLength > 0) {
+            byte[] buffer = new byte[contentLength];
+            try {
+                for (int i = 0; i < contentLength; ) {
 
-					int readlen = request.getInputStream().read(buffer, i, contentLength - i);
-					if (readlen == -1) {
-						break;
-					}
-					i += readlen;
-				}
-			} catch (Exception e) {
-				LogHelper.error(e);
-			}finally {
-				request.getInputStream().close();
-			}
-			body = buffer;
-			request.setAttribute(Constant.API_BODY_KEY, body);
-		}
-		return body;
-	}
+                    int readlen = request.getInputStream().read(buffer, i, contentLength - i);
+                    if (readlen == -1) {
+                        break;
+                    }
+                    i += readlen;
+                }
+            } catch (Exception e) {
+                LogHelper.error(e);
+            } finally {
+                request.getInputStream().close();
+            }
+            body = buffer;
+            request.setAttribute(Constant.API_BODY_KEY, body);
+        }
+        return body;
+    }
 
     /**
      * API输出
@@ -256,5 +259,5 @@ public abstract class BaseController {
     protected void success(Object obj, HttpServletRequest httpRequest, HttpServletResponse httpResponse, DateFormat dateFormat) throws Exception {
         this.output(httpRequest, httpResponse, obj, dateFormat);
     }
-    
+
 }

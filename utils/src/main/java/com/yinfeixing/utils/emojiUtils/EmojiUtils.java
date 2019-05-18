@@ -12,18 +12,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *  聊天表情字符串互转
+ * 聊天表情字符串互转
  */
 public class EmojiUtils {
 
-    private  static Logger logger = LogManager.getLogger(EmojiUtils.class);
+    private static Logger logger = LogManager.getLogger(EmojiUtils.class);
 
     /**
-     * @Description 将字符串中的emoji表情转换成可以在utf-8字符集数据库中保存的格式（表情占4个字节，需要utf8mb4字符集）
      * @param
      * @return 转换后字符串
-     * @throws UnsupportedEncodingException
-     * exception
+     * @throws UnsupportedEncodingException exception
+     * @Description 将字符串中的emoji表情转换成可以在utf-8字符集数据库中保存的格式（表情占4个字节，需要utf8mb4字符集）
      */
     public static String emojiConvert(String emjiStr) {
         if (StringUtils.isBlank(emjiStr)) {
@@ -45,13 +44,12 @@ public class EmojiUtils {
     }
 
     /**
+     * @return 转换前的字符串
+     * @throws UnsupportedEncodingException exception
      * @Description 还原utf8数据库中保存的含转换后emoji表情的字符串
      * 转换后的字符串
-     * @return 转换前的字符串
-     * @throws UnsupportedEncodingException
-     * exception
      */
-    public static String emojiRecovery(String emjiStr)  {
+    public static String emojiRecovery(String emjiStr) {
         if (StringUtils.isBlank(emjiStr)) {
             return null;
         }

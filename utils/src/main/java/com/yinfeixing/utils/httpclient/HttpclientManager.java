@@ -19,32 +19,32 @@ public class HttpclientManager {
     private static final String HTTPS = "https";
 
     private static PoolingHttpClientConnectionManager httpClientConnectionManager = null;
-    
-    private static void setHttpClientConnectionManager(){
-    	try {
-            if(httpClientConnectionManager == null){
-            	SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, (X509Certificate[] arg0, String arg1) -> true).build();
+
+    private static void setHttpClientConnectionManager() {
+        try {
+            if (httpClientConnectionManager == null) {
+                SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, (X509Certificate[] arg0, String arg1) -> true).build();
                 // 设置协议http和https对应的处理socket链接工厂的对象
                 Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
                         .register(HTTP, PlainConnectionSocketFactory.INSTANCE)
                         .register(HTTPS, new SSLConnectionSocketFactory(sslContext)).build();
-            	synchronized (HttpclientManager.class) {
-            		if(httpClientConnectionManager == null){
-            			httpClientConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-            			httpClientConnectionManager.setMaxTotal(200);
-            			httpClientConnectionManager.setDefaultMaxPerRoute(10);
-            		}
-				}
+                synchronized (HttpclientManager.class) {
+                    if (httpClientConnectionManager == null) {
+                        httpClientConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+                        httpClientConnectionManager.setMaxTotal(200);
+                        httpClientConnectionManager.setDefaultMaxPerRoute(10);
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-	public static CloseableHttpClient getHttpClient() {
-		setHttpClientConnectionManager();
-		CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(httpClientConnectionManager)
-				.setConnectionManagerShared(true).build();
-		return httpClient;
-	}
+
+    public static CloseableHttpClient getHttpClient() {
+        setHttpClientConnectionManager();
+        CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(httpClientConnectionManager)
+                .setConnectionManagerShared(true).build();
+        return httpClient;
+    }
 }

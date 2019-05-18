@@ -1,4 +1,5 @@
 package com.yinfeixing.utils.web;
+
 import com.yinfeixing.utils.log.LogHelper;
 import com.yinfeixing.utils.security.SecurityCode;
 import com.yinfeixing.utils.security.SecurityHelper;
@@ -86,7 +87,9 @@ public class WebHelper {
         }
     }
 
-/*    *//**
+    /*    */
+
+    /**
      * @param request
      * @return
      * @Title: getUseAgent
@@ -97,8 +100,8 @@ public class WebHelper {
         return userAgent;
     }*/
     /*
-    * 获取客户端浏览器类型tring
-    * */
+     * 获取客户端浏览器类型tring
+     * */
     public static String getUseAgent(HttpServletRequest request) {
         String userAgent = request.getHeader("User-Agent");
         if (userAgent != null) {
@@ -160,7 +163,7 @@ public class WebHelper {
                     return "Internet Explorer" + "7";
                 } else if (userAgent.contains("MSIE 6.0")) {//Internet Explorer 6
                     return "Internet Explorer" + "6";
-                }else if(userAgent.contains("like Gecko")){
+                } else if (userAgent.contains("like Gecko")) {
                     return "Internet Explorer" + "11";
                 }
             } else if (userAgent.contains("Safari") && !userAgent.contains("Android") && !userAgent.contains("iPhone") && !userAgent.contains("iPad")) {
@@ -235,7 +238,7 @@ public class WebHelper {
 
     public static Boolean isSpider(HttpServletRequest request) {
         boolean isSpider = false;
-        String[] spiderAgents = { "baiduspider", "googlebot", "bingbot", "haosouspider" };
+        String[] spiderAgents = {"baiduspider", "googlebot", "bingbot", "haosouspider"};
         if (request.getHeader("User-Agent") != null) {
             for (String spiderAgent : spiderAgents) {
                 if (request.getHeader("User-Agent").toLowerCase().indexOf(spiderAgent) >= 0) {

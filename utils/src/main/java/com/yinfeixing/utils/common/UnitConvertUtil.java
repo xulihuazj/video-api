@@ -7,16 +7,16 @@ import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
 /**
- *     单位转换
+ * 单位转换
  */
 public class UnitConvertUtil {
 
     /**
-    * 平方米和英尺转化
-    * 1平方米(㎡)=10.76平方英尺
-    * 1平方英尺(sq.ft)=0.09平方米(㎡)
-    * convertUnit  转换后的面积单位
-    */
+     * 平方米和英尺转化
+     * 1平方米(㎡)=10.76平方英尺
+     * 1平方英尺(sq.ft)=0.09平方米(㎡)
+     * convertUnit  转换后的面积单位
+     */
     public static String areaConvert(String convertUnit, Double originArea) {
         if (StringUtils.isEmpty(convertUnit) || null == originArea) {
             return null;
@@ -124,13 +124,12 @@ public class UnitConvertUtil {
     }
 
     /**
-     * 
-    * @Function: UnitConvertUtil.java
-    * @Description: divisor：除数,dividend:被除数,direction:1为向上2为向下,digits保留小数后的位数
-    * @param: divisor：除数,dividend:被除数,direction:1为向上2为向下,digits保留小数后的位数
-    * @return：String
-    * @author: mazy
-    * @date: 2018年3月13日 下午8:26:00
+     * @Function: UnitConvertUtil.java
+     * @Description: divisor：除数,dividend:被除数,direction:1为向上2为向下,digits保留小数后的位数
+     * @param: divisor：除数,dividend:被除数,direction:1为向上2为向下,digits保留小数后的位数
+     * @return：String
+     * @author: mazy
+     * @date: 2018年3月13日 下午8:26:00
      */
     public static String division(BigDecimal divisor, BigDecimal dividend, int direction, int digits) {
         String results;
@@ -144,7 +143,7 @@ public class UnitConvertUtil {
 
     /**
      * @Function: UnitConvertUtil.java
-     * @Description: 乘法,multiplier：乘数,multiplicand:被乘数,direction:1为向上2为向下,digits保留小数后的位数
+     * @Description: 乘法, multiplier：乘数,multiplicand:被乘数,direction:1为向上2为向下,digits保留小数后的位数
      * @return：String
      * @author: mazy
      * @date: 2018年3月13日 下午9:06:47
@@ -159,84 +158,80 @@ public class UnitConvertUtil {
         }
         return results;
     }
-    
+
     /**
-     * 
+     * @param amount
+     * @return
      * @Description : 元转分 不进位
      * @Author :
      * @Date : 2018年7月30日 下午6:01:40
+     */
+    public static Long yuanToPointsNormLong(String amount) {
+        if (StringUtils.isNotBlank(amount)) {
+            amount = amount.trim();
+            int index = amount.indexOf(".");
+            int length = amount.length();
+            Long amLong = 0l;
+            if (index == -1) {
+                amLong = Long.valueOf(amount + "00");
+            } else if (length - index >= 3) {
+                amLong = Long.valueOf((amount.substring(0, index + 3)).replace(".", ""));
+            } else if (length - index == 2) {
+                amLong = Long.valueOf((amount.substring(0, index + 2)).replace(".", "") + 0);
+            } else {
+                amLong = Long.valueOf((amount.substring(0, index + 1)).replace(".", "") + "00");
+            }
+            return amLong;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * @param amount
      * @return
-     */
-    public static Long yuanToPointsNormLong(String amount){  
-    	if(StringUtils.isNotBlank(amount)){
-    		amount = amount.trim();
-            int index = amount.indexOf(".");  
-            int length = amount.length();  
-            Long amLong = 0l;  
-            if(index == -1){  
-                amLong = Long.valueOf(amount+"00");  
-            }else if(length - index >= 3){  
-                amLong = Long.valueOf((amount.substring(0, index+3)).replace(".", ""));  
-            }else if(length - index == 2){  
-                amLong = Long.valueOf((amount.substring(0, index+2)).replace(".", "")+0);  
-            }else{  
-                amLong = Long.valueOf((amount.substring(0, index+1)).replace(".", "")+"00");  
-            }  
-            return amLong; 
-    	}else{
-    		return null;
-    	}
-    } 
-    
-    /**
-     * 
      * @Description :  元转分 不进位
      * @Author : zsy
      * @Date : 2018年7月30日 下午6:02:16
+     */
+    public static Integer yuanToPointsNormInt(String amount) {
+        if (StringUtils.isNotBlank(amount)) {
+            Integer amInt = yuanToPointsNormLong(amount).intValue();
+            return amInt;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * @param amount
      * @return
-     */
-    public static Integer yuanToPointsNormInt(String amount){  
-    	if(StringUtils.isNotBlank(amount)){
-    		Integer amInt = yuanToPointsNormLong(amount).intValue();
-            return amInt;
-    	}else{
-    		return null;
-    	}
-    } 
-    
-    /**
-     * 
      * @Description :  元转分 不进位
      * @Author : zsy
      * @Date : 2018年7月30日 下午6:02:21
+     */
+    public static String yuanToPointsNormStr(String amount) {
+        if (StringUtils.isNotBlank(amount)) {
+            String amStr = yuanToPointsNormLong(amount).toString();
+            return amStr;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * @param amount
      * @return
-     */
-    public static String yuanToPointsNormStr(String amount){  
-    	if(StringUtils.isNotBlank(amount)){
-    		String amStr = yuanToPointsNormLong(amount).toString();
-            return amStr;  
-    	}else{
-    		return null;
-    	}
-    }
-    
-    /**
-     * 
-     * @Description : 分转元 
+     * @Description : 分转元
      * @Author : zsy
      * @Date : 2018年7月30日 下午6:02:28
-     * @param amount
-     * @return
      */
-    public static String pointsToyuanNormStr(Long amount){
-    	if(amount != null){
-    		return BigDecimal.valueOf(amount).divide(new BigDecimal(100)).toString();  
-    	}else{
-    		return null;
-    	}
+    public static String pointsToyuanNormStr(Long amount) {
+        if (amount != null) {
+            return BigDecimal.valueOf(amount).divide(new BigDecimal(100)).toString();
+        } else {
+            return null;
+        }
     }
 
 }

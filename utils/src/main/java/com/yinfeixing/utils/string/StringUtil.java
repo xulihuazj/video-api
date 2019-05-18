@@ -11,7 +11,7 @@ public class StringUtil {
         if (camelCaseName != null && camelCaseName.length() > 0) {
             result.append(camelCaseName.substring(0, 1).toLowerCase());
 
-            for(int i = 1; i < camelCaseName.length(); ++i) {
+            for (int i = 1; i < camelCaseName.length(); ++i) {
                 char ch = camelCaseName.charAt(i);
                 if (Character.isUpperCase(ch)) {
                     result.append("_");
@@ -30,7 +30,7 @@ public class StringUtil {
         if (underscoreName != null && underscoreName.length() > 0) {
             boolean flag = false;
 
-            for(int i = 0; i < underscoreName.length(); ++i) {
+            for (int i = 0; i < underscoreName.length(); ++i) {
                 char ch = underscoreName.charAt(i);
                 if ("_".charAt(0) == ch) {
                     flag = true;
@@ -68,6 +68,6 @@ public class StringUtil {
     }
 
     public static void main(String[] args) {
-        trimBlank((String)null);
+        trimBlank((String) null);
     }
 }

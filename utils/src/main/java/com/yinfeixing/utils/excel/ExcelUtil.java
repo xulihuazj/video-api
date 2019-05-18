@@ -49,33 +49,33 @@ public class ExcelUtil {
         }
         //判断数据的类型
         switch (cell.getCellType()) {
-        //数字
-        case Cell.CELL_TYPE_NUMERIC:
-            cellValue = String.valueOf(cell.getNumericCellValue());
-            break;
-        //字符串
-        case Cell.CELL_TYPE_STRING:
-            cellValue = String.valueOf(cell.getStringCellValue());
-            break;
-        //Boolean
-        case Cell.CELL_TYPE_BOOLEAN:
-            cellValue = String.valueOf(cell.getBooleanCellValue());
-            break;
-        //公式
-        case Cell.CELL_TYPE_FORMULA:
-            cellValue = String.valueOf(cell.getCellFormula());
-            break;
-        //空值
-        case Cell.CELL_TYPE_BLANK:
-            cellValue = "";
-            break;
-        //故障
-        case Cell.CELL_TYPE_ERROR:
-            cellValue = "非法字符";
-            break;
-        default:
-            cellValue = "未知类型";
-            break;
+            //数字
+            case Cell.CELL_TYPE_NUMERIC:
+                cellValue = String.valueOf(cell.getNumericCellValue());
+                break;
+            //字符串
+            case Cell.CELL_TYPE_STRING:
+                cellValue = String.valueOf(cell.getStringCellValue());
+                break;
+            //Boolean
+            case Cell.CELL_TYPE_BOOLEAN:
+                cellValue = String.valueOf(cell.getBooleanCellValue());
+                break;
+            //公式
+            case Cell.CELL_TYPE_FORMULA:
+                cellValue = String.valueOf(cell.getCellFormula());
+                break;
+            //空值
+            case Cell.CELL_TYPE_BLANK:
+                cellValue = "";
+                break;
+            //故障
+            case Cell.CELL_TYPE_ERROR:
+                cellValue = "非法字符";
+                break;
+            default:
+                cellValue = "未知类型";
+                break;
         }
         return cellValue;
     }

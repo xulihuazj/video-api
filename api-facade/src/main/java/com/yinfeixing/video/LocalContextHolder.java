@@ -1,8 +1,8 @@
 package com.yinfeixing.video;
 
 /**
- * @Description
  * @author xulh
+ * @Description
  * @Date 2017年8月24日上午9:37:31
  */
 public class LocalContextHolder {
@@ -19,7 +19,7 @@ public class LocalContextHolder {
     /**
      * 获取当前线程Context
      */
-    public static  GlobalLocalContext getContext() {
+    public static GlobalLocalContext getContext() {
         GlobalLocalContext ctx = localContextHolder.get();
         if (ctx == null) {
             ctx = createEmptyContext();
@@ -28,15 +28,16 @@ public class LocalContextHolder {
         return ctx;
     }
 
-    public static  void setContext(GlobalLocalContext context) {
+    public static void setContext(GlobalLocalContext context) {
         localContextHolder.set(context);
     }
 
     /**
      * 创建空context
+     *
      * @return
      */
-    public static  GlobalLocalContext createEmptyContext() {
+    public static GlobalLocalContext createEmptyContext() {
         return new GlobalLocalContext();
     }
 }

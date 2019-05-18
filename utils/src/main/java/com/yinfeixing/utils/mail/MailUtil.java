@@ -35,7 +35,7 @@ public class MailUtil {
      * @Description：
      * @author: xulh
      */
-    public final static void sendSimpleMail(String from, String to, String subject, String content)throws Exception {
+    public final static void sendSimpleMail(String from, String to, String subject, String content) throws Exception {
 
         logger.info("开始给发送邮件");
         try {

@@ -4,8 +4,6 @@ import com.yinfeixing.utils.validate.Add;
 import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
-import com.yinfeixing.video.response.APIResponse;
-import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 import com.yinfeixing.video.service.manage.VideoManageService;
 import com.yinfeixing.video.system.SystemType;
 import org.springframework.web.bind.annotation.PostMapping;

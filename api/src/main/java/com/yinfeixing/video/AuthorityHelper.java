@@ -22,19 +22,19 @@ public class AuthorityHelper {
         clientInfoDTO.setClientSymbol(WebHelper.getUseAgent(request));
         clientInfoDTO.setOriginalClientIp(WebHelper.getRemoteAddr());
         String originalClientSymbol = clientInfoDTO.getClientSymbol();
-        if(apiRequest.getSource() == null){
-        	apiRequest.setSource("WEB");
+        if (apiRequest.getSource() == null) {
+            apiRequest.setSource("WEB");
         }
         switch (apiRequest.getSource()) {
-		case "ANDROID":
-			originalClientSymbol = apiRequest.getDeviceId();
-			break;
-		case "IOS":
-			originalClientSymbol = apiRequest.getDeviceId();
-			break;
-		default:
-			break;
-		}
+            case "ANDROID":
+                originalClientSymbol = apiRequest.getDeviceId();
+                break;
+            case "IOS":
+                originalClientSymbol = apiRequest.getDeviceId();
+                break;
+            default:
+                break;
+        }
         clientInfoDTO.setOriginalClientSymbol(originalClientSymbol);
         return clientInfoDTO;
     }

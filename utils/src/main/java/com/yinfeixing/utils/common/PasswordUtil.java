@@ -10,14 +10,14 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class PasswordUtil {
 
-    private static   final String passWordRegx="^[0-9A-Za-z_]{6,18}$";
+    private static final String passWordRegx = "^[0-9A-Za-z_]{6,18}$";
 
-    public  static boolean passWordValid(String passWord){
+    public static boolean passWordValid(String passWord) {
 
-        if(StringUtils.isNotBlank(passWord)){
-            return  passWord.matches(passWordRegx);
+        if (StringUtils.isNotBlank(passWord)) {
+            return passWord.matches(passWordRegx);
         }
-        return  false;
+        return false;
     }
 
 }

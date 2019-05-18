@@ -24,6 +24,7 @@ public class VideoController extends BaseController {
 
     /**
      * 视频列表
+     *
      * @param httpRequest
      * @param httpResponse
      * @throws Exception
@@ -37,6 +38,7 @@ public class VideoController extends BaseController {
 
     /**
      * 视频详情
+     *
      * @param httpRequest
      * @param httpResponse
      * @throws Exception
@@ -51,6 +53,7 @@ public class VideoController extends BaseController {
 
     /**
      * 视频下载计数
+     *
      * @param httpRequest
      * @param httpResponse
      * @throws Exception

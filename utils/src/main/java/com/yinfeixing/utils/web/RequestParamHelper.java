@@ -33,7 +33,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 defalutValue = Integer.parseInt(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return defalutValue;
     }
@@ -46,7 +48,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 defalutValue = Short.parseShort(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return defalutValue;
     }
@@ -56,7 +60,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 result = new BigDecimal(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return result;
     }
@@ -66,7 +72,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 result = Float.parseFloat(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return result;
     }
@@ -76,7 +84,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 result = Byte.parseByte(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return result;
     }
@@ -87,7 +97,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 result = sdf.parse(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return result;
     }
@@ -100,7 +112,9 @@ public class RequestParamHelper {
         if (request.getParameter(paramName) != null) {
             try {
                 defaultValue = Boolean.parseBoolean(request.getParameter(paramName));
-            } catch (Exception ex) {;}
+            } catch (Exception ex) {
+                ;
+            }
         }
         return defaultValue;
     }

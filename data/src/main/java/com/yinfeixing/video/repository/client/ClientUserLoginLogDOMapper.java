@@ -11,18 +11,19 @@ public interface ClientUserLoginLogDOMapper {
     int insertSelective(ClientUserLoginLogDO record);
 
     /**
-      * @Author: xulh
-      * @Description:  通过用户token 和登录agent信息获取登录信息
-      * @Date: 15:17 2018-06-04
-      * @return
-      */
-    ClientUserLoginLogDO selectByTokenAndAgent(@Param(value = "loginToken")String loginToken,
-                                               @Param(value = "userAgent")String userAgent,@Param(value = "loginStatus") String loginStatus);
+     * @return
+     * @Author: xulh
+     * @Description: 通过用户token 和登录agent信息获取登录信息
+     * @Date: 15:17 2018-06-04
+     */
+    ClientUserLoginLogDO selectByTokenAndAgent(@Param(value = "loginToken") String loginToken,
+                                               @Param(value = "userAgent") String userAgent, @Param(value = "loginStatus") String loginStatus);
+
     /**
-     *  更新用户登录信息
+     * 更新用户登录信息
      */
     int updateByTokenAndAgentSelective(ClientUserLoginLogDO record);
-    
+
     ClientUserLoginLogDO lastLoginInfo(@Param("userId") Long userId);
 
 }
