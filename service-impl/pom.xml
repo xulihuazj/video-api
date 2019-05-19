@@ -55,11 +55,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alipay.sdk</groupId>
-            <artifactId>alipay-sdk-java</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.aliyun.openservices</groupId>
             <artifactId>ons-client</artifactId>
         </dependency>
@@ -112,7 +107,6 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>javax.mail</groupId>

@@ -6,17 +6,20 @@ import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.request.app.video.DicRequest;
+import com.yinfeixing.video.response.APIResponse;
+import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 import com.yinfeixing.video.service.app.video.VideoService;
 import com.yinfeixing.video.system.SystemType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RestController(value = "videoController2")
+@RestController
 @RequestMapping("/client/video")
 public class VideoController extends BaseController {
 

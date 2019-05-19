@@ -86,6 +86,7 @@ public class VideoServiceImpl implements VideoService {
                         setVideoObjectId(movie.getId());
                         setVideoName(movie.getMovieName());
                         setVideoLength(movie.getMovieLength());
+                        setVideoName("客户放大发生范德萨分ou");
                     }});
                 }
                 bizResponse.setVideoList(videoList);

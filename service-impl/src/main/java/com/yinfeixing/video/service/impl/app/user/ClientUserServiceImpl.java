@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 @Repository
 public class ClientUserServiceImpl implements ClientUserService {
 
-    private Logger logger = LogManager.getLogger(ClientUserServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(ClientUserServiceImpl.class);
 
     @Resource
     private TransactionTemplate pmsDBTransactionTemplate;
