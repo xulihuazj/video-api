@@ -79,8 +79,9 @@ public class VideoServiceImpl implements VideoService {
             bizResponse.setTotal(moviePageModel.getTotalCount());
             bizResponse.setTotalPage(moviePageModel.getTotalPage());
             List<MovieModel> result = moviePageModel.getResult();
+            List<VideoDTO> videoList;
             if (CollectionUtils.isNotEmpty(result)) {
-                List<VideoDTO> videoList = new ArrayList<>(result.size());
+                videoList = new ArrayList<>(result.size());
                 for (MovieModel movie : result) {
                     videoList.add(new VideoDTO() {{
                         setVideoObjectId(movie.getId());
@@ -89,8 +90,10 @@ public class VideoServiceImpl implements VideoService {
                         setVideoName("客户放大发生范德萨分ou");
                     }});
                 }
-                bizResponse.setVideoList(videoList);
+            } else {
+                videoList = new ArrayList<>(0);
             }
+            bizResponse.setVideoList(videoList);
         }
         LogHelper.info(logger, "【客户端】【视频列表】，videoModelList={0}", bizResponse);
         return APIResponse.instance(bizResponse);
