@@ -124,7 +124,7 @@ public class VideoServiceImpl implements VideoService {
                 List<TelevisionModel> televisionList = televisionMongoRepositoryImpl.findTelevision2Hot();
                 for (TelevisionModel television : televisionList) {
                     VideoDTO videoDTO = VideoDTOBuilder.aVideoDTO().videoObjectId(television.getId())
-                            .videoName(television.getTelevisionName()).videoImage(television.getMovieImage()).describe(television.getDescribe()).build();
+                            .videoName(television.getTelevisionName()).videoImage(television.getVideoImage()).describe(television.getDescribe()).build();
                     videoList.add(videoDTO);
                 }
                 bizResponse.setVideoList(videoList);
@@ -264,8 +264,8 @@ public class VideoServiceImpl implements VideoService {
                 VideoDTO videoDTO = CachedBeanCopier.copyConvert(television, VideoDTO.class);
                 videoDTO.setVideoObjectId(television.getId());
                 videoDTO.setVideoName(television.getTelevisionName());
-                videoDTO.setVideoLength(television.getMovieLength());
-                videoDTO.setVideoImage(television.getMovieImage());
+                videoDTO.setVideoLength(television.getVideoLength());
+                videoDTO.setVideoImage(television.getVideoImage());
                 videoList.add(videoDTO);
             }
             bizResponse.setVideoList(videoList);

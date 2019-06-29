@@ -5,18 +5,19 @@ import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientTelevisionListRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
-import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoRecommendRequest;
 import com.yinfeixing.video.service.app.video.VideoService;
 import com.yinfeixing.video.system.SystemType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RestController(value = "/client/television")
+@RestController
+@RequestMapping(value = "/client/television")
 public class TelevisionController extends BaseController {
 
     @Resource
@@ -57,9 +58,8 @@ public class TelevisionController extends BaseController {
      */
     @GetMapping("/detail")
     @SystemType
-    public void videoDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientVideoDetailRequest> apiRequest = super.getObjectByRequest(ClientVideoDetailRequest.class,
-                httpRequest, Query.class);
+    public void televisionDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
+        APIRequest<ClientVideoDetailRequest> apiRequest = super.getObjectByRequest(ClientVideoDetailRequest.class, httpRequest, Query.class);
         super.success(videoServiceImpl.videoDetail(apiRequest), httpRequest, httpResponse);
     }
 }

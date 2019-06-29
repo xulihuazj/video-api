@@ -9,13 +9,15 @@ import com.yinfeixing.video.request.app.video.ClientVideoRecommendRequest;
 import com.yinfeixing.video.service.app.video.VideoService;
 import com.yinfeixing.video.system.SystemType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RestController("/client/movie")
+@RestController
+@RequestMapping(value = "/client/movie")
 public class MovieController extends BaseController {
 
     @Resource

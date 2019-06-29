@@ -57,12 +57,12 @@ public class TelevisionModel extends ToString {
     private String yearNum;
 
     // 长度
-    @Field(value = "movie_length")
-    private String movieLength;
+    @Field(value = "video_length")
+    private String videoLength;
 
     // 主图
-    @Field(value = "movie_image")
-    private String movieImage;
+    @Field(value = "video_image")
+    private String videoImage;
 
     // 剧情描述
     @Field(value = "describe")
@@ -140,20 +140,20 @@ public class TelevisionModel extends ToString {
         this.yearNum = yearNum;
     }
 
-    public String getMovieLength() {
-        return movieLength;
+    public String getVideoLength() {
+        return videoLength;
     }
 
-    public void setMovieLength(String movieLength) {
-        this.movieLength = movieLength;
+    public void setVideoLength(String videoLength) {
+        this.videoLength = videoLength;
     }
 
-    public String getMovieImage() {
-        return movieImage;
+    public String getVideoImage() {
+        return videoImage;
     }
 
-    public void setMovieImage(String movieImage) {
-        this.movieImage = movieImage;
+    public void setVideoImage(String videoImage) {
+        this.videoImage = videoImage;
     }
 
     public String getDescribe() {
