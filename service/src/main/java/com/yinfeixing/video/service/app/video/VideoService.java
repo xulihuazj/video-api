@@ -3,6 +3,7 @@ package com.yinfeixing.video.service.app.video;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
+import com.yinfeixing.video.request.app.video.ClientVideoRecommendRequest;
 import com.yinfeixing.video.request.app.video.DicRequest;
 import com.yinfeixing.video.response.APIResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoDetailResponse;
@@ -18,6 +19,14 @@ public interface VideoService {
      * @return
      */
     APIResponse<ClientVideoListResponse> videoList(APIRequest<ClientVideoListRequest> apiRequest);
+
+    /**
+     * 热门电影推荐列表
+     *
+     * @param apiRequest
+     * @return
+     */
+    APIResponse<ClientVideoListResponse> videoRecommendList(APIRequest<ClientVideoRecommendRequest> apiRequest);
 
     /**
      * 视频详情

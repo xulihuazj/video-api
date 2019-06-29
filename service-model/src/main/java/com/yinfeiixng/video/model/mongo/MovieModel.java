@@ -25,7 +25,7 @@ public class MovieModel extends ToString {
     private String id;
 
     // @Field：代表一个字段，可以不加，不加的话默认以参数名为列名
-    @Field(value = "movie_name")
+    @Field(value = "video_name")
     @Indexed(name = "movie_info_idx_movie_name", direction = IndexDirection.ASCENDING)
     private String movieName;
 
@@ -64,7 +64,7 @@ public class MovieModel extends ToString {
     private String movieLength;
 
     // 主图
-    @Field(value = "movie_image")
+    @Field(value = "video_image")
     private String movieImage;
 
     // 剧情描述

@@ -11,6 +11,9 @@ public class VideoDTO extends ToString {
 
     private String videoObjectId;
 
+    // 主图
+    private String videoImage;
+
     // 上传者
     private Long videoUpOfUser;
 
@@ -32,6 +35,19 @@ public class VideoDTO extends ToString {
 
     // 长度
     private String videoLength;
+
+    /**
+     * 描述
+     */
+    private String describe;
+
+    public String getVideoImage() {
+        return videoImage;
+    }
+
+    public void setVideoImage(String videoImage) {
+        this.videoImage = videoImage;
+    }
 
     public Long getVideoId() {
         return videoId;
@@ -119,5 +135,13 @@ public class VideoDTO extends ToString {
 
     public void setVideoLength(String videoLength) {
         this.videoLength = videoLength;
+    }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
     }
 }

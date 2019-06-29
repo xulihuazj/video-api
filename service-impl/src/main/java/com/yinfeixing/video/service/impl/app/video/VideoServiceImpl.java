@@ -13,6 +13,7 @@ import com.yinfeixing.video.repository.video.VideoDOMapper;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
+import com.yinfeixing.video.request.app.video.ClientVideoRecommendRequest;
 import com.yinfeixing.video.request.app.video.DicRequest;
 import com.yinfeixing.video.response.APIResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoDetailResponse;
@@ -83,12 +84,12 @@ public class VideoServiceImpl implements VideoService {
             if (CollectionUtils.isNotEmpty(result)) {
                 videoList = new ArrayList<>(result.size());
                 for (MovieModel movie : result) {
-                    videoList.add(new VideoDTO() {{
-                        setVideoObjectId(movie.getId());
-                        setVideoName(movie.getMovieName());
-                        setVideoLength(movie.getMovieLength());
-                        setVideoName("客户放大发生范德萨分ou");
-                    }});
+                    VideoDTO videoDTO = CachedBeanCopier.copyConvert(movie, VideoDTO.class);
+                    videoDTO.setVideoObjectId(movie.getId());
+                    videoDTO.setVideoName(movie.getMovieName());
+                    videoDTO.setVideoLength(movie.getMovieLength());
+                    videoDTO.setVideoImage(movie.getMovieImage());
+                    videoList.add(videoDTO);
                 }
             } else {
                 videoList = new ArrayList<>(0);
@@ -96,6 +97,36 @@ public class VideoServiceImpl implements VideoService {
             bizResponse.setVideoList(videoList);
         }
         LogHelper.info(logger, "【客户端】【视频列表】，videoModelList={0}", bizResponse);
+        return APIResponse.instance(bizResponse);
+    }
+
+    @Override
+    public APIResponse<ClientVideoListResponse> videoRecommendList(APIRequest<ClientVideoRecommendRequest> request) {
+        LogHelper.info(logger, "【客户端】【热门电影推荐列表】，请求参数={0}", request);
+        ClientVideoRecommendRequest bizRequest = request.getBizRequest();
+        ClientVideoListResponse bizResponse = new ClientVideoListResponse();
+        switch (bizRequest.getRecommendVideoType()) {
+            case "MOVIE":
+                List<MovieModel> result = movieMongoRepositoryImpl.findMovie2Hot();
+                List<VideoDTO> videoList;
+                if (CollectionUtils.isNotEmpty(result)) {
+                    videoList = new ArrayList<>(result.size());
+                    for (MovieModel movie : result) {
+                        VideoDTO videoDTO = new VideoDTO();
+                        videoDTO.setVideoObjectId(movie.getId());
+                        videoDTO.setVideoName(movie.getMovieName());
+                        videoDTO.setVideoImage(movie.getMovieImage());
+                        videoDTO.setDescribe(movie.getDescribe());
+                        videoList.add(videoDTO);
+                    }
+                    bizResponse.setVideoList(videoList);
+                }
+                break;
+            default:
+                break;
+        }
+
+        LogHelper.info(logger, "【客户端】【热门电影推荐列表】，videoModelList={0}", bizResponse);
         return APIResponse.instance(bizResponse);
     }
 
