@@ -5,6 +5,7 @@ import com.yinfeixing.video.BaseController;
 import com.yinfeixing.video.request.APIRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
 import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
+import com.yinfeixing.video.request.app.video.ClientVideoRecommendRequest;
 import com.yinfeixing.video.request.app.video.DicRequest;
 import com.yinfeixing.video.response.APIResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
@@ -38,6 +39,20 @@ public class VideoController extends BaseController {
         APIRequest<ClientVideoListRequest> apiRequest = super.getObjectByRequest(ClientVideoListRequest.class,
                 httpRequest, Query.class);
         super.success(videoServiceImpl.videoList(apiRequest), httpRequest, httpResponse);
+    }
+
+    /**
+     * 热门电影推荐
+     *
+     * @param httpRequest
+     * @param httpResponse
+     * @throws Exception
+     */
+    @GetMapping("/list/hot")
+    public void videoRecommendList(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
+        APIRequest<ClientVideoRecommendRequest> apiRequest = super.getObjectByRequest(ClientVideoRecommendRequest.class,
+                httpRequest, Query.class);
+        super.success(videoServiceImpl.videoRecommendList(apiRequest), httpRequest, httpResponse);
     }
 
     /**
