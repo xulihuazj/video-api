@@ -64,7 +64,7 @@ public interface BaseMongoRepository<T> {
      * @param propValue 属性值
      * @return
      */
-    List<T> findByProp(String propName, ObjectMapper propValue);
+    List<T> findByProp(String propName, Object propValue);
 
     /**
      * 根据单一参数查询记录并排序<br>(ps：不分页)
@@ -75,7 +75,7 @@ public interface BaseMongoRepository<T> {
      *                  为空则不排序，不指定排序方式则默认升序排序
      * @return
      */
-    List<T> findByPropWithSort(String propName, ObjectMapper propValue, List<SortEnum> sort);
+    List<T> findByPropWithSort(String propName, Object propValue, List<SortEnum> sort);
 
     /**
      * 根据多个参数查询记录<br>(ps：不分页)

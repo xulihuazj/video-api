@@ -1,7 +1,5 @@
 package com.yinfeixing.video.core.video.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yinfeiixng.video.model.PageModel;
 import com.yinfeiixng.video.model.mongo.MovieModel;
 import com.yinfeixing.video.core.BaseMongoRepositoryImpl;
@@ -29,14 +27,7 @@ public class MovieMongoRepositoryImpl extends BaseMongoRepositoryImpl<MovieModel
 
     @Override
     public List<MovieModel> findMovie2Hot() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            objectMapper.writeValueAsString("HOT");
-            return super.findByProp("hot_degree", objectMapper);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
+        return super.findByProp("hot_degree", "HOT");
     }
 
 }

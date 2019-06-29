@@ -91,18 +91,18 @@ public abstract class BaseMongoRepositoryImpl<T> implements BaseMongoRepository<
     }
 
     @Override
-    public List<T> findByProp(String propName, ObjectMapper propValue) {
+    public List<T> findByProp(String propName, Object propValue) {
         return this.findByPropWithSort(propName, propValue, null);
     }
 
     @Override
-    public List<T> findByPropWithSort(String propName, ObjectMapper propValue, List<SortEnum> sort) {
+    public List<T> findByPropWithSort(String propName, Object propValue, List<SortEnum> sort) {
         Query query = new Query();
         // 查询器参数
         query.addCriteria(where(propName).is(propValue));
         // 排序参数
         List<Sort.Order> orderList = OrderSortParse.parseOrder(sort);
-        if (CollectionUtils.isEmpty(orderList)) {
+        if (CollectionUtils.isNotEmpty(orderList)) {
             query.with(new Sort(orderList));
         }
         return this.mongoTemplate.find(query, this.getEntityClass());

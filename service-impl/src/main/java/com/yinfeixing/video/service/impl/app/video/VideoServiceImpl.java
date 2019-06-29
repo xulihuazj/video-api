@@ -9,13 +9,12 @@ import com.yinfeixing.video.dto.app.client.ClientVideoDTO;
 import com.yinfeixing.video.dto.video.DicDTO;
 import com.yinfeixing.video.dto.video.VideoCommentDTO;
 import com.yinfeixing.video.dto.video.VideoDTO;
+import com.yinfeixing.video.dto.video.VideoDTOBuilder;
 import com.yinfeixing.video.repository.video.VideoDOMapper;
 import com.yinfeixing.video.request.APIRequest;
-import com.yinfeixing.video.request.app.video.ClientVideoDetailRequest;
-import com.yinfeixing.video.request.app.video.ClientVideoListRequest;
-import com.yinfeixing.video.request.app.video.ClientVideoRecommendRequest;
-import com.yinfeixing.video.request.app.video.DicRequest;
+import com.yinfeixing.video.request.app.video.*;
 import com.yinfeixing.video.response.APIResponse;
+import com.yinfeixing.video.response.app.video.ClientTelevisionListResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoDetailResponse;
 import com.yinfeixing.video.response.app.video.ClientVideoListResponse;
 import com.yinfeixing.video.response.app.video.DicResponse;
@@ -47,6 +46,8 @@ public class VideoServiceImpl implements VideoService {
     @Autowired
     @Qualifier(value = "movieMongoRepositoryImpl")
     private MovieMongoRepository movieMongoRepositoryImpl;
+    @Autowired
+    private TelevisionMongoRepository televisionMongoRepositoryImpl;
     @Resource
     private PerformMongoRepository performMongoRepositoryImpl;
     @Resource
@@ -105,27 +106,36 @@ public class VideoServiceImpl implements VideoService {
         LogHelper.info(logger, "【客户端】【热门电影推荐列表】，请求参数={0}", request);
         ClientVideoRecommendRequest bizRequest = request.getBizRequest();
         ClientVideoListResponse bizResponse = new ClientVideoListResponse();
+        List<VideoDTO> videoList = new ArrayList<>();
         switch (bizRequest.getRecommendVideoType()) {
             case "MOVIE":
                 List<MovieModel> result = movieMongoRepositoryImpl.findMovie2Hot();
-                List<VideoDTO> videoList;
-                if (CollectionUtils.isNotEmpty(result)) {
-                    videoList = new ArrayList<>(result.size());
-                    for (MovieModel movie : result) {
-                        VideoDTO videoDTO = new VideoDTO();
-                        videoDTO.setVideoObjectId(movie.getId());
-                        videoDTO.setVideoName(movie.getMovieName());
-                        videoDTO.setVideoImage(movie.getMovieImage());
-                        videoDTO.setDescribe(movie.getDescribe());
-                        videoList.add(videoDTO);
-                    }
-                    bizResponse.setVideoList(videoList);
+                for (MovieModel movie : result) {
+                    VideoDTO videoDTO = new VideoDTO();
+                    videoDTO.setVideoObjectId(movie.getId());
+                    videoDTO.setVideoName(movie.getMovieName());
+                    videoDTO.setVideoImage(movie.getMovieImage());
+                    videoDTO.setDescribe(movie.getDescribe());
+                    videoList.add(videoDTO);
                 }
+                bizResponse.setVideoList(videoList);
+                break;
+            case "TELEVISION":
+                List<TelevisionModel> televisionList = televisionMongoRepositoryImpl.findTelevision2Hot();
+                for (TelevisionModel television : televisionList) {
+                    VideoDTO videoDTO = VideoDTOBuilder.aVideoDTO().videoObjectId(television.getId())
+                            .videoName(television.getTelevisionName()).videoImage(television.getMovieImage()).describe(television.getDescribe()).build();
+                    videoList.add(videoDTO);
+                }
+                bizResponse.setVideoList(videoList);
+                break;
+            case "VARIETY":
+                break;
+            case "ANIMATION":
                 break;
             default:
                 break;
         }
-
         LogHelper.info(logger, "【客户端】【热门电影推荐列表】，videoModelList={0}", bizResponse);
         return APIResponse.instance(bizResponse);
     }
@@ -236,6 +246,31 @@ public class VideoServiceImpl implements VideoService {
         dicResponse.setDicList(CollectionUtils.isNotEmpty(dicList) ? dicList : new ArrayList<>());
         LogHelper.info(logger, "【客户端】【基础字典查询】，响应内容={0}", dicResponse);
         return APIResponse.instance(dicResponse);
+    }
+
+    @Override
+    public APIResponse<ClientTelevisionListResponse> televisionList(APIRequest<ClientTelevisionListRequest> apiRequest) {
+        ClientTelevisionListRequest bizRequest = apiRequest.getBizRequest();
+        Integer pageNum = null != bizRequest.getPageNum() ? bizRequest.getPageNum() : 1;
+        Integer pageSize = null != bizRequest.getPageSize() ? bizRequest.getPageSize() : 30;
+        PageModel<TelevisionModel> pageModel = televisionMongoRepositoryImpl.findTelevisionBySearchForPage(pageNum, pageSize, bizRequest.getSearchContent());
+        ClientTelevisionListResponse bizResponse = new ClientTelevisionListResponse();
+        if (null != pageModel) {
+            bizResponse.setTotal(pageModel.getTotalCount());
+            bizResponse.setTotalPage(pageModel.getTotalPage());
+            List<TelevisionModel> result = pageModel.getResult();
+            List<VideoDTO> videoList = new ArrayList<>();
+            for (TelevisionModel television : result) {
+                VideoDTO videoDTO = CachedBeanCopier.copyConvert(television, VideoDTO.class);
+                videoDTO.setVideoObjectId(television.getId());
+                videoDTO.setVideoName(television.getTelevisionName());
+                videoDTO.setVideoLength(television.getMovieLength());
+                videoDTO.setVideoImage(television.getMovieImage());
+                videoList.add(videoDTO);
+            }
+            bizResponse.setVideoList(videoList);
+        }
+        return APIResponse.instance(bizResponse);
     }
 
 

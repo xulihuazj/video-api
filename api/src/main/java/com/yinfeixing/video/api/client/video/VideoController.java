@@ -20,55 +20,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RestController
-@RequestMapping("/client/video")
+@RestController("/client/video")
 public class VideoController extends BaseController {
 
     @Resource
     private VideoService videoServiceImpl;
 
-    /**
-     * 视频列表
-     *
-     * @param httpRequest
-     * @param httpResponse
-     * @throws Exception
-     */
-    @GetMapping("/list")
-    public void videoList(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientVideoListRequest> apiRequest = super.getObjectByRequest(ClientVideoListRequest.class,
-                httpRequest, Query.class);
-        super.success(videoServiceImpl.videoList(apiRequest), httpRequest, httpResponse);
-    }
-
-    /**
-     * 热门电影推荐
-     *
-     * @param httpRequest
-     * @param httpResponse
-     * @throws Exception
-     */
-    @GetMapping("/list/hot")
-    public void videoRecommendList(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientVideoRecommendRequest> apiRequest = super.getObjectByRequest(ClientVideoRecommendRequest.class,
-                httpRequest, Query.class);
-        super.success(videoServiceImpl.videoRecommendList(apiRequest), httpRequest, httpResponse);
-    }
-
-    /**
-     * 视频详情
-     *
-     * @param httpRequest
-     * @param httpResponse
-     * @throws Exception
-     */
-    @GetMapping("/detail")
-    @SystemType
-    public void videoDetail(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
-        APIRequest<ClientVideoDetailRequest> apiRequest = super.getObjectByRequest(ClientVideoDetailRequest.class,
-                httpRequest, Query.class);
-        super.success(videoServiceImpl.videoDetail(apiRequest), httpRequest, httpResponse);
-    }
 
     /**
      * 视频下载计数

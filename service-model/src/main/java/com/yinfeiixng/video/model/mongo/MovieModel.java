@@ -26,7 +26,7 @@ public class MovieModel extends ToString {
 
     // @Field：代表一个字段，可以不加，不加的话默认以参数名为列名
     @Field(value = "video_name")
-    @Indexed(name = "movie_info_idx_movie_name", direction = IndexDirection.ASCENDING)
+    @Indexed(name = "movie_info_idx_video_name", direction = IndexDirection.ASCENDING)
     private String movieName;
 
     @Field(value = "alias_name")
@@ -70,6 +70,10 @@ public class MovieModel extends ToString {
     // 剧情描述
     @Field(value = "describe")
     private String describe;
+
+    // 热度
+    @Field(value = "hot_degree")
+    private String hotDegree;
 
     //@Transient：该注解标注的，将不会被录入到数据库中。只作为普通的javaBean属性。
     @Transient
@@ -177,5 +181,13 @@ public class MovieModel extends ToString {
 
     public void setExtInfo(String extInfo) {
         this.extInfo = extInfo;
+    }
+
+    public String getHotDegree() {
+        return hotDegree;
+    }
+
+    public void setHotDegree(String hotDegree) {
+        this.hotDegree = hotDegree;
     }
 }
